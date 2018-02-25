@@ -33,12 +33,12 @@ function resolveInputs(nodes: IObjectOf<Node>, node: Node) {
     return res;
 }
 
-export function recompute(graph: Graph) {
+export async function recompute(graph: Graph) {
     let nodes = { ...graph.nodes };
     for (let id of graph.topology) {
         const node = nodes[id];
         const ins = resolveInputs(nodes, node);
-        const outs = node.update(node, ins);
+        const outs = await node.update(node, ins);
         if (outs) {
             for (let oid in outs) {
                 nodes = setIn(nodes, [id, "outs", oid, "value"], outs[oid]);

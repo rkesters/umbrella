@@ -1,7 +1,8 @@
 import { IObjectOf } from "@thi.ng/api/api";
+import { getter } from "@thi.ng/atom/path";
 import * as svg from "@thi.ng/hiccup-dom-components/svg";
 
-import { EdgeFn, LabelOpts, Node, NodeOpts, Port, PortOpts } from "./api";
+import { EdgeFn, Node, NodeOpts, Port, PortOpts } from "./api";
 
 export function portPosition(npos: number[], ports: IObjectOf<Port>, id: string, opts: PortOpts) {
     const idx = ports[id].order !== undefined ? ports[id].order : Object.keys(ports).indexOf(id);
@@ -62,14 +63,16 @@ export function port(ports: IObjectOf<Port>, opts: PortOpts) {
     const [lx, ly] = opts.labelOffset;
     return (id, i) => {
         const port = ports[id];
-        i = port.order !== undefined ? port.order : i;
-        const xx = x + i * sx;
-        const yy = y + i * sy;
-        return svg.group(
-            { fill: opts.types[port.type] },
-            svg.circle([xx, yy], opts.radius || 3),
-            svg.text(port.label || id, [xx + lx, yy + ly])
-        );
+        if (!port.hidden) {
+            i = port.order !== undefined ? port.order : i;
+            const xx = x + i * sx;
+            const yy = y + i * sy;
+            return svg.group(
+                { fill: opts.types[port.type] },
+                svg.circle([xx, yy], opts.radius || 3),
+                svg.text(port.label || id, [xx + lx, yy + ly])
+            );
+        }
     };
 }
 
@@ -80,36 +83,50 @@ export function portGroup(ports: IObjectOf<Port>, opts: PortOpts) {
     );
 }
 
-export function label(label: string, opts: LabelOpts) {
-    return svg.text(label, opts.offset, opts.attribs);
+export function nodeLabel(node: Node, opts: NodeOpts) {
+    return [svg.text(node.label, opts.label.offset, opts.label.attribs)];
+}
+
+export function nodeValueLabel(path: string | string[]) {
+    const get = getter(path);
+    return (node: Node, opts: NodeOpts) => {
+        const val = get(node);
+        return [
+            svg.text(
+                (val != null ? val : "n/a").toString(),
+                opts.label.offset,
+                opts.label.attribs
+            )
+        ];
+    };
 }
 
 export function nodeEvents(id: string, events: any) {
     return Object.keys(events).reduce((acc, e) => (acc[e] = events[e](id), acc), {});
 }
 
-export function node(n: Node, opts: Partial<NodeOpts>) {
+export function node(node: Node, opts: NodeOpts) {
     return svg.group(
         {
-            id: n.id,
-            transform: `translate(${n.pos[0]} ${n.pos[1]})`,
-            ...nodeEvents(n.id, opts.events),
+            id: node.id,
+            transform: `translate(${node.pos[0]} ${node.pos[1]})`,
+            ...nodeEvents(node.id, opts.events),
             ...opts.attribs,
         },
         svg.rect(
             [0, 0],
             opts.width || Math.max(
-                Object.keys(n.ins).length * opts.ins.step[0] + opts.ins.pos[0],
-                Object.keys(n.outs).length * opts.outs.step[0] + opts.outs.pos[0]
+                Object.keys(node.ins).length * opts.ins.step[0] + opts.ins.pos[0],
+                Object.keys(node.outs).length * opts.outs.step[0] + opts.outs.pos[0]
             ),
             opts.height || Math.max(
-                Object.keys(n.ins).length * opts.ins.step[1] + opts.ins.pos[1],
-                Object.keys(n.outs).length * opts.outs.step[1] + opts.outs.pos[1]
+                Object.keys(node.ins).length * opts.ins.step[1] + opts.ins.pos[1],
+                Object.keys(node.outs).length * opts.outs.step[1] + opts.outs.pos[1]
             ),
             { rx: 4 },
         ),
-        portGroup(n.ins, opts.ins),
-        portGroup(n.outs, opts.outs),
-        label(n.label, opts.label),
+        portGroup(node.ins, opts.ins),
+        portGroup(node.outs, opts.outs),
+        ...(node.component ? node.component : nodeLabel)(node, opts),
     );
 }

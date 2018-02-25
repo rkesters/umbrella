@@ -1,6 +1,7 @@
 import { IID, IObjectOf } from "@thi.ng/api/api";
 
-export type NodeUpdateHandler = (node: Node, ins: any) => any;
+export type NodeUpdateFn = (node: Node, ins: any) => any;
+export type NodeComponentFn = (node: Node, opts: NodeOpts) => any;
 
 export type HalfEdge = [string, string];
 export type Edge = [string, string, string, string];
@@ -12,17 +13,20 @@ export interface Graph {
 }
 
 export interface Node extends IID<string> {
+    type: string;
     label: string;
     pos: number[];
     ins: IObjectOf<Port>;
     outs: IObjectOf<Port>;
     edges: IObjectOf<HalfEdge>;
-    update: NodeUpdateHandler;
+    update: NodeUpdateFn;
+    component?: NodeComponentFn;
 }
 
 export interface NodeConfig extends IID<string> {
     label?: string;
     pos?: number[];
+    component?: NodeComponentFn;
 }
 
 export interface Port {
@@ -30,6 +34,7 @@ export interface Port {
     label?: string;
     order?: number;
     type?: string;
+    hidden?: boolean;
 }
 
 export interface NodeOpts {
