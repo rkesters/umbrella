@@ -2,7 +2,7 @@ import { IObjectOf } from "@thi.ng/api/api";
 import { getter } from "@thi.ng/atom/path";
 import * as svg from "@thi.ng/hiccup-dom-components/svg";
 
-import { EdgeFn, Node, NodeOpts, Port, PortOpts } from "./api";
+import { EdgeFn, Node, NodeOpts, Port, PortOpts, PortSymbolFn } from "./api";
 
 export function portPosition(npos: number[], ports: IObjectOf<Port>, id: string, opts: PortOpts) {
     const idx = ports[id].order !== undefined ? ports[id].order : Object.keys(ports).indexOf(id);
@@ -57,6 +57,19 @@ export function edges(nodes: IObjectOf<Node>, opts: NodeOpts, edgeFn: EdgeFn) {
     return edges;
 }
 
+export function portSymbol(sym: PortSymbolFn) {
+    return (p: Port, id: string, x: number, y: number, lx: number, ly: number, opts: PortOpts) =>
+        svg.group(
+            { fill: opts.types[p.type] },
+            sym(x, y),
+            svg.text(p.label || id, [lx, ly])
+        );
+}
+
+export const portSymbolDot = portSymbol((x, y) => svg.circle([x, y], 3));
+export const portSymbolArrowIn = portSymbol((x, y) => ["path", { d: `M${x - 3},${y}l3,-3,3,0,0,6,-3,0z` }]);
+export const portSymbolArrowOut = portSymbol((x, y) => ["path", { d: `M${x + 3},${y}l-3,-3,-3,0,0,6,3,0z` }]);
+
 export function port(ports: IObjectOf<Port>, opts: PortOpts) {
     const [x, y] = opts.pos;
     const [sx, sy] = opts.step;
@@ -67,11 +80,7 @@ export function port(ports: IObjectOf<Port>, opts: PortOpts) {
             i = port.order !== undefined ? port.order : i;
             const xx = x + i * sx;
             const yy = y + i * sy;
-            return svg.group(
-                { fill: opts.types[port.type] },
-                svg.circle([xx, yy], opts.radius || 3),
-                svg.text(port.label || id, [xx + lx, yy + ly])
-            );
+            return (opts.symbol || portSymbolDot)(port, id, xx, yy, xx + lx, yy + ly, opts);
         }
     };
 }

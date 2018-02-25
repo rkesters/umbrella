@@ -7,6 +7,9 @@ export type HalfEdge = [string, string];
 export type Edge = [string, string, string, string];
 export type EdgeFn = (a: number[], b: number[]) => any;
 
+export type PortSymbolFn = (x: number, y: number) => any;
+export type PortComponentFn = (port: Port, id: string, x: number, y: number, lx: number, ly: number, opts: PortOpts) => any;
+
 export interface Graph {
     nodes: IObjectOf<Node>;
     topology: string[];
@@ -51,8 +54,8 @@ export interface PortOpts {
     pos: number[];
     labelOffset: number[];
     step: number[];
-    radius?: number;
     attribs?: any;
+    symbol?: PortComponentFn;
     types: IObjectOf<string>;
 }
 

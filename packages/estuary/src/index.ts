@@ -5,7 +5,7 @@ import { pairs } from "@thi.ng/transducers/iter/pairs";
 import { map } from "@thi.ng/transducers/xform/map";
 
 import { Graph, NodeOpts } from "./api";
-import { node, edges, bezierEdgeH, nodeValueLabel } from "./components";
+import { node, edges, bezierEdgeH, nodeValueLabel, portSymbolArrowIn, portSymbolArrowOut } from "./components";
 import { setEdges, recompute } from "./compute";
 
 import { add, mul, madd } from "./nodes/math";
@@ -35,6 +35,7 @@ export const nodeStyle: NodeOpts = {
         pos: [0, 30],
         step: [0, 12],
         labelOffset: [10, 3],
+        symbol: portSymbolArrowIn,
         types,
         attribs: {
             "font-size": "10px",
@@ -44,6 +45,7 @@ export const nodeStyle: NodeOpts = {
         pos: [100, 30],
         step: [0, 12],
         labelOffset: [-10, 3],
+        symbol: portSymbolArrowOut,
         types,
         attribs: {
             "font-size": "10px",
@@ -164,7 +166,7 @@ setInterval(
         (i % 8) == 0 && (graph = updateIn(graph, "nodes.in2.outs.value.value", (x) => (x + 1) % 10));
         (i % 12) == 0 && (graph = updateIn(graph, "nodes.in3.outs.value.value", (x) => (x + 1) % 10));
         graph = await recompute(graph);
-    }, 250
+    }, 16
 );
 
 // window["graph"] = graph;
