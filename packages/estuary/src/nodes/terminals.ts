@@ -24,7 +24,7 @@ export function constant(opts: ConstOpts): Node {
         },
         edges: {},
         update: () => { },
-        component: opts.component,
+        body: opts.body,
     }
 }
 
@@ -43,7 +43,7 @@ export function sink(opts: SinkOpts): Node {
         },
         edges: {},
         update: (n, ins) => ({ value: ins.value.value, ...update(n, ins) }),
-        component: opts.component,
+        body: opts.body,
     };
     node.outs.value.hidden = true;
     return node;

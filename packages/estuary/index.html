@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        html {
+            font: 100%/1.2 Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            margin: 0;
+            background: radial-gradient(circle at 50% 0, #fff 0%, #ccc 100%);
+        }
+
+        svg text {
+            cursor: default;
+            user-select: none;
+        }
+
+        svg text::selection {
+            background: none;
+        }
+
+        svg rect {
+            cursor: move;
+        }
+
+        #edges {
+            stroke: #999;
+            fill: none;
+        }
+
+        .node-add,
+        .node-mul,
+        .node-sub,
+        .node-div,
+        .node-madd {
+            fill: #334;
+        }
+
+        .node-const>text,
+        .node-sink>text {
+            fill: #000;
+        }
+
+        .node-const rect,
+        .node-sink rect {
+            fill: rgba(0, 0, 0, 0.01);
+            stroke: #000;
+        }
+
+        .port-number {
+            fill: #6cc;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script type="text/javascript" src="bundle.js"></script>
+</body>
+
+</html>

@@ -23,13 +23,13 @@ export interface Node extends IID<string> {
     outs: IObjectOf<Port>;
     edges: IObjectOf<HalfEdge>;
     update: NodeUpdateFn;
-    component?: NodeComponentFn;
+    body?: NodeComponentFn;
 }
 
 export interface NodeConfig extends IID<string> {
     label?: string;
     pos?: number[];
-    component?: NodeComponentFn;
+    body?: NodeComponentFn;
 }
 
 export interface Port {
@@ -56,10 +56,19 @@ export interface PortOpts {
     step: number[];
     attribs?: any;
     symbol?: PortComponentFn;
-    types: IObjectOf<string>;
 }
 
 export interface LabelOpts {
     offset: number[];
     attribs?: any;
+}
+
+export interface GraphOpts {
+    nodes: NodeOpts;
+    attribs: any;
+    edgeAttribs: any;
+    edgeFn: EdgeFn;
+    defs?: any[];
+    pos: number[];
+    scale: number;
 }

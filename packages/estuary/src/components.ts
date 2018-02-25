@@ -1,8 +1,11 @@
 import { IObjectOf } from "@thi.ng/api/api";
 import { getter } from "@thi.ng/atom/path";
 import * as svg from "@thi.ng/hiccup-dom-components/svg";
+import { iterator } from "@thi.ng/transducers/iterator";
+import { pairs } from "@thi.ng/transducers/iter/pairs";
+import { map } from "@thi.ng/transducers/xform/map";
 
-import { EdgeFn, Node, NodeOpts, Port, PortOpts, PortSymbolFn } from "./api";
+import { EdgeFn, Node, NodeOpts, Port, PortOpts, PortSymbolFn, Graph, GraphOpts } from "./api";
 
 export function portPosition(npos: number[], ports: IObjectOf<Port>, id: string, opts: PortOpts) {
     const idx = ports[id].order !== undefined ? ports[id].order : Object.keys(ports).indexOf(id);
@@ -60,7 +63,7 @@ export function edges(nodes: IObjectOf<Node>, opts: NodeOpts, edgeFn: EdgeFn) {
 export function portSymbol(sym: PortSymbolFn) {
     return (p: Port, id: string, x: number, y: number, lx: number, ly: number, opts: PortOpts) =>
         svg.group(
-            { fill: opts.types[p.type] },
+            { class: `port port-${p.type}` },
             sym(x, y),
             svg.text(p.label || id, [lx, ly])
         );
@@ -118,6 +121,7 @@ export function node(node: Node, opts: NodeOpts) {
     return svg.group(
         {
             id: node.id,
+            class: `node node-${node.type}`,
             transform: `translate(${node.pos[0]} ${node.pos[1]})`,
             ...nodeEvents(node.id, opts.events),
             ...opts.attribs,
@@ -136,6 +140,21 @@ export function node(node: Node, opts: NodeOpts) {
         ),
         portGroup(node.ins, opts.ins),
         portGroup(node.outs, opts.outs),
-        ...(node.component ? node.component : nodeLabel)(node, opts),
+        ...(node.body ? node.body : nodeLabel)(node, opts),
+    );
+}
+
+export function nodeGraph(graph: Graph, opts: GraphOpts) {
+    return svg.svgdoc(
+        opts.attribs,
+        opts.defs,
+        svg.group(
+            { transform: `translate(${opts.pos[0]}, ${opts.pos[1]}) scale(${opts.scale})` },
+            svg.group(
+                opts.edgeAttribs,
+                ...edges(graph.nodes, opts.nodes, opts.edgeFn)
+            ),
+            ...iterator(map((n) => node(n[1], opts.nodes)), pairs(graph.nodes)),
+        )
     );
 }

@@ -33,7 +33,7 @@ export function mathOp(opts: MathOp2Opts, type: string, impl: NodeUpdateFn): Nod
         },
         edges: {},
         update: impl,
-        component: opts.component,
+        body: opts.body,
     };
 }
 
