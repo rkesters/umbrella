@@ -1,11 +1,6 @@
 import { IObjectOf } from "@thi.ng/api/api";
 import { getter } from "@thi.ng/atom/path";
 import * as svg from "@thi.ng/hiccup-dom-components/svg";
-import { iterator } from "@thi.ng/transducers/iterator";
-import { keys } from "@thi.ng/transducers/iter/keys";
-import { vals } from "@thi.ng/transducers/iter/vals";
-import { map } from "@thi.ng/transducers/xform/map";
-import { mapIndexed } from "@thi.ng/transducers/xform/map-indexed";
 
 import { EdgeFn, Node, NodeOpts, Port, PortOpts, PortSymbolFn, Graph, GraphOpts, IPortLayout, LabelOpts } from "./api";
 
@@ -14,8 +9,7 @@ export function defBezierEdgeH(offset = 0, curvature = 0.5) {
         const dx = bx - ax;
         const dy = by - ay;
         const dxo = dx - 2 * offset;
-        return [
-            "path",
+        return ["path",
             {
                 d: offset > 0 ?
                     `M${ax},${ay}l${offset},0c${dxo * curvature},0,${dxo * (1 - curvature)},${dy},${dxo},${dy}l${offset},0` :
@@ -52,11 +46,10 @@ export function* edges(nodes: IObjectOf<Node>, edgeFn: EdgeFn) {
 
 export function defPortSymbol(sym: PortSymbolFn) {
     return (p: Port, id: string, [x, y]: number[], opts: PortOpts) =>
-        svg.group(
-            { class: `port port-${p.type}` },
+        ["g", { class: `port port-${p.type}` },
             sym(x, y),
             svg.text(p.label || id, [x + opts.label.offset[0], y + opts.label.offset[1]])
-        );
+        ];
 }
 
 export const portSymbolDot = defPortSymbol((x, y) => svg.circle([x, y], 3));
@@ -64,20 +57,14 @@ export const portSymbolArrowIn = defPortSymbol((x, y) => ["path", { d: `M${x - 3
 export const portSymbolArrowOut = defPortSymbol((x, y) => ["path", { d: `M${x + 3},${y}l-3,-3,-3,0,0,6,3,0z` }]);
 
 export function portGroup(layout: IPortLayout, ports: IObjectOf<Port>, opts: PortOpts) {
-    return svg.group(
-        opts.attribs || {},
-        ...iterator(
-            mapIndexed<string, any>(
-                (i, id) => {
-                    const port = ports[id];
-                    if (!port.hidden) {
-                        return (opts.component || portSymbolDot)(port, id, layout.portPosition([0, 0], ports, id), opts);
-                    }
-                }
-            ),
-            keys(ports)
-        )
-    );
+    const group = ["g", opts.attribs || {}];
+    for (let id in ports) {
+        const port = ports[id];
+        if (!port.hidden) {
+            group.push((opts.component || portSymbolDot)(port, id, layout.portPosition([0, 0], ports, id), opts));
+        }
+    }
+    return group;
 }
 
 export function nodeLabel(opts: LabelOpts) {
@@ -97,7 +84,11 @@ export function nodeValueLabel(path: string | string[], opts: LabelOpts, missing
 }
 
 export function nodeEvents(id: string, events: any) {
-    return Object.keys(events).reduce((acc, e) => (acc[e] = events[e](id), acc), {});
+    const acc = {};
+    for (let e in events) {
+        acc[e] = events[e](id);
+    }
+    return acc;
 }
 
 export function node(opts: NodeOpts, shapeFn: (node: Node, opts: NodeOpts) => any) {
@@ -105,7 +96,7 @@ export function node(opts: NodeOpts, shapeFn: (node: Node, opts: NodeOpts) => an
         layoutIn: opts.ins.layout,
         layoutOut: opts.outs.layout,
         render: (node: Node) =>
-            svg.group(
+            ["g",
                 {
                     id: node.id,
                     class: `node node-${node.type}`,
@@ -117,7 +108,7 @@ export function node(opts: NodeOpts, shapeFn: (node: Node, opts: NodeOpts) => an
                 portGroup(opts.ins.layout, node.ins, opts.ins),
                 portGroup(opts.outs.layout, node.outs, opts.outs),
                 opts.label(node, opts),
-            )
+            ]
     };
 }
 
@@ -125,27 +116,27 @@ export function boxNode(opts: NodeOpts, rx = 0) {
     return node(
         opts,
         (node, opts) =>
-            svg.rect(
-                [0, 0],
-                opts.width,
-                Math.max(opts.ins.layout.height(node.ins), opts.outs.layout.height(node.outs)),
-                { rx }
-            )
+            ["rect",
+                {
+                    width: opts.width,
+                    height: Math.max(opts.ins.layout.height(node.ins), opts.outs.layout.height(node.outs)),
+                    rx
+                }
+            ]
     );
 }
 
 export function roundNode(opts: NodeOpts) {
-    return node(opts, (node, opts) => svg.circle([0, 0], opts.width / 2));
+    return node(opts, (node, opts) => ["circle", { r: opts.width / 2 }]);
 }
 
 export function nodeGraph(graph: Graph, opts: GraphOpts) {
-    return svg.svgdoc(
-        opts.attribs,
-        opts.defs,
-        svg.group(
-            { transform: `translate(${opts.pos[0]}, ${opts.pos[1]}) scale(${opts.scale})` },
-            svg.group(opts.edgeAttribs, ...edges(graph.nodes, opts.edgeFn)),
-            ...iterator(map((n: Node) => n.ui.component.render(n)), vals(graph.nodes)),
-        )
-    );
+    const body = ["g", { transform: `translate(${opts.pos[0]}, ${opts.pos[1]}) scale(${opts.scale})` },
+        ["g", opts.edgeAttribs, ...edges(graph.nodes, opts.edgeFn)],
+    ];
+    for (let id in graph.nodes) {
+        const n = graph.nodes[id];
+        body.push(n.ui.component.render(n));
+    }
+    return svg.svgdoc(opts.attribs, opts.defs, body);
 }
