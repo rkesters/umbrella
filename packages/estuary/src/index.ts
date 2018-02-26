@@ -9,7 +9,7 @@ import { add, mul, madd } from "./nodes/math";
 import { LinearPortLayout, RadialPortLayout } from "./port-layout";
 import { constant, sink } from "./nodes/terminals";
 
-let click, clickPos;
+let click, clickPos, clickID;
 let graphClick, graphOffset = [0, 0];
 let zoom = 1;
 
@@ -51,18 +51,10 @@ export const nodeOpts: NodeOpts = {
     },
     events: {
         onmousedown: (id) => (e: MouseEvent) => {
-            if (!click && !graphClick) {
-                e.stopImmediatePropagation();
+            if (!clickID) {
+                clickID = id;
                 click = [e.clientX, e.clientY];
                 clickPos = graph.nodes[id].ui.pos.slice();
-            }
-        },
-        onmousemove: (id) => (e: MouseEvent) => {
-            if (click) {
-                e.stopImmediatePropagation();
-                const pos = graph.nodes[id].ui.pos;
-                pos[0] = clickPos[0] + (e.clientX - click[0]) / zoom;
-                pos[1] = clickPos[1] + (e.clientY - click[1]) / zoom;
             }
         }
     }
@@ -134,16 +126,22 @@ start("app", () =>
                     zoom = Math.max(Math.min(zoom + e.deltaY * 0.01, 2), 0.25);
                 },
                 onmousedown: (e: MouseEvent) => {
-                    graphClick = [e.clientX, e.clientY];
-                    clickPos = graphOffset.slice();
+                    if (!clickID) {
+                        graphClick = [e.clientX, e.clientY];
+                        clickPos = graphOffset.slice();
+                    }
                 },
                 onmousemove: (e: MouseEvent) => {
-                    if (graphClick) {
+                    if (clickID) {
+                        const pos = graph.nodes[clickID].ui.pos;
+                        pos[0] = clickPos[0] + (e.clientX - click[0]) / zoom;
+                        pos[1] = clickPos[1] + (e.clientY - click[1]) / zoom;
+                    } else if (graphClick) {
                         graphOffset[0] = clickPos[0] + (e.clientX - graphClick[0]);
                         graphOffset[1] = clickPos[1] + (e.clientY - graphClick[1]);
                     }
                 },
-                onmouseup: () => (click = graphClick = null)
+                onmouseup: () => (clickID = click = graphClick = null)
             },
             edgeAttribs: {
                 id: "edges",
