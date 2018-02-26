@@ -1,6 +1,6 @@
 import { IObjectOf } from "@thi.ng/api/api";
 import { getter } from "@thi.ng/atom/path";
-import * as svg from "@thi.ng/hiccup-dom-components/svg";
+import { polyline, svgdoc, text } from "@thi.ng/hiccup-dom-components/svg";
 
 import { EdgeFn, Node, NodeOpts, Port, PortOpts, PortSymbolFn, Graph, GraphOpts, IPortLayout, LabelOpts } from "./api";
 
@@ -21,8 +21,8 @@ export function defBezierEdgeH(offset = 0, curvature = 0.5) {
 
 export function defLinearEdgeH(offset = 0) {
     return offset > 0 ?
-        ([ax, ay], [bx, by]) => svg.polyline([[ax, ay], [ax + offset, ay], [bx - offset, by], [bx, by]]) :
-        (a, b) => svg.polyline([a, b]);
+        ([ax, ay], [bx, by]) => polyline([[ax, ay], [ax + offset, ay], [bx - offset, by], [bx, by]]) :
+        (a, b) => polyline([a, b]);
 }
 
 export function* edges(nodes: IObjectOf<Node>, edgeFn: EdgeFn) {
@@ -48,11 +48,11 @@ export function defPortSymbol(sym: PortSymbolFn) {
     return (p: Port, id: string, [x, y]: number[], opts: PortOpts) =>
         ["g", { class: `port port-${p.type}` },
             sym(x, y),
-            svg.text(p.label || id, [x + opts.label.offset[0], y + opts.label.offset[1]])
+            text(p.label || id, [x + opts.label.offset[0], y + opts.label.offset[1]])
         ];
 }
 
-export const portSymbolDot = defPortSymbol((x, y) => svg.circle([x, y], 3));
+export const portSymbolDot = defPortSymbol((cx, cy) => ["circle", { cx, cy, r: 3 }]);
 export const portSymbolArrowIn = defPortSymbol((x, y) => ["path", { d: `M${x - 3},${y}l3,-3,3,0,0,6,-3,0z` }]);
 export const portSymbolArrowOut = defPortSymbol((x, y) => ["path", { d: `M${x + 3},${y}l-3,-3,-3,0,0,6,3,0z` }]);
 
@@ -68,18 +68,14 @@ export function portGroup(layout: IPortLayout, ports: IObjectOf<Port>, opts: Por
 }
 
 export function nodeLabel(opts: LabelOpts) {
-    return (node: Node) => svg.text(node.ui.label, opts.offset, opts.attribs);
+    return (node: Node) => text(node.ui.label, opts.offset, opts.attribs);
 }
 
 export function nodeValueLabel(path: string | string[], opts: LabelOpts, missing = "n/a") {
     const get = getter(path);
     return (node: Node) => {
         const val = get(node);
-        return svg.text(
-            (val != null ? val : missing).toString(),
-            opts.offset,
-            opts.attribs
-        );
+        return text((val != null ? val : missing).toString(), opts.offset, opts.attribs);
     };
 }
 
@@ -138,5 +134,5 @@ export function nodeGraph(graph: Graph, opts: GraphOpts) {
         const n = graph.nodes[id];
         body.push(n.ui.component.render(n));
     }
-    return svg.svgdoc(opts.attribs, opts.defs, body);
+    return svgdoc(opts.attribs, opts.defs, body);
 }
