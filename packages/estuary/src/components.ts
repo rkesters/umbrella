@@ -123,7 +123,7 @@ export function boxNode(opts: NodeOpts, rx = 0) {
 }
 
 export function roundNode(opts: NodeOpts) {
-    return node(opts, (node, opts) => ["circle", { r: opts.width / 2 }]);
+    return node(opts, (_, opts) => ["circle", { r: opts.width / 2 }]);
 }
 
 export function nodeGraph(graph: Graph, opts: GraphOpts) {
