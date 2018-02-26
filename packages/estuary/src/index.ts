@@ -2,48 +2,51 @@ import { start } from "@thi.ng/hiccup-dom";
 import { defs } from "@thi.ng/hiccup-dom-components/svg";
 
 import { Graph, NodeOpts } from "./api";
-import { nodeGraph, bezierEdgeH, nodeValueLabel, portSymbolArrowIn, portSymbolArrowOut } from "./components";
-import { setEdges, recompute } from "./compute";
+import { nodeGraph, defBezierEdgeH, nodeValueLabel, portSymbolArrowIn, portSymbolArrowOut, roundNode, boxNode, nodeLabel } from "./components";
+import { setEdges, recompute, updateOutPort } from "./compute";
 
 import { add, mul, madd } from "./nodes/math";
+import { LinearPortLayout, RadialPortLayout } from "./port-layout";
 import { constant, sink } from "./nodes/terminals";
-import { updateIn } from "@thi.ng/atom/path";
 
 let click, clickPos;
 let graphClick, graphOffset = [0, 0];
 let zoom = 1;
 
-export const nodeStyle: NodeOpts = {
+export const labelOpts = {
+    offset: [10, 18],
+    attribs: {
+        fill: "#fff",
+        "font-size": "14px",
+        "font-weight": 700,
+    }
+};
+
+export const nodeOpts: NodeOpts = {
     width: 100,
-    label: {
-        offset: [10, 18],
-        attribs: {
-            fill: "#fff",
-            "font-size": "14px",
-            "font-weight": 700,
-        }
-    },
+    label: nodeLabel(labelOpts),
     ins: {
-        pos: [0, 30],
-        step: [0, 12],
-        labelOffset: [10, 3],
-        symbol: portSymbolArrowIn,
+        layout: new LinearPortLayout([0, 30], [0, 12]),
+        label: {
+            offset: [10, 3]
+        },
+        component: portSymbolArrowIn,
         attribs: {
             "font-size": "10px",
         },
     },
     outs: {
-        pos: [100, 30],
-        step: [0, 12],
-        labelOffset: [-10, 3],
-        symbol: portSymbolArrowOut,
+        layout: new LinearPortLayout([100, 30], [0, 12]),
+        label: {
+            offset: [-10, 3]
+        },
+        component: portSymbolArrowOut,
         attribs: {
             "font-size": "10px",
             "text-anchor": "end",
         },
     },
     attribs: {
-        // "fill": "url(#bg)",
         "font-family": "Arial",
     },
     events: {
@@ -51,38 +54,47 @@ export const nodeStyle: NodeOpts = {
             if (!click && !graphClick) {
                 e.stopImmediatePropagation();
                 click = [e.clientX, e.clientY];
-                clickPos = graph.nodes[id].pos.slice();
+                clickPos = graph.nodes[id].ui.pos.slice();
             }
         },
         onmousemove: (id) => (e: MouseEvent) => {
             if (click) {
                 e.stopImmediatePropagation();
-                graph.nodes[id].pos[0] = clickPos[0] + (e.clientX - click[0]) / zoom;
-                graph.nodes[id].pos[1] = clickPos[1] + (e.clientY - click[1]) / zoom;
+                const pos = graph.nodes[id].ui.pos;
+                pos[0] = clickPos[0] + (e.clientX - click[0]) / zoom;
+                pos[1] = clickPos[1] + (e.clientY - click[1]) / zoom;
             }
         }
     }
 };
 
-const valueLabel = nodeValueLabel("outs.value.value");
+const box = boxNode(nodeOpts, 4);
+const vbox = boxNode({ ...nodeOpts, label: nodeValueLabel("outs.value.value", labelOpts) }, 4);
+const circle = roundNode({
+    ...nodeOpts,
+    width: 90,
+    label: nodeLabel({ ...labelOpts, offset: [0, -14], attribs: { ...labelOpts.attribs, "text-anchor": "middle" } }),
+    ins: { ...nodeOpts.ins, layout: new RadialPortLayout(45, 180, -20) },
+    outs: { ...nodeOpts.outs, layout: new RadialPortLayout(45, 0, 20) }
+});
 
 let graph: Graph = setEdges(
     {
         nodes: {
-            a1: add({ id: "a1", pos: [-210, -90], ins: { a: 1, b: 2 } }),
-            a2: add({ id: "a2", pos: [-210, -25], ins: { a: 1, b: 2 } }),
-            b: mul({ id: "b", pos: [-40, 20] }),
-            c: madd({ id: "c", pos: [120, -25] }),
-            in0: constant({ id: "in0", pos: [-365, -110], type: "number", value: 1, body: valueLabel }),
-            in1: constant({ id: "in1", pos: [-365, -60], type: "number", value: 2, body: valueLabel }),
-            in2: constant({ id: "in2", pos: [-365, 20], type: "number", value: 1, body: valueLabel }),
-            in3: constant({ id: "in3", pos: [-365, 70], type: "number", value: 2, body: valueLabel }),
-            in4: constant({ id: "in4", pos: [-40, 85], type: "number", value: 10, body: valueLabel }),
-            out: sink({ id: "out", pos: [275, -25], type: "number", body: valueLabel }),
-            out2: sink({ id: "out2", pos: [275, 25], type: "number", body: valueLabel }),
-            out3: sink({ id: "out3", pos: [275, -160], type: "number", body: valueLabel }),
-            out4: sink({ id: "out4", pos: [275, -110], type: "number", body: valueLabel }),
-            out5: sink({ id: "out5", pos: [275, 75], type: "number", body: valueLabel }),
+            a1: add({ id: "a1", ins: { a: 1, b: 2 }, ui: { pos: [-210, -90], component: box } }),
+            a2: add({ id: "a2", ins: { a: 1, b: 2 }, ui: { pos: [-210, -25], component: box } }),
+            b: mul({ id: "b", ui: { pos: [-40, 20], component: box } }),
+            c: madd({ id: "c", ui: { pos: [165, 5], component: circle } }),
+            in0: constant({ id: "in0", type: "number", value: 1, ui: { pos: [-365, -110], component: vbox } }),
+            in1: constant({ id: "in1", type: "number", value: 2, ui: { pos: [-365, -60], component: vbox } }),
+            in2: constant({ id: "in2", type: "number", value: 1, ui: { pos: [-365, 20], component: vbox } }),
+            in3: constant({ id: "in3", type: "number", value: 2, ui: { pos: [-365, 70], component: vbox } }),
+            in4: constant({ id: "in4", type: "number", value: 1000, ui: { pos: [-40, 85], component: vbox } }),
+            out: sink({ id: "out", type: "number", ui: { pos: [275, -25], component: vbox } }),
+            out2: sink({ id: "out2", type: "number", ui: { pos: [275, 25], component: vbox } }),
+            out3: sink({ id: "out3", type: "number", ui: { pos: [-40, -160], component: vbox } }),
+            out4: sink({ id: "out4", type: "number", ui: { pos: [-40, -110], component: vbox } }),
+            out5: sink({ id: "out5", type: "number", ui: { pos: [275, 75], component: vbox } }),
         },
         topology: ["in0", "in1", "in2", "in3", "in4", "a1", "out3", "a2", "out4", "b", "c", "out", "out2", "out5"],
     },
@@ -137,9 +149,8 @@ start("app", () =>
                 id: "edges",
                 "marker-end": "url(#arrow)"
             },
-            edgeFn: bezierEdgeH(10, 0.25),
+            edgeFn: defBezierEdgeH(10, 0.25),
             defs: docdefs,
-            nodes: nodeStyle,
             pos: [
                 window.innerWidth / 2 + graphOffset[0],
                 window.innerHeight / 2 + graphOffset[1]
@@ -149,17 +160,28 @@ start("app", () =>
     )
 );
 
+const inc = (x) => (x + 1) % 10;
+
 let i = 0;
 setInterval(
     async () => {
         i++;
-        graph = updateIn(graph, "nodes.in0.outs.value.value", (x) => (x + 1) % 10);
-        (i % 4) == 0 && (graph = updateIn(graph, "nodes.in1.outs.value.value", (x) => (x + 1) % 10));
-        (i % 8) == 0 && (graph = updateIn(graph, "nodes.in2.outs.value.value", (x) => (x + 1) % 10));
-        (i % 12) == 0 && (graph = updateIn(graph, "nodes.in3.outs.value.value", (x) => (x + 1) % 10));
+        graph = updateOutPort<number>(graph, "in0", "value", inc);
+        (i % 4) == 0 && (graph = updateOutPort<number>(graph, "in1", "value", inc));
+        (i % 8) == 0 && (graph = updateOutPort<number>(graph, "in2", "value", inc));
+        (i % 12) == 0 && (graph = updateOutPort<number>(graph, "in3", "value", inc));
         graph = await recompute(graph);
     }, 250
 );
 
 // window["graph"] = graph;
-window["recompute"] = async () => (graph = await recompute(graph));
+// window["recompute"] = async () => (graph = await recompute(graph));
+
+/*
+export * from "./api";
+export * from "./components";
+export * from "./compute";
+export * from "./port-layout";
+export * from "./nodes/math";
+export * from "./nodes/terminals";
+*/

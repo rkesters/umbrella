@@ -3,7 +3,8 @@
 
 <head>
     <style>
-        html {
+        html,
+        body {
             font: 100%/1.2 Helvetica, Arial, sans-serif;
         }
 
@@ -13,6 +14,26 @@
             overflow: hidden;
             margin: 0;
             background: radial-gradient(circle at 50% 0, #fff 0%, #ccc 100%);
+        }
+
+        footer {
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+            z-index: 1000;
+        }
+
+        a:link,
+        a:visited {
+            color: #000;
+            font-weight: 700;
+        }
+
+        svg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
         }
 
         svg text {
@@ -59,6 +80,20 @@
 </head>
 
 <body>
+    <footer>
+        <div>
+            <h3>Controls</h3>
+            <ul>
+                <li>Click & drag on node to move node</li>
+                <li>Click & drag in empty space to move graph</li>
+                <li>Mousewheel to zoom</li>
+            </ul>
+        </div>
+        <div>Made with
+            <a href="https://github.com/thi-ng/umbrella/tree/feature/estuary/packages/estuary">@thi.ng/estuary</a> &amp;
+            <a href="https://github.com/thi-ng/umbrella/tree/master/packages/hiccup-dom">@thi.ng/hiccup-dom</a>
+        </div>
+    </footer>
     <div id="app"></div>
     <script type="text/javascript" src="bundle.js"></script>
 </body>

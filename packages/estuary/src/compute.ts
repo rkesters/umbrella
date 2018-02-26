@@ -1,5 +1,6 @@
 import { IObjectOf } from "@thi.ng/api/api";
-import { deleteIn, getIn, setIn } from "@thi.ng/atom/path";
+import { SwapFn } from "@thi.ng/atom/api";
+import { deleteIn, getIn, setIn, updateIn } from "@thi.ng/atom/path";
 import { Graph, Node, Edge } from "./api";
 
 export function setEdge(graph: Graph, inID: string, inPort: string, outID: string, outPort: string) {
@@ -8,6 +9,14 @@ export function setEdge(graph: Graph, inID: string, inPort: string, outID: strin
 
 export function removeEdge(graph: Graph, inID: string, inPort: string) {
     return deleteIn(graph, ["nodes", inID, "edges", inPort]);
+}
+
+export function updateInPort<T>(graph: Graph, node: string, port: string, fn: SwapFn<T>, ...args: any[]) {
+    return updateIn(graph, ["nodes", node, "ins", port, "value"], fn, ...args);
+}
+
+export function updateOutPort<T>(graph: Graph, node: string, port: string, fn: SwapFn<T>, ...args: any[]) {
+    return updateIn(graph, ["nodes", node, "outs", port, "value"], fn, ...args);
 }
 
 export function setEdges(graph: Graph, edges: Edge[]) {
@@ -24,6 +33,13 @@ export function removeInputEdges(graph: Graph, edges: [string, string][]) {
     return graph;
 }
 
+/**
+ * Builds a map of input ports for given node and resolves any
+ * ports connected to another node's output.
+ *
+ * @param nodes all nodes in graph
+ * @param node current node to resolve inputs for
+ */
 function resolveInputs(nodes: IObjectOf<Node>, node: Node) {
     const res = { ...node.ins };
     for (let id in node.edges) {
@@ -33,10 +49,18 @@ function resolveInputs(nodes: IObjectOf<Node>, node: Node) {
     return res;
 }
 
+/**
+ * Async function. Recomputes all nodes in graph with given
+ * topological order and returns updated graph (original is
+ * not modified).
+ *
+ * @param graph
+ */
 export async function recompute(graph: Graph) {
     let nodes = { ...graph.nodes };
     for (let id of graph.topology) {
         const node = nodes[id];
+        if (node.disabled) continue;
         const ins = resolveInputs(nodes, node);
         const outs = await node.update(node, ins);
         if (outs) {
