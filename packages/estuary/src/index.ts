@@ -51,7 +51,7 @@ export const nodeOpts: NodeOpts = {
     },
     events: {
         onmousedown: (id) => (e: MouseEvent) => {
-            if (!clickID) {
+            if (!clickID && e.button === 0) {
                 clickID = id;
                 click = [e.clientX, e.clientY];
                 clickPos = graph.nodes[id].ui.pos.slice();
@@ -126,7 +126,7 @@ start("app", () =>
                     zoom = Math.max(Math.min(zoom + e.deltaY * 0.01, 2), 0.25);
                 },
                 onmousedown: (e: MouseEvent) => {
-                    if (!clickID) {
+                    if (!clickID && e.button === 0) {
                         graphClick = [e.clientX, e.clientY];
                         clickPos = graphOffset.slice();
                     }
