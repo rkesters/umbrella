@@ -87,6 +87,7 @@ export * from "./xform/utf8";
 
 export * from "./func/binary-search";
 export * from "./func/comp";
+export * from "./func/compr";
 export * from "./func/constantly";
 export * from "./func/deep-transform";
 export * from "./func/delay";
@@ -108,6 +109,7 @@ export * from "./iter/cycle";
 export * from "./iter/iterate";
 export * from "./iter/keys";
 export * from "./iter/pairs";
+export * from "./iter/permutations";
 export * from "./iter/range";
 export * from "./iter/range2d";
 export * from "./iter/range3d";

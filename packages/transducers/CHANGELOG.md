@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.6.1"></a>
+## [1.6.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.6.0...@thi.ng/transducers@1.6.1) (2018-03-03)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/transducers
+
+<a name="1.6.0"></a>
+# [1.6.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.5.1...@thi.ng/transducers@1.6.0) (2018-03-03)
+
+
+### Features
+
+* **transducers:** add permutations()/permutationsN() generators ([91938ed](https://github.com/thi-ng/umbrella/commit/91938ed))
+
+
+
+
+<a name="1.5.1"></a>
+## [1.5.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.5.0...@thi.ng/transducers@1.5.1) (2018-03-02)
+
+
+### Bug Fixes
+
+* **transducers:** flattenWith() ([3d8aa32](https://github.com/thi-ng/umbrella/commit/3d8aa32))
+
+
+
+
 <a name="1.5.0"></a>
 # [1.5.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.4.0...@thi.ng/transducers@1.5.0) (2018-02-26)
 

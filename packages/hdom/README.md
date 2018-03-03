@@ -1,6 +1,8 @@
-# @thi.ng/hiccup-dom
+# @thi.ng/hdom
 
-[![npm (scoped)](https://img.shields.io/npm/v/@thi.ng/hiccup-dom.svg)](https://www.npmjs.com/package/@thi.ng/hiccup-dom)
+[![npm (scoped)](https://img.shields.io/npm/v/@thi.ng/hdom.svg)](https://www.npmjs.com/package/@thi.ng/hdom)
+
+**As of 2018-03-03 this package is now called @thi.ng/hdom, formerly @thi.ng/hiccup-dom**
 
 ## About
 
@@ -15,7 +17,7 @@ Benefits:
 - No pre-processing / pre-compilation steps
 - No string parsing / interpolation steps
 - Less verbose than HTML, resulting in smaller file sizes
-- Static components can be distributed as JSON (or [dynamically compose components, based on JSON data](../../examples/json-components))
+- Static components can be distributed as JSON (or [dynamically compose components, based on JSON data](https://github.com/thi-ng/umbrella/tree/master/examples/json-components))
 - Supports SVG, arbitrary elements, attributes, events
 - CSS conversion from JS objects
 - Suitable for server side rendering (by passing the same data structure to @thi.ng/hiccup's `serialize()`)
@@ -23,35 +25,37 @@ Benefits:
 - Only ~10KB minified
 
 ```typescript
-import { serialize } from "@thi.ng/hiccup";
-import { start } from "@thi.ng/hiccup-dom";
+import * as hiccup from "@thi.ng/hiccup";
+import * as hdom from "@thi.ng/hdom";
 
 // stateless component w/ params
 const greeter = (name) => ["h1.title", "hello ", name];
 
 // component w/ local state
-const counter = () => {
-    let i = 0;
+const counter = (i = 0) => {
     return () => ["button", { onclick: () => (i++) }, `clicks: ${i}`];
 };
 
 const app = () => {
-    // instantiation
-    const counters = [counter(), counter()];
     // root component is just a static array
-    return ["div#app", [greeter, "world"], ...counters];
+    // instantiate counters w/ different start offsets
+    return ["div#app", [greeter, "world"], counter(), counter(100)];
 };
 
-// browser only (see diagram below)
-start(document.body, app());
+// start update loop (browser only, see diagram below)
+hdom.start(document.body, app());
 
-// browser or server side serialization
-// (note: does not emit event attributes w/ functions as values)
-serialize(app);
-// <div id="app"><h1 class="title">hello world</h1><button>clicks: 0</button><button>clicks: 0</button></div>
+// alternatively apply DOM tree only once
+// (stateful components won't update though)
+hdom.createDOM(document.body, hdom.normalizeTree(app()));
+
+// alternatively browser or server side HTML serialization
+// (note: does not emit attributes w/ functions as values, i.e. the button "onclick" attribs)
+console.log(hiccup.serialize(app()));
+// <div id="app"><h1 class="title">hello world</h1><button>clicks: 0</button><button>clicks: 100</button></div>
 ```
 
-[Live demo](http://demo.thi.ng/umbrella/hiccup-dom/basics/) | [standalone example](../../examples/hdom-basics)
+[Live demo](http://demo.thi.ng/umbrella/hdom-basics/) | [standalone example](https://github.com/thi-ng/umbrella/tree/master/examples/hdom-basics)
 
 No template engine & no precompilation steps needed, just use the full
 expressiveness of ES6/TypeScript to define your DOM tree. The additional
@@ -78,10 +82,14 @@ If you're interested in using this, please also consider the
 packages to integrate app state handling, event streams & reactive value
 subscriptions. More examples are forthcoming...
 
+## Status
+
+This project is currently still in BETA. The overall "API" is stable, but there's still further work planned on optimization and generalization beyond the standard browser DOM use cases. Furthermore, the project has been used for several projects in production since 2016.
+
 ## Installation
 
 ```
-yarn add @thi.ng/hiccup-dom
+yarn add @thi.ng/hdom
 ```
 
 ## Usage examples
@@ -96,11 +104,17 @@ cycle hooks), which aren't needed for the static serialization use cases of
 hiccup. Both experiments started in early 2016, but have somewhat evolved
 independently and require some conceptional synchronization.
 
+### Dataflow graph SVG components
+
+This is a preview of the upcoming [@thi.ng/estuary](https://github.com/thi-ng/umbrella/tree/feature/estuary/packages/estuary) package:
+
+[Source](https://github.com/thi-ng/umbrella/tree/feature/estuary/packages/estuary) | [Live demo](http://demo.thi.ng/umbrella/estuary/)
+
 ### Todo list
 
 A fully documented todo list app with undo / redo feature is here:
 
-[Source](https://github.com/thi-ng/umbrella/tree/master/examples/todo-list) | [Live demo](http://demo.thi.ng/umbrella/hiccup-dom/todo-list/)
+[Source](https://github.com/thi-ng/umbrella/tree/master/examples/todo-list) | [Live demo](http://demo.thi.ng/umbrella/todo-list/)
 
 ### Cellular automata
 
@@ -108,20 +122,20 @@ A fully documented todo list app with undo / redo feature is here:
 
 ### SVG particles
 
-[Source](https://github.com/thi-ng/umbrella/tree/master/examples/svg-particles) | [Live demo](http://demo.thi.ng/umbrella/hiccup-dom/svg-particles/)
+[Source](https://github.com/thi-ng/umbrella/tree/master/examples/svg-particles) | [Live demo](http://demo.thi.ng/umbrella/svg-particles/)
 
 ### JSON based components
 
-[Source](https://github.com/thi-ng/umbrella/tree/master/examples/json-components) | [Live demo](http://demo.thi.ng/umbrella/hiccup-dom/json-components/)
+[Source](https://github.com/thi-ng/umbrella/tree/master/examples/json-components) | [Live demo](http://demo.thi.ng/umbrella/json-components/)
 
 ### Basic usage patterns
 
 The code below is also available as standalone project in: [/examples/dashboard](https://github.com/thi-ng/umbrella/tree/master/examples/dashboard)
 
-[Live demo here](http://demo.thi.ng/umbrella/hiccup-dom/dashboard/)
+[Live demo here](http://demo.thi.ng/umbrella/dashboard/)
 
 ```typescript
-import { start } from "@thi.ng/hiccup-dom";
+import { start } from "@thi.ng/hdom";
 
 // static component function to create styled box
 const box = (prefix, body) =>
@@ -154,7 +168,7 @@ const app = (() => {
 })();
 
 // start update loop (RAF)
-window.addEventListener("load", () => start(document.getElementById("app"), app));
+window.addEventListener("load", () => start("app", app));
 ```
 
 ### @thi.ng/rstream integration
@@ -165,7 +179,7 @@ TODO example forthcoming...
 
 A stress test benchmark is here: [/examples/benchmark](https://github.com/thi-ng/umbrella/tree/master/examples/hdom-benchmark)
 
-[Live demo here](http://demo.thi.ng/umbrella/hiccup-dom/benchmark/)
+[Live demo here](http://demo.thi.ng/umbrella/hdom-benchmark/)
 
 Based on [user feedback collected via
 Twitter](https://twitter.com/toxi/status/959246871339454464), performance

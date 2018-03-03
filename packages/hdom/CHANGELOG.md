@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.0.0"></a>
+# 2.0.0 (2018-03-03)
+
+
+### Documentation
+
+* **hdom:** update readme ([79e1b09](https://github.com/thi-ng/umbrella/commit/79e1b09))
+
+
+### BREAKING CHANGES
+
+* **hdom:** rename package hiccup-dom => hdom
+
+
+
+
+<a name="1.2.1"></a>
+## [1.2.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup-dom@1.2.0...@thi.ng/hiccup-dom@1.2.1) (2018-03-03)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup-dom
+
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup-dom@1.1.0...@thi.ng/hiccup-dom@1.2.0) (2018-02-28)
+
+
+### Features
+
+* **hiccup-dom:** add support for function attribs, add docs ([ca17389](https://github.com/thi-ng/umbrella/commit/ca17389))
+
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup-dom@1.0.7...@thi.ng/hiccup-dom@1.1.0) (2018-02-27)
 

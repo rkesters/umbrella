@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.0.8"></a>
+## [1.0.8](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.0.7...@thi.ng/rstream@1.0.8) (2018-03-03)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.0.7"></a>
+## [1.0.7](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.0.6...@thi.ng/rstream@1.0.7) (2018-03-03)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.0.6"></a>
+## [1.0.6](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.0.5...@thi.ng/rstream@1.0.6) (2018-03-02)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.0.5"></a>
+## [1.0.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.0.4...@thi.ng/rstream@1.0.5) (2018-03-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.0.4"></a>
+## [1.0.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.0.3...@thi.ng/rstream@1.0.4) (2018-03-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
 <a name="1.0.3"></a>
 ## [1.0.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.0.2...@thi.ng/rstream@1.0.3) (2018-02-26)
 
