@@ -27,8 +27,8 @@ export const canvasWebGL = (
     _canvas("webgl", init, update, attribs, glopts);
 
 export const canvas2D = (
-    init: (gl: CanvasRenderingContext2D) => void,
-    update: (gl: CanvasRenderingContext2D, frame: number) => void,
+    init: (ctx: CanvasRenderingContext2D) => void,
+    update: (ctx: CanvasRenderingContext2D, frame: number) => void,
     attribs: CanvasOpts,
     ctxopts?: Canvas2DContextAttributes) =>
     _canvas("2d", init, update, attribs, ctxopts);
