@@ -3,6 +3,119 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.0.0...@thi.ng/atom@1.0.1) (2018-03-17)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/atom
+
+<a name="0.13.0"></a>
+# [0.13.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@0.12.1...@thi.ng/atom@0.13.0) (2018-03-16)
+
+
+### Features
+
+* **atom:** add forwardSideFx() interceptor ([357c46e](https://github.com/thi-ng/umbrella/commit/357c46e))
+* **atom:** add FX_FETCH & FX_DELAY sidefx impl, update docs ([e52e7e5](https://github.com/thi-ng/umbrella/commit/e52e7e5))
+
+
+
+
+<a name="0.12.1"></a>
+## [0.12.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@0.12.0...@thi.ng/atom@0.12.1) (2018-03-11)
+
+
+### Bug Fixes
+
+* **atom:** ignore side fx with null values ([0ca0bf3](https://github.com/thi-ng/umbrella/commit/0ca0bf3))
+
+
+
+
+<a name="0.12.0"></a>
+# [0.12.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@0.11.0...@thi.ng/atom@0.12.0) (2018-03-09)
+
+
+### Bug Fixes
+
+* **atom:** add interceptors to re-exports ([59085e0](https://github.com/thi-ng/umbrella/commit/59085e0))
+
+
+### Features
+
+* **atom:** add IRelease impls ([9b3d91e](https://github.com/thi-ng/umbrella/commit/9b3d91e))
+* **atom:** add/extract StatelessEventBus ([3fae249](https://github.com/thi-ng/umbrella/commit/3fae249))
+* **atom:** update EventBus ctor, add deref() ([667691c](https://github.com/thi-ng/umbrella/commit/667691c))
+
+
+
+
+<a name="0.11.0"></a>
+# [0.11.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@0.10.0...@thi.ng/atom@0.11.0) (2018-03-09)
+
+
+### Features
+
+* **atom:** add default handlers, add/rename event/fx const values, add checks ([1fd43d7](https://github.com/thi-ng/umbrella/commit/1fd43d7))
+* **atom:** add valueSetter/Updater() interceptors ([359c4f5](https://github.com/thi-ng/umbrella/commit/359c4f5))
+
+
+
+
+<a name="0.10.0"></a>
+# [0.10.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@0.9.2...@thi.ng/atom@0.10.0) (2018-03-08)
+
+
+### Features
+
+* **atom:** add async dispatch effect, update event bus & api types ([56866e0](https://github.com/thi-ng/umbrella/commit/56866e0))
+
+
+
+
+<a name="0.9.2"></a>
+## [0.9.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@0.9.1...@thi.ng/atom@0.9.2) (2018-03-08)
+
+
+### Bug Fixes
+
+* **atom:** add EventBus to module re-exports, minor cleanup ([9e5239b](https://github.com/thi-ng/umbrella/commit/9e5239b))
+
+
+
+
+<a name="0.9.1"></a>
+## [0.9.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@0.9.0...@thi.ng/atom@0.9.1) (2018-03-07)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/atom
+
+<a name="0.9.0"></a>
+# [0.9.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@0.8.0...@thi.ng/atom@0.9.0) (2018-03-07)
+
+
+### Features
+
+* **atom:** re-add refactored EventBus & interceptor handling ([e01bf73](https://github.com/thi-ng/umbrella/commit/e01bf73))
+
+
+
+
+<a name="0.8.0"></a>
+# [0.8.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@0.7.3...@thi.ng/atom@0.8.0) (2018-03-05)
+
+
+### Features
+
+* **atom:** update IAtom, add resetIn() & swapIn() impls ([a7e61a4](https://github.com/thi-ng/umbrella/commit/a7e61a4))
+
+
+
+
 <a name="0.7.3"></a>
 ## [0.7.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@0.7.2...@thi.ng/atom@0.7.3) (2018-03-03)
 

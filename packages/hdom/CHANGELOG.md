@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.2.2"></a>
+## [2.2.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@2.2.1...@thi.ng/hdom@2.2.2) (2018-03-17)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="2.2.1"></a>
+## [2.2.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@2.2.0...@thi.ng/hdom@2.2.1) (2018-03-16)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="2.2.0"></a>
+# [2.2.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@2.1.1...@thi.ng/hdom@2.2.0) (2018-03-14)
+
+
+### Features
+
+* **hdom:** add auto deref() support ([0fe6c44](https://github.com/thi-ng/umbrella/commit/0fe6c44))
+
+
+
+
+<a name="2.1.1"></a>
+## [2.1.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@2.1.0...@thi.ng/hdom@2.1.1) (2018-03-08)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="2.1.0"></a>
+# [2.1.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@2.0.0...@thi.ng/hdom@2.1.0) (2018-03-05)
+
+
+### Features
+
+* **hdom:** add support for frame skipping, add docs ([a200beb](https://github.com/thi-ng/umbrella/commit/a200beb))
+
+
+
+
 <a name="2.0.0"></a>
 # 2.0.0 (2018-03-03)
 

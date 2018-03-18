@@ -1,12 +1,13 @@
 import { IEquiv, Watch } from "@thi.ng/api/api";
 import { IWatch } from "@thi.ng/api/mixins/iwatch";
+import { Path, setIn, updateIn } from "@thi.ng/paths";
 
-import { IAtom, IView, Path, SwapFn, ViewTransform } from "./api";
+import { IAtom, IView, SwapFn, ViewTransform } from "./api";
 import { View } from "./view";
 
 /**
- * Mutable wrapper for an (usually) immutable value.
- * Support for watches.
+ * Mutable wrapper for an (usually) immutable value. Support for
+ * watches.
  */
 @IWatch
 export class Atom<T> implements
@@ -14,6 +15,7 @@ export class Atom<T> implements
     IEquiv {
 
     protected value: T;
+    protected _watches: any;
 
     constructor(val?: T) {
         this.value = val;
@@ -31,6 +33,13 @@ export class Atom<T> implements
         const old = this.value;
         this.value = val;
         this.notifyWatches(old, val);
+        return val;
+    }
+
+    resetIn<V>(path: Path, val: V) {
+        const old = this.value;
+        this.value = setIn(this.value, path, val);
+        this.notifyWatches(old, this.value);
         return this.value;
     }
 
@@ -38,6 +47,13 @@ export class Atom<T> implements
         const old = this.value;
         args.unshift(old);
         this.value = fn.apply(null, args);
+        this.notifyWatches(old, this.value);
+        return this.value;
+    }
+
+    swapIn<V>(path: Path, fn: SwapFn<V>, ...args: any[]) {
+        const old = this.value;
+        this.value = updateIn(this.value, path, fn, ...args);
         this.notifyWatches(old, this.value);
         return this.value;
     }
@@ -60,5 +76,11 @@ export class Atom<T> implements
 
     addView<V>(path: Path, tx?: ViewTransform<V>): IView<V> {
         return new View<V>(this, path, tx);
+    }
+
+    release() {
+        delete this._watches;
+        delete this.value;
+        return true;
     }
 }

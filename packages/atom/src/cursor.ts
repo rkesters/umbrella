@@ -4,10 +4,10 @@ import { isFunction } from "@thi.ng/checks/is-function";
 import { isNumber } from "@thi.ng/checks/is-number";
 import { isString } from "@thi.ng/checks/is-string";
 import { isSymbol } from "@thi.ng/checks/is-symbol";
+import { Path, getter, setter } from "@thi.ng/paths";
 
-import { IAtom, SwapFn, IView, Path, ViewTransform } from "./api";
+import { IAtom, SwapFn, IView, ViewTransform } from "./api";
 import { Atom } from "./atom";
-import { getter, setter } from "./path";
 import { View } from "./view";
 
 export class Cursor<T> implements
@@ -64,7 +64,7 @@ export class Cursor<T> implements
     }
 
     release() {
-        this.local.removeWatch(this.id);
+        this.local.release();
         this.parent.removeWatch(this.id);
         delete this.local;
         delete this.parent;
@@ -75,8 +75,16 @@ export class Cursor<T> implements
         return this.local.reset(val);
     }
 
+    resetIn<V>(path: Path, val: V) {
+        return this.local.resetIn(path, val);
+    }
+
     swap(fn: SwapFn<T>, ...args: any[]): T {
-        return this.local.swap.apply(this.local, [fn, ...args]);
+        return this.local.swap(fn, ...args);
+    }
+
+    swapIn<V>(path: Path, fn: SwapFn<V>, ...args: any[]) {
+        return this.local.swapIn(path, fn, ...args);
     }
 
     addWatch(id: string, fn: Watch<T>) {

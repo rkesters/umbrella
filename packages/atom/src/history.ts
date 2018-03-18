@@ -1,15 +1,16 @@
 import { Predicate2, Watch } from "@thi.ng/api/api";
 import { equiv } from "@thi.ng/api/equiv";
+import { Path, getIn, setIn, updateIn } from "@thi.ng/paths";
 
-import { IAtom, SwapFn, IView, Path, ViewTransform } from "./api";
+import { IAtom, SwapFn, IView, ViewTransform } from "./api";
 import { View } from "./view";
 
 /**
- * Undo/redo history stack wrapper for atoms and cursors.
- * Implements `IAtom` interface and so can be used directly in place
- * and delegates to wrapped atom/cursor. Value changes are only
- * recorded in history if `changed` predicate returns truthy value,
- * or else by calling `record()` directly.
+ * Undo/redo history stack wrapper for atoms and cursors. Implements
+ * `IAtom` interface and so can be used directly in place and delegates
+ * to wrapped atom/cursor. Value changes are only recorded in history if
+ * `changed` predicate returns truthy value, or else by calling
+ * `record()` directly.
  */
 export class History<T> implements
     IAtom<T> {
@@ -91,6 +92,15 @@ export class History<T> implements
         return val;
     }
 
+    resetIn<V>(path: Path, val: V): T {
+        const prev = this.state.deref();
+        const prevV = getIn(prev, path);
+        const curr = setIn(prev, path, val);
+        this.changed(prevV, getIn(curr, path)) && this.record(prev);
+        this.state.reset(curr);
+        return curr;
+    }
+
     /**
      * `IAtom.swap()` implementation. Delegates to wrapped atom/cursor,
      * but too applies `changed` predicate to determine if there was a
@@ -99,17 +109,22 @@ export class History<T> implements
      * @param val
      */
     swap(fn: SwapFn<T>, ...args: any[]): T {
-        return this.reset(fn.apply(null, [this.state.deref(), ...args]));
+        return this.reset(fn(this.state.deref(), ...args));
+    }
+
+    swapIn<V>(path: Path, fn: SwapFn<V>, ...args: any[]) {
+        return this.reset(updateIn(this.state.deref(), path, fn, ...args));
     }
 
     /**
      * Records given state in history. This method is only needed when
-     * manually managing snapshots, i.e. when applying multiple swaps
-     * on the wrapped atom directly, but not wanting to create an
-     * history entry for each change. **DO NOT call this explicitly if
-     * using `History.reset()` / `History.swap()`**.
+     * manually managing snapshots, i.e. when applying multiple swaps on
+     * the wrapped atom directly, but not wanting to create an history
+     * entry for each change. **DO NOT call this explicitly if using
+     * `History.reset()` / `History.swap()`**.
      *
-     * If no `state` is given, uses the wrapped atom's current state value.
+     * If no `state` is given, uses the wrapped atom's current state
+     * value.
      *
      * @param state
      */
@@ -117,8 +132,8 @@ export class History<T> implements
         if (this.history.length >= this.maxLen) {
             this.history.shift();
         }
-        // check for arg given and not if `state == null`
-        // we want to allow null/undefined as possible values
+        // check for arg given and not if `state == null` we want to
+        // allow null/undefined as possible values
         this.history.push(arguments.length > 0 ? state : this.state.deref());
         this.future.length = 0;
     }
@@ -131,7 +146,8 @@ export class History<T> implements
     }
 
     /**
-     * `IWatch.addWatch()` implementation. Delegates to wrapped atom/cursor.
+     * `IWatch.addWatch()` implementation. Delegates to wrapped
+     * atom/cursor.
      *
      * @param id
      * @param fn
@@ -141,7 +157,8 @@ export class History<T> implements
     }
 
     /**
-     * `IWatch.removeWatch()` implementation. Delegates to wrapped atom/cursor.
+     * `IWatch.removeWatch()` implementation. Delegates to wrapped
+     * atom/cursor.
      *
      * @param id
      */
@@ -150,7 +167,8 @@ export class History<T> implements
     }
 
     /**
-     * `IWatch.notifyWatches()` implementation. Delegates to wrapped atom/cursor.
+     * `IWatch.notifyWatches()` implementation. Delegates to wrapped
+     * atom/cursor.
      *
      * @param oldState
      * @param newState
@@ -161,5 +179,11 @@ export class History<T> implements
 
     addView<V>(path: Path, tx?: ViewTransform<V>): IView<V> {
         return new View<V>(this, path, tx);
+    }
+
+    release() {
+        this.state.release();
+        delete this.state;
+        return true;
     }
 }
