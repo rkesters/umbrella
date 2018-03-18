@@ -1,6 +1,6 @@
 import { IObjectOf } from "@thi.ng/api/api";
 import { SwapFn } from "@thi.ng/atom/api";
-import { deleteIn, getIn, setIn, updateIn } from "@thi.ng/atom/path";
+import { deleteIn, getIn, setIn, updateIn } from "@thi.ng/paths";
 import { Graph, Node, Edge } from "./api";
 
 export function setEdge(graph: Graph, inID: string, inPort: string, outID: string, outPort: string) {

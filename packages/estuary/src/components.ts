@@ -1,6 +1,6 @@
 import { IObjectOf } from "@thi.ng/api/api";
-import { getter } from "@thi.ng/atom/path";
-import { polyline, svgdoc, text } from "@thi.ng/hiccup-dom-components/svg";
+import { getter } from "@thi.ng/paths";
+import { polyline, svgdoc, text } from "@thi.ng/hdom-components/svg";
 
 import { EdgeFn, Node, NodeOpts, Port, PortOpts, PortSymbolFn, Graph, GraphOpts, IPortLayout, LabelOpts } from "./api";
 

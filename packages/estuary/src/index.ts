@@ -1,5 +1,5 @@
-import { start } from "@thi.ng/hiccup-dom";
-import { defs } from "@thi.ng/hiccup-dom-components/svg";
+import { start } from "@thi.ng/hdom";
+import { defs } from "@thi.ng/hdom-components/svg";
 
 import { Graph, NodeOpts } from "./api";
 import { nodeGraph, defBezierEdgeH, nodeValueLabel, portSymbolArrowIn, portSymbolArrowOut, roundNode, boxNode, nodeLabel } from "./components";
