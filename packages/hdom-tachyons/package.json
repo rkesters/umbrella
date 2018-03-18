@@ -25,7 +25,7 @@
     },
     "dependencies": {
         "@thi.ng/api": "^2.0.4",
-        "@thi.ng/atom": "^0.13.0"
+        "@thi.ng/paths": "^1.0.0"
     },
     "keywords": [
         "components",

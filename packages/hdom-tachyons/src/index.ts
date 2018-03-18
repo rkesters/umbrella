@@ -1,5 +1,12 @@
-import { getIn } from "@thi.ng/atom/path";
+import { getIn } from "@thi.ng/paths";
+import { resolveMap } from "@thi.ng/resolve-map";
 // import { Theme } from "@thi.ng/hdom-components";
+
+export enum Align {
+    LEFT,
+    CENTER,
+    RIGHT,
+}
 
 export interface ThemeOpts {
     button: {
@@ -19,7 +26,8 @@ export interface ThemeOpts {
         },
         last: {
             radius: number | string;
-        }
+        },
+        align: Align;
     }
 }
 
@@ -30,43 +38,44 @@ export interface ColorStates {
     visited?: string;
 }
 
-export const BASE: ThemeOpts = {
+const alignments = {
+    [Align.LEFT]: "tl",
+    [Align.CENTER]: "tc",
+    [Align.RIGHT]: "tr",
+};
+
+export const BASE: ThemeOpts = resolveMap({
     button: {
         bg: {
             default: "black",
             active: "blue",
-            hover: "gray",
+            hover: "blue",
         },
         fg: {
             default: "white",
-            active: "white",
-            hover: "white",
+            active: "->default",
+            hover: "->default",
         },
         padding: [2, 2],
         margin: [2, 2],
         radius: 2,
+        align: Align.CENTER,
+        width: 4,
     },
     buttonGroup: {
-        bg: {
-            default: "black",
-            active: "blue",
-            hover: "gray",
-        },
-        fg: {
-            default: "white",
-            active: "white",
-            hover: "white",
-        },
+        bg: "->/button.bg",
+        fg: "->/button.fg",
         padding: [3, 1],
-        margin: [3, 1],
+        margin: [2, 0],
         first: {
             radius: "-pill",
         },
         last: {
             radius: "-pill",
-        }
+        },
+        align: true,
     }
-};
+});
 
 const lookup = (user, root?) => {
     let base;
@@ -79,52 +88,53 @@ const lookup = (user, root?) => {
     return (path) => getIn(user, path) || getIn(base, path);
 }
 
+const cond = (prefix, val) =>
+    val != null ? prefix + val : undefined;
+
+const format = (classes: string[]) =>
+    classes.filter(x => x != null).join(" ");
+
 export const button = (user, root) => {
     const $ = lookup(user, root);
-    const r = $("radius");
-    return [
+    return format([
         "link",
-        "ph" + $("padding.0"),
-        "pv" + $("padding.1"),
-        "bg-" + $("bg.default"),
-        "hover-bg-" + $("bg.hover"),
-        $("fg.default"),
-        "hover-" + $("fg.hover"),
+        cond("", alignments[$("align")]),
+        cond("ph", $("padding.0")),
+        cond("pv", $("padding.1")),
+        cond("bg-", $("bg.default")),
+        cond("hover-bg-", $("bg.hover")),
+        cond("", $("fg.default")),
+        cond("hover-", $("fg.hover")),
         "bg-animate",
-        r ? "br" + r : "",
-    ].join(" ");
+        cond("br", $("radius"))
+    ]);
 }
 
 export const makeTheme = (opts: ThemeOpts) => {
     const $ = lookup(opts);
-    const btgroup = button(opts, "buttonGroup");
-    const theme = {
+    return resolveMap({
         button: {
             class: button(opts, "button"),
         },
         buttonGroupH: {
             main: {
-                class: btgroup,
+                class: button(opts, "buttonGroup"),
             },
             first: {
-                class: btgroup + ` br${$("buttonGroup.first.radius")} br--left`
+                class: (_) => `${_("buttonGroupH.main.class")} br${$("buttonGroup.first.radius")} br--left`
             },
             last: {
-                class: btgroup + ` br${$("buttonGroup.last.radius")} br--right`
+                class: (_) => `${_("buttonGroupH.main.class")} br${$("buttonGroup.last.radius")} br--right`
             }
         },
         buttonGroupV: {
-            main: {
-                class: btgroup,
-            },
+            main: "->/buttonGroupH.main",
             first: {
-                class: btgroup + ` br${$("buttonGroup.first.radius")} br--top`
+                class: (_) => `${_("buttonGroupV.main.class")} br${$("buttonGroup.first.radius")} br--top`
             },
             last: {
-                class: btgroup + ` br${$("buttonGroup.last.radius")} br--bottom`
+                class: (_) => `${_("buttonGroupV.main.class")} br${$("buttonGroup.last.radius")} br--bottom`
             }
         }
-    };
-
-    return theme;
+    });
 };
