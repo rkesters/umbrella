@@ -45,7 +45,7 @@ export interface IPortLayout {
 }
 
 export interface NodeConfig extends IID<string> {
-    ui: Partial<NodeUI>;
+    ui?: Partial<NodeUI>;
 }
 
 export interface Port {
