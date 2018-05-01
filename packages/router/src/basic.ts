@@ -1,9 +1,20 @@
-import { Event, INotify, IObjectOf, Listener } from "@thi.ng/api/api";
+import {
+    Event,
+    INotify,
+    IObjectOf,
+    Listener
+} from "@thi.ng/api/api";
 import { equiv } from "@thi.ng/api/equiv";
+import { illegalArgs, illegalArity } from "@thi.ng/api/error";
 import * as mixin from "@thi.ng/api/mixins/inotify";
 import { isString } from "@thi.ng/checks/is-string";
 
-import { RouterConfig, RouteMatch, Route, RouteParamValidator } from "./api";
+import {
+    Route,
+    RouteMatch,
+    RouteParamValidator,
+    RouterConfig
+} from "./api";
 import { EVENT_ROUTE_CHANGED } from "./api";
 
 @mixin.INotify
@@ -22,8 +33,8 @@ export class BasicRouter implements
     }
 
     // mixin
-    public addListener(_: string, __: Listener, ___?: any) { }
-    public removeListener(_: string, __: Listener, ___?: any) { }
+    public addListener(_: string, __: Listener, ___?: any) { return false; }
+    public removeListener(_: string, __: Listener, ___?: any) { return false; }
     public notify(_: Event) { }
 
     start() {
@@ -100,7 +111,7 @@ export class BasicRouter implements
                 match = isString(id) ? { id } : id;
                 break;
             default:
-                throw new Error(`illegal arity: ${args.length}`);
+                illegalArity(args.length);
         }
         const route = this.routeForID(match.id);
         if (route) {
@@ -111,7 +122,7 @@ export class BasicRouter implements
                     .map((x) => x.charAt(0) === "?" ? ((x = params[x.substr(1)]) != null ? x : "NULL") : x)
                     .join(this.config.separator);
         } else {
-            throw new Error(`invalid route ID: ${match.id}`);
+            illegalArgs(`invalid route ID: ${match.id}`);
         }
     }
 

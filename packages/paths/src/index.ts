@@ -1,3 +1,4 @@
+import { illegalArgs } from "@thi.ng/api/error";
 import { isArray } from "@thi.ng/checks/is-array";
 import { isString } from "@thi.ng/checks/is-string";
 
@@ -136,7 +137,6 @@ export function getter(path: Path) {
  */
 export function setter(path: Path) {
     const ks = toPath(path);
-    // (s, v) => ({ ...s, [k]: f((s || {})[k], v) });
     let [a, b, c, d] = ks;
     switch (ks.length) {
         case 0:
@@ -144,11 +144,11 @@ export function setter(path: Path) {
         case 1:
             return (s, v) => ({ ...s, [a]: v });
         case 2:
-            return (s, v) => ({ ...s, [a]: { ...s[a], [b]: v } });
+            return (s, v) => ({ ...(s = s || {}), [a]: { ...s[a], [b]: v } });
         case 3:
-            return (s, v) => ({ ...s, [a]: { ...s[a], [b]: { ...s[b], [c]: v } } });
+            return (s, v) => ({ ...(s = s || {}), [a]: { ...(s = s[a] || {}), [b]: { ...s[b], [c]: v } } });
         case 4:
-            return (s, v) => ({ ...s, [a]: { ...s[a], [b]: { ...s[b], [c]: { ...s[c], [d]: v } } } });
+            return (s, v) => ({ ...(s = s || {}), [a]: { ...(s = s[a] || {}), [b]: { ...(s = s[b] || {}), [c]: { ...s[c], [d]: v } } } });
         default:
             const kl = ks[ks.length - 1];
             let f = (s, v) => ({ ...(s || {}), [kl]: v });
@@ -187,6 +187,31 @@ export function getIn(state: any, path: Path) {
  */
 export function setIn(state: any, path: Path, val: any) {
     return setter(path)(state, val);
+}
+
+/**
+ * Like `setIn()`, but takes any number of path-value pairs and applies
+ * them in sequence by calling `setIn()` for each. Any key paths missing
+ * in the data structure will be created. Does *not* mutate original
+ * (instead use `mutInMany()` for this purpose).
+ *
+ * ```
+ * setInMany({}, "a.b", 10, "x.y.z", 20)
+ * // { a: { b: 10 }, x: { y: { z: 20 } } }
+ * ```
+ *
+ * @param state
+ * @param pairs
+ */
+export function setInMany(state: any, ...pairs: any[]) {
+    const n = pairs.length;
+    if ((n & 1)) {
+        illegalArgs(`require an even number of args (got ${pairs.length})`);
+    }
+    for (let i = 0; i < n; i += 2) {
+        state = setIn(state, pairs[i], pairs[i + 1]);
+    }
+    return state;
 }
 
 /**
@@ -229,4 +254,86 @@ export function deleteIn(state: any, path: Path) {
         const k = ks.pop();
         return updateIn(state, ks, (x) => { x = { ...x }; delete x[k]; return x; });
     }
+}
+
+/**
+ * Higher-order function, similar to `setter()`. Returns function which
+ * when called mutates given object/array at given path location and
+ * bails if any intermediate path values are non-indexable (only the
+ * very last path element can be missing in the actual object
+ * structure). If successful, returns original (mutated) object, else
+ * `undefined`. This function provides optimized versions for path
+ * lengths <= 4.
+ *
+ * @param path
+ */
+export function mutator(path: Path) {
+    const ks = toPath(path);
+    let [a, b, c, d] = ks;
+    switch (ks.length) {
+        case 0:
+            return (_, x) => x;
+        case 1:
+            return (s, x) => s ? (s[a] = x, s) : undefined;
+        case 2:
+            return (s, x) => { let t; return s ? (t = s[a]) ? (t[b] = x, s) : undefined : undefined };
+        case 3:
+            return (s, x) => { let t; return s ? (t = s[a]) ? (t = t[b]) ? (t[c] = x, s) : undefined : undefined : undefined };
+        case 4:
+            return (s, x) => { let t; return s ? (t = s[a]) ? (t = t[b]) ? (t = t[c]) ? (t[d] = x, s) : undefined : undefined : undefined : undefined };
+        default:
+            return (s, x) => {
+                let t = s;
+                const n = ks.length - 1;
+                for (let k = 0; k < n; k++) {
+                    if (!(t = t[ks[k]])) return;
+                }
+                t[ks[n]] = x;
+                return s;
+            }
+    }
+}
+
+/**
+ * Immediate use mutator, i.e. same as: `mutator(path)(state, val)`.
+ *
+ * ```
+ * mutIn({ a: { b: [10, 20] } }, "a.b.1", 23);
+ * // { a: { b: [ 10, 23 ] } }
+ *
+ * // fails (see `mutator` docs)
+ * mutIn({}, "a.b.c", 23);
+ * // undefined
+ * ```
+ *
+ * @param state
+ * @param path
+ * @param val
+ */
+export function mutIn(state: any, path: Path, val: any) {
+    return mutator(path)(state, val);
+}
+
+/**
+ * Like `mutIn()`, but takes any number of path-value pairs and applies
+ * them in sequence. All key paths must already be present in the given
+ * data structure until their penultimate key.
+ *
+ * ```
+ * mutInMany({a: {b: 1}, x: {y: {z: 2}}}, "a.b", 10, "x.y.z", 20)
+ * // { a: { b: 10 }, x: { y: { z: 20 } } }
+ * ```
+ *
+ * @param state
+ * @param pairs
+ */
+export function mutInMany(state: any, ...pairs: any[]) {
+    const n = pairs.length;
+    if ((n & 1)) {
+        illegalArgs(`require an even number of args (got ${pairs.length})`);
+    }
+    for (let i = 0; i < n && state; i += 2) {
+        state = mutIn(state, pairs[i], pairs[i + 1]);
+    }
+    return state;
 }

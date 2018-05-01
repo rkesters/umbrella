@@ -3,6 +3,207 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.0.14"></a>
+## [3.0.14](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.13...@thi.ng/hdom@3.0.14) (2018-05-01)
+
+
+### Bug Fixes
+
+* **hdom:** boolean attrib reset/removal ([a93cb98](https://github.com/thi-ng/umbrella/commit/a93cb98))
+
+
+
+
+<a name="3.0.13"></a>
+## [3.0.13](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.12...@thi.ng/hdom@3.0.13) (2018-04-30)
+
+
+### Performance Improvements
+
+* **hdom:** only build linear diff edit log ([7a543a5](https://github.com/thi-ng/umbrella/commit/7a543a5))
+
+
+
+
+<a name="3.0.12"></a>
+## [3.0.12](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.11...@thi.ng/hdom@3.0.12) (2018-04-29)
+
+
+### Performance Improvements
+
+* **hdom:** update event handling in diffAttributes() ([31ec3af](https://github.com/thi-ng/umbrella/commit/31ec3af))
+
+
+
+
+<a name="3.0.11"></a>
+## [3.0.11](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.10...@thi.ng/hdom@3.0.11) (2018-04-26)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.10"></a>
+## [3.0.10](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.9...@thi.ng/hdom@3.0.10) (2018-04-26)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.9"></a>
+## [3.0.9](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.8...@thi.ng/hdom@3.0.9) (2018-04-22)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.8"></a>
+## [3.0.8](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.7...@thi.ng/hdom@3.0.8) (2018-04-19)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.7"></a>
+## [3.0.7](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.6...@thi.ng/hdom@3.0.7) (2018-04-17)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.6"></a>
+## [3.0.6](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.5...@thi.ng/hdom@3.0.6) (2018-04-16)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.5"></a>
+## [3.0.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.4...@thi.ng/hdom@3.0.5) (2018-04-15)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.4"></a>
+## [3.0.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.3...@thi.ng/hdom@3.0.4) (2018-04-14)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.3"></a>
+## [3.0.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.2...@thi.ng/hdom@3.0.3) (2018-04-13)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.2"></a>
+## [3.0.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.1...@thi.ng/hdom@3.0.2) (2018-04-10)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.1"></a>
+## [3.0.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.0...@thi.ng/hdom@3.0.1) (2018-04-09)
+
+
+### Performance Improvements
+
+* **hdom:** intern imported checks, update normalizeTree(), add docs, fix tests ([2a91e30](https://github.com/thi-ng/umbrella/commit/2a91e30))
+
+
+
+
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@2.3.3...@thi.ng/hdom@3.0.0) (2018-04-08)
+
+
+### Features
+
+* **hdom:** fix [#13](https://github.com/thi-ng/umbrella/issues/13), add support for user context and pass to components ([70cfe06](https://github.com/thi-ng/umbrella/commit/70cfe06))
+
+
+### BREAKING CHANGES
+
+* **hdom:** component functions & lifecycle hooks now receive user
+context object as their first arg. All components accepting arguments must
+be updated, but can potentially be simplified at the same time.
+
+
+
+
+<a name="2.3.3"></a>
+## [2.3.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@2.3.2...@thi.ng/hdom@2.3.3) (2018-04-04)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="2.3.2"></a>
+## [2.3.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@2.3.1...@thi.ng/hdom@2.3.2) (2018-04-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="2.3.1"></a>
+## [2.3.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@2.3.0...@thi.ng/hdom@2.3.1) (2018-03-28)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="2.3.0"></a>
+# [2.3.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@2.2.5...@thi.ng/hdom@2.3.0) (2018-03-21)
+
+
+### Features
+
+* **hdom:** update error handling, add [@thi](https://github.com/thi).ng/api dep ([f5173f1](https://github.com/thi-ng/umbrella/commit/f5173f1))
+
+
+
+
+<a name="2.2.5"></a>
+## [2.2.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@2.2.4...@thi.ng/hdom@2.2.5) (2018-03-18)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="2.2.4"></a>
+## [2.2.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@2.2.3...@thi.ng/hdom@2.2.4) (2018-03-18)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="2.2.3"></a>
+## [2.2.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@2.2.2...@thi.ng/hdom@2.2.3) (2018-03-18)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
 <a name="2.2.2"></a>
 ## [2.2.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@2.2.1...@thi.ng/hdom@2.2.2) (2018-03-17)
 

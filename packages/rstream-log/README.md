@@ -2,8 +2,14 @@
 
 [![npm (scoped)](https://img.shields.io/npm/v/@thi.ng/rstream-log.svg)](https://www.npmjs.com/package/@thi.ng/rstream-log)
 
+This project is part of the
+[@thi.ng/umbrella](https://github.com/thi-ng/umbrella/) monorepo.
+
+## About
+
 Extensible, multi-level & multi-hierarchy logging based on
-[@thi.ng/rstream](https://github.com/thi-ng/umbrella/tree/master/packages/rstream)s, transformable via
+[@thi.ng/rstream](https://github.com/thi-ng/umbrella/tree/master/packages/rstream)s,
+transformable via
 [@thi.ng/transducers](https://github.com/thi-ng/umbrella/tree/master/packages/transducers).
 
 ## Installation
@@ -15,7 +21,7 @@ yarn add @thi.ng/rstream-log
 ## Usage examples
 
 ```typescript
-import * as log from "@thi.ng/rstream-logger";
+import * as log from "@thi.ng/rstream-log";
 
 const logger = new log.Logger("main");
 // or with min level
@@ -24,13 +30,11 @@ const logger = new log.Logger("main", log.Level.DEBUG);
 // add console output w/ string formatter (a transducer)
 logger.subscribe(log.writeConsole(), log.formatString());
 
-// add file output w/ JSON output & post-filtering (only WARN or ERROR levels)
-import * as tx from "@thi.ng/transducers";
-logger.subscribe(
-    log.writeFile("main.log"),
-    // compose filter + formatter transducers
-    tx.comp(log.minLevel(log.Level.WARN), log.formatJSON())
-);
+// add file output w/ post-filtering (only WARN or ERROR levels)
+// and formatted as JSON
+logger
+    .transform(log.minLevel(log.Level.WARN), log.formatJSON())
+    .subscribe(log.writeFile("main.log"))
 
 logger.debug("hello world");
 

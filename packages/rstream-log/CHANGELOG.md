@@ -3,6 +3,263 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.0.14"></a>
+## [1.0.14](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@1.0.13...@thi.ng/rstream-log@1.0.14) (2018-04-29)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-log
+
+<a name="1.0.13"></a>
+## [1.0.13](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@1.0.12...@thi.ng/rstream-log@1.0.13) (2018-04-26)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-log
+
+<a name="1.0.12"></a>
+## [1.0.12](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@1.0.11...@thi.ng/rstream-log@1.0.12) (2018-04-26)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-log
+
+<a name="1.0.11"></a>
+## [1.0.11](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@1.0.10...@thi.ng/rstream-log@1.0.11) (2018-04-25)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-log
+
+<a name="1.0.10"></a>
+## [1.0.10](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@1.0.9...@thi.ng/rstream-log@1.0.10) (2018-04-25)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-log
+
+<a name="1.0.9"></a>
+## [1.0.9](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@1.0.8...@thi.ng/rstream-log@1.0.9) (2018-04-24)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-log
+
+<a name="1.0.8"></a>
+## [1.0.8](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@1.0.7...@thi.ng/rstream-log@1.0.8) (2018-04-22)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-log
+
+<a name="1.0.7"></a>
+## [1.0.7](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@1.0.6...@thi.ng/rstream-log@1.0.7) (2018-04-20)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-log
+
+<a name="1.0.6"></a>
+## [1.0.6](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@1.0.5...@thi.ng/rstream-log@1.0.6) (2018-04-19)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-log
+
+<a name="1.0.5"></a>
+## [1.0.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@1.0.4...@thi.ng/rstream-log@1.0.5) (2018-04-18)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-log
+
+<a name="1.0.4"></a>
+## [1.0.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@1.0.3...@thi.ng/rstream-log@1.0.4) (2018-04-18)
+
+
+### Bug Fixes
+
+* **rstream-log:** ID handling in Logger ctor ([3087776](https://github.com/thi-ng/umbrella/commit/3087776))
+
+
+
+
+<a name="1.0.3"></a>
+## [1.0.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@1.0.2...@thi.ng/rstream-log@1.0.3) (2018-04-17)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-log
+
+<a name="1.0.2"></a>
+## [1.0.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@1.0.1...@thi.ng/rstream-log@1.0.2) (2018-04-16)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-log
+
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@1.0.0...@thi.ng/rstream-log@1.0.1) (2018-04-16)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-log
+
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@0.6.9...@thi.ng/rstream-log@1.0.0) (2018-04-15)
+
+
+### Code Refactoring
+
+* **rstream-log:** update package structure & readme example ([e6c75b4](https://github.com/thi-ng/umbrella/commit/e6c75b4))
+
+
+### BREAKING CHANGES
+
+* **rstream-log:** update package structure
+
+- rename src/transform => src/xform
+- move src/format.ts => src/xform/format.ts
+
+
+
+
+<a name="0.6.9"></a>
+## [0.6.9](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@0.6.8...@thi.ng/rstream-log@0.6.9) (2018-04-15)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-log
+
+<a name="0.6.8"></a>
+## [0.6.8](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@0.6.7...@thi.ng/rstream-log@0.6.8) (2018-04-14)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-log
+
+<a name="0.6.7"></a>
+## [0.6.7](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@0.6.6...@thi.ng/rstream-log@0.6.7) (2018-04-13)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-log
+
+<a name="0.6.6"></a>
+## [0.6.6](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@0.6.5...@thi.ng/rstream-log@0.6.6) (2018-04-11)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-log
+
+<a name="0.6.5"></a>
+## [0.6.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@0.6.4...@thi.ng/rstream-log@0.6.5) (2018-04-08)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-log
+
+<a name="0.6.4"></a>
+## [0.6.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@0.6.3...@thi.ng/rstream-log@0.6.4) (2018-04-05)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-log
+
+<a name="0.6.3"></a>
+## [0.6.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@0.6.2...@thi.ng/rstream-log@0.6.3) (2018-04-04)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-log
+
+<a name="0.6.2"></a>
+## [0.6.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@0.6.1...@thi.ng/rstream-log@0.6.2) (2018-04-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-log
+
+<a name="0.6.1"></a>
+## [0.6.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@0.6.0...@thi.ng/rstream-log@0.6.1) (2018-03-28)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-log
+
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@0.5.40...@thi.ng/rstream-log@0.6.0) (2018-03-21)
+
+
+### Features
+
+* **rstream-log:** update error handling, add [@thi](https://github.com/thi).ng/api dep ([8a3e72e](https://github.com/thi-ng/umbrella/commit/8a3e72e))
+
+
+
+
+<a name="0.5.40"></a>
+## [0.5.40](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@0.5.39...@thi.ng/rstream-log@0.5.40) (2018-03-21)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-log
+
+<a name="0.5.39"></a>
+## [0.5.39](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@0.5.38...@thi.ng/rstream-log@0.5.39) (2018-03-19)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-log
+
+<a name="0.5.38"></a>
+## [0.5.38](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@0.5.37...@thi.ng/rstream-log@0.5.38) (2018-03-18)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-log
+
+<a name="0.5.37"></a>
+## [0.5.37](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@0.5.36...@thi.ng/rstream-log@0.5.37) (2018-03-18)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-log
+
+<a name="0.5.36"></a>
+## [0.5.36](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@0.5.35...@thi.ng/rstream-log@0.5.36) (2018-03-18)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-log
+
 <a name="0.5.35"></a>
 ## [0.5.35](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-log@0.5.34...@thi.ng/rstream-log@0.5.35) (2018-03-17)
 

@@ -1,7 +1,8 @@
 import { equiv } from "@thi.ng/api/equiv";
+import { illegalArity } from "@thi.ng/api/error";
 import { isString } from "@thi.ng/checks/is-string";
 
-import { HTMLRouterConfig, RouterConfig, RouteMatch } from "./api";
+import { HTMLRouterConfig, RouteMatch, RouterConfig } from "./api";
 import { BasicRouter } from "./basic";
 
 export class HTMLRouter extends BasicRouter {
@@ -84,7 +85,7 @@ export class HTMLRouter extends BasicRouter {
                 match = isString(args[0]) ? { id: args[0] } : args[0];
                 break;
             default:
-                throw new Error(`illegal arity: ${args.length}`);
+                illegalArity(args.length);
         }
         return super.format(match, this.useFragment);
     }

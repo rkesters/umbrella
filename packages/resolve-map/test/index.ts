@@ -31,9 +31,17 @@ describe("resolve-map", () => {
         );
     });
 
+    it("rel parent refs", () => {
+        assert.deepEqual(
+            resolveMap({ a: { b: { c: "->../c.d", d: "->c", e: "->/c.d" }, c: { d: 1 } }, c: { d: 10 } }),
+            { a: { b: { c: 1, d: 1, e: 10 }, c: { d: 1 } }, c: { d: 10 } }
+        );
+    })
+
     it("cycles", () => {
         assert.throws(() => resolveMap({ a: "->a" }));
         assert.throws(() => resolveMap({ a: { b: "->b" } }));
+        assert.throws(() => resolveMap({ a: { b: "->/a" } }));
         assert.throws(() => resolveMap({ a: { b: "->/a.b" } }));
         assert.throws(() => resolveMap({ a: "->b", b: "->a" }));
     });
@@ -43,5 +51,19 @@ describe("resolve-map", () => {
             resolveMap({ a: (x) => x("b.c") * 10, b: { c: "->d", d: "->/e" }, e: () => 1 }),
             { a: 10, b: { c: 1, d: 1 }, e: 1 }
         );
+        const res = resolveMap({ a: (x) => x("b.c")() * 10, b: { c: "->d", d: "->/e" }, e: () => () => 1 });
+        assert.equal(res.a, 10);
+        assert.strictEqual(res.b.c, res.e);
+        assert.strictEqual(res.b.d, res.e);
+        assert.strictEqual(res.e(), 1);
     });
+
+    it("function resolves only once", () => {
+        let n = 0;
+        assert.deepEqual(
+            resolveMap({ a: (x) => x("b.c"), b: { c: "->d", d: "->/e" }, e: () => (n++ , 1) }),
+            { a: 1, b: { c: 1, d: 1 }, e: 1 }
+        );
+        assert.equal(n, 1);
+    })
 });

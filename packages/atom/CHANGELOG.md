@@ -3,6 +3,145 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.3.6"></a>
+## [1.3.6](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.3.5...@thi.ng/atom@1.3.6) (2018-04-29)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/atom
+
+<a name="1.3.5"></a>
+## [1.3.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.3.4...@thi.ng/atom@1.3.5) (2018-04-26)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/atom
+
+<a name="1.3.4"></a>
+## [1.3.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.3.3...@thi.ng/atom@1.3.4) (2018-04-26)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/atom
+
+<a name="1.3.3"></a>
+## [1.3.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.3.2...@thi.ng/atom@1.3.3) (2018-04-19)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/atom
+
+<a name="1.3.2"></a>
+## [1.3.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.3.1...@thi.ng/atom@1.3.2) (2018-04-17)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/atom
+
+<a name="1.3.1"></a>
+## [1.3.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.3.0...@thi.ng/atom@1.3.1) (2018-04-16)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/atom
+
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.2.5...@thi.ng/atom@1.3.0) (2018-04-15)
+
+
+### Features
+
+* **atom:** update History.record(), add IHistory interface ([cf42260](https://github.com/thi-ng/umbrella/commit/cf42260))
+
+
+
+
+<a name="1.2.5"></a>
+## [1.2.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.2.4...@thi.ng/atom@1.2.5) (2018-04-13)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/atom
+
+<a name="1.2.4"></a>
+## [1.2.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.2.3...@thi.ng/atom@1.2.4) (2018-04-08)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/atom
+
+<a name="1.2.3"></a>
+## [1.2.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.2.2...@thi.ng/atom@1.2.3) (2018-04-04)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/atom
+
+<a name="1.2.2"></a>
+## [1.2.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.2.1...@thi.ng/atom@1.2.2) (2018-04-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/atom
+
+<a name="1.2.1"></a>
+## [1.2.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.2.0...@thi.ng/atom@1.2.1) (2018-03-28)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/atom
+
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.1.0...@thi.ng/atom@1.2.0) (2018-03-21)
+
+
+### Features
+
+* **atom:** add CursorOpts and cursor validation, update ctor, add tests ([3b1d563](https://github.com/thi-ng/umbrella/commit/3b1d563))
+* **atom:** add optional validation predicate for Atom, add tests ([bae1647](https://github.com/thi-ng/umbrella/commit/bae1647))
+* **atom:** consider parent validators in History update fns ([d93940a](https://github.com/thi-ng/umbrella/commit/d93940a))
+
+
+
+
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.0.3...@thi.ng/atom@1.1.0) (2018-03-18)
+
+
+### Features
+
+* **atom:** add optional support for eager views, update tests/readme ([c0ec274](https://github.com/thi-ng/umbrella/commit/c0ec274))
+
+
+
+
+<a name="1.0.3"></a>
+## [1.0.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.0.2...@thi.ng/atom@1.0.3) (2018-03-18)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/atom
+
+<a name="1.0.2"></a>
+## [1.0.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.0.1...@thi.ng/atom@1.0.2) (2018-03-18)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/atom
+
 <a name="1.0.1"></a>
 ## [1.0.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.0.0...@thi.ng/atom@1.0.1) (2018-03-17)
 
@@ -10,6 +149,22 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 **Note:** Version bump only for package @thi.ng/atom
+
+<a name="1.0.0"></a>
+# 1.0.0 (2018-03-17)
+
+
+### Documentation
+
+* **atom:** extract @thi.ng/paths & @thi.ng/interceptors functionality ([1273efb](https://github.com/thi-ng/umbrella/commit/1273efb))
+
+
+### BREAKING CHANGES
+
+* **atom:** extract @thi.ng/paths & @thi.ng/interceptors functionality
+
+
+
 
 <a name="0.13.0"></a>
 # [0.13.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@0.12.1...@thi.ng/atom@0.13.0) (2018-03-16)

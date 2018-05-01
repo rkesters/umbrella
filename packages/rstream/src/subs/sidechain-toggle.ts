@@ -1,7 +1,8 @@
 import { Predicate } from "@thi.ng/api/api";
+
 import { ISubscribable } from "../api";
-import { Stream } from "../stream";
 import { Subscription } from "../index";
+import { Stream } from "../stream";
 
 export class SidechainToggle<A, B> extends Subscription<A, A> {
 
@@ -25,6 +26,14 @@ export class SidechainToggle<A, B> extends Subscription<A, A> {
         });
     }
 
+    unsubscribe(sub?: Subscription<any, any>) {
+        const res = super.unsubscribe(sub);
+        if (!sub || !this.subs.size) {
+            this.sideSub.unsubscribe();
+        }
+        return res;
+    }
+
     next(x: A) {
         if (this.isActive) {
             super.next(x);
@@ -34,7 +43,6 @@ export class SidechainToggle<A, B> extends Subscription<A, A> {
     done() {
         super.done();
         this.sideSub.unsubscribe();
-        delete this.isActive;
     }
 }
 

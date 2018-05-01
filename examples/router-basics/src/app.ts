@@ -2,12 +2,14 @@ import { IObjectOf } from "@thi.ng/api/api";
 import { Atom } from "@thi.ng/atom/atom";
 import { isArray } from "@thi.ng/checks/is-array";
 import { EventBus } from "@thi.ng/interceptors/event-bus";
-import { valueSetter } from "@thi.ng/interceptors/interceptors";
+import { valueSetter, trace } from "@thi.ng/interceptors/interceptors";
 import { start } from "@thi.ng/hdom";
 import { EVENT_ROUTE_CHANGED } from "@thi.ng/router/api";
 import { HTMLRouter } from "@thi.ng/router/history";
 
-import { AppConfig, ViewSpec, AppViews } from "./api";
+import { AppConfig, ViewSpec, AppViews, AppContext } from "./api";
+import * as ev from "./events";
+import * as fx from "./effects";
 
 import { nav } from "./components/nav";
 import { debugContainer } from "./components/debug-container";
@@ -27,41 +29,44 @@ import { debugContainer } from "./components/debug-container";
  */
 export class App {
 
-    static readonly EV_ROUTE_TO = "route-to";
-    static readonly FX_ROUTE_TO = "route-to";
-
     config: AppConfig;
+    ctx: AppContext;
     state: Atom<any>;
-    views: AppViews;
-    bus: EventBus;
     router: HTMLRouter;
 
     constructor(config: AppConfig) {
         this.config = config;
         this.state = new Atom(config.initialState || {});
-        this.views = <AppViews>{};
+        this.ctx = {
+            bus: new EventBus(this.state, config.events, config.effects),
+            views: <AppViews>{},
+            ui: config.ui
+        };
         this.addViews(this.config.views);
-        this.bus = new EventBus(this.state, config.events, config.effects);
         this.router = new HTMLRouter(config.router);
         this.router.addListener(
             EVENT_ROUTE_CHANGED,
-            (e) => this.bus.dispatch([EVENT_ROUTE_CHANGED, e.value])
+            (e) => this.ctx.bus.dispatch([EVENT_ROUTE_CHANGED, e.value])
         );
-        this.bus.addHandlers({
+        this.ctx.bus.addHandlers({
             [EVENT_ROUTE_CHANGED]: valueSetter("route"),
-            [App.EV_ROUTE_TO]: (_, [__, route]) => ({ [App.FX_ROUTE_TO]: route })
+            [ev.ROUTE_TO]: (_, [__, route]) => ({ [ev.ROUTE_TO]: route })
         });
-        this.bus.addEffect(
-            App.FX_ROUTE_TO,
+        this.ctx.bus.addEffect(
+            fx.ROUTE_TO,
             ([id, params]) => this.router.routeTo(this.router.format(id, params))
         );
+
+        // instrument all event handlers to trace events in console
+        this.ctx.bus.instrumentWith([trace]);
+
         this.addViews({
             route: "route",
             routeComponent: [
                 "route.id",
                 (id) =>
                     (this.config.components[id] ||
-                        (() => ["div", `missing component for route: ${id}`]))(this, this.config.ui)
+                        (() => ["div", `missing component for route: ${id}`]))(this.ctx)
             ]
         });
     }
@@ -73,12 +78,13 @@ export class App {
      * @param specs
      */
     addViews(specs: IObjectOf<ViewSpec>) {
+        const views = this.ctx.views;
         for (let id in specs) {
             const spec = specs[id];
             if (isArray(spec)) {
-                this.views[id] = this.state.addView(spec[0], spec[1]);
+                views[id] = this.state.addView(spec[0], spec[1]);
             } else {
-                this.views[id] = this.state.addView(spec);
+                views[id] = this.state.addView(spec);
             }
         }
     }
@@ -93,10 +99,10 @@ export class App {
     start() {
         this.router.start();
         start(this.config.domRoot, () => {
-            if (this.bus.processQueue()) {
+            if (this.ctx.bus.processQueue()) {
                 return this.rootComponent();
             }
-        });
+        }, this.ctx);
     }
 
     /**
@@ -104,13 +110,13 @@ export class App {
      * by current route and the derived view defined above.
      */
     rootComponent(): any {
-        const debug = this.views.debug.deref();
-        const ui = this.config.ui;
+        const debug = this.ctx.views.debug.deref();
+        const ui = this.ctx.ui;
         return ["div", ui.root,
             ["div", ui.column.content[debug],
-                [nav, this, ui.nav],
-                this.views.routeComponent],
-            [debugContainer, this, ui, debug, this.views.json],
+                nav,
+                this.ctx.views.routeComponent],
+            [debugContainer, debug, this.ctx.views.json],
         ];
     }
 }

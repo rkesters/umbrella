@@ -1,12 +1,13 @@
+import { illegalArgs } from "@thi.ng/api/error";
 import { isArray } from "@thi.ng/checks/is-array";
 import { isFunction } from "@thi.ng/checks/is-function";
 import { isIterable } from "@thi.ng/checks/is-iterable";
 import { isPlainObject } from "@thi.ng/checks/is-plain-object";
 import { isString } from "@thi.ng/checks/is-string";
-import { transduce } from "@thi.ng/transducers/transduce";
 import { permutations } from "@thi.ng/transducers/iter/permutations";
 import { repeat } from "@thi.ng/transducers/iter/repeat";
 import { str } from "@thi.ng/transducers/rfn/str";
+import { transduce } from "@thi.ng/transducers/transduce";
 import { flatten } from "@thi.ng/transducers/xform/flatten";
 import { map } from "@thi.ng/transducers/xform/map";
 
@@ -42,7 +43,7 @@ export function expand(acc: string[], parent: any[], rules: any[], opts: CSSOpts
             } else if (isFn) {
                 process(i, r());
             } else {
-                throw new Error(`quoted fn ('${r}') only allowed at head position`);
+                illegalArgs(`quoted fn ('${r}') only allowed at head position`);
             }
         } else if (isPlainObject(r)) {
             curr = Object.assign(curr || {}, r);

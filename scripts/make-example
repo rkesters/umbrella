@@ -20,21 +20,21 @@ cat << EOF > $MODULE/package.json
     "author": "$AUTHOR <$EMAIL>",
     "license": "Apache-2.0",
     "scripts": {
-        "build": "yarn clean && webpack",
-        "clean": "rm -rf bundle.*",
-        "dev": "open index.html && webpack -w",
-        "debdev": "see index.html && webpack -w"
+        "build": "webpack --mode production",
+        "start": "webpack-dev-server --open --mode development --devtool inline-source-map"
     },
     "devDependencies": {
-        "ts-loader": "^3.3.1",
-        "typescript": "^2.7.1",
-        "webpack": "^3.10.0"
+        "ts-loader": "^4.1.0",
+        "typescript": "^2.8.1",
+        "webpack": "^4.4.1",
+        "webpack-cli": "^2.0.13",
+        "webpack-dev-server": "^3.1.1"
     },
     "dependencies": {
-        "@thi.ng/api": "^2.0.3",
-        "@thi.ng/hdom": "^2.0.0",
-        "@thi.ng/rstream": "^1.0.0",
-        "@thi.ng/transducers": "^1.6.1"
+        "@thi.ng/api": "latest",
+        "@thi.ng/hdom": "latest",
+        "@thi.ng/rstream": "latest",
+        "@thi.ng/transducers": "latest"
     }
 }
 EOF
@@ -108,16 +108,14 @@ cat << EOF > $MODULE/README.md
 git clone https://github.com/thi-ng/umbrella.git
 cd umbrella/examples/$1
 yarn install
-\`\`\`
-Then
-
-\`\`\`
-# For Mac
-yarn dev
-
-# For Debian, Ubuntu, Etc.
-yarn debdev
+yarn start
 \`\`\`
 
-Once webpack has completed building, refresh your browser...
+## Authors
+
+- $AUTHOR
+
+## License
+
+&copy; 2018 $AUTHOR // Apache Software License 2.0
 EOF
