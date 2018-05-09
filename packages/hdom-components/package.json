@@ -1,6 +1,6 @@
 {
     "name": "@thi.ng/hdom-components",
-    "version": "2.0.3",
+    "version": "2.1.0",
     "description": "Raw, skinnable UI & SVG components for @thi.ng/hdom",
     "main": "./index.js",
     "typings": "./index.d.ts",
@@ -17,15 +17,15 @@
     },
     "devDependencies": {
         "@types/mocha": "^5.2.0",
-        "@types/node": "^10.0.2",
+        "@types/node": "^10.0.6",
         "mocha": "^5.1.1",
         "nyc": "^11.7.1",
         "typedoc": "^0.11.1",
         "typescript": "^2.8.3"
     },
     "dependencies": {
-        "@thi.ng/checks": "^1.5.1",
-        "@thi.ng/iterators": "^4.1.9",
+        "@thi.ng/checks": "^1.5.2",
+        "@thi.ng/iterators": "^4.1.10",
         "@types/webgl2": "^0.0.3"
     },
     "keywords": [
