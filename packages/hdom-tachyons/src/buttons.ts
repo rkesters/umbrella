@@ -9,9 +9,7 @@ const classes = (theme: ButtonSpec, size: ButtonSize, state: ButtonState) => {
     (v = theme.states[state]) && res.push(v);
     const spec = theme[size];
     for (let k in spec) {
-        if ((v = spec[k]) != null) {
-            res.push(v);
-        }
+        (v = spec[k]) != null && res.push(v);
     }
     state !== "disabled" && res.push("pointer link");
     return res.join(" ");

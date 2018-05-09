@@ -7,8 +7,21 @@ export interface ThemeSpec {
         selected: string;
     },
     buttons: {
-        primary: ButtonSpec;
-        secondary: ButtonSpec;
+        default: ButtonSpec;
+        alt: ButtonSpec;
+        [id: string]: ButtonSpec;
+    },
+    buttonGroups: {
+        horizontal: {
+            default: ButtonGroupSpec;
+            alt: ButtonGroupSpec;
+            [id: string]: ButtonGroupSpec;
+        };
+        vertical: {
+            default: ButtonGroupSpec;
+            alt: ButtonGroupSpec;
+            [id: string]: ButtonGroupSpec;
+        }
     }
 }
 
@@ -30,7 +43,24 @@ export interface ButtonSizeOpts {
     extra: string;
 }
 
-export interface ColorStates extends Array<string> {
-    [0]: string;
-    [1]?: string;
+export type ButtonGroupItem = "first" | "inner" | "last";
+
+export interface ButtonGroupSpec extends Record<ButtonSize, ButtonGroupSizeOpts> {
+    root: string;
+    button: {
+        states: Record<ButtonState, string>;
+        common: string;
+    }
+}
+
+export interface ButtonGroupSizeOpts extends Record<ButtonGroupItem, Partial<ButtonGroupSizeAttribs>> {
+    common: string;
+}
+
+export interface ButtonGroupSizeAttribs {
+    radius: string;
+    border: string;
+    margin: string;
+    padding: string;
+    extra: string;
 }
