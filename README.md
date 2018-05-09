@@ -44,6 +44,7 @@ difficulties, many combining functionality from several packages) in the
 | [`@thi.ng/dot`](./packages/dot) | [![npm (scoped)](https://img.shields.io/npm/v/@thi.ng/dot.svg)](https://www.npmjs.com/package/@thi.ng/dot) | [changelog](./packages/dot/CHANGELOG.md) |
 | [`@thi.ng/hdom`](./packages/hdom) | [![npm (scoped)](https://img.shields.io/npm/v/@thi.ng/hdom.svg)](https://www.npmjs.com/package/@thi.ng/hdom) | [changelog](./packages/hdom/CHANGELOG.md) |
 | [`@thi.ng/hdom-components`](./packages/hdom-components) | [![npm (scoped)](https://img.shields.io/npm/v/@thi.ng/hdom-components.svg)](https://www.npmjs.com/package/@thi.ng/hdom-components) | [changelog](./packages/hdom-components/CHANGELOG.md) |
+| [`@thi.ng/hdom-tachyons`](./packages/hdom-tachyons) | [![npm (scoped)](https://img.shields.io/npm/v/@thi.ng/hdom-tachyons.svg)](https://www.npmjs.com/package/@thi.ng/hdom-tachyons) | [changelog](./packages/hdom-tachyons/CHANGELOG.md) |
 | [`@thi.ng/heaps`](./packages/heaps) | [![npm (scoped)](https://img.shields.io/npm/v/@thi.ng/heaps.svg)](https://www.npmjs.com/package/@thi.ng/heaps) | [changelog](./packages/heaps/CHANGELOG.md) |
 | [`@thi.ng/hiccup`](./packages/hiccup) | [![npm (scoped)](https://img.shields.io/npm/v/@thi.ng/hiccup.svg)](https://www.npmjs.com/package/@thi.ng/hiccup) | [changelog](./packages/hiccup/CHANGELOG.md) |
 | [`@thi.ng/hiccup-css`](./packages/hiccup-css) | [![npm (scoped)](https://img.shields.io/npm/v/@thi.ng/hiccup-css.svg)](https://www.npmjs.com/package/@thi.ng/hiccup-css) | [changelog](./packages/hiccup-css/CHANGELOG.md) |
