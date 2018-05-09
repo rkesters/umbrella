@@ -12,9 +12,9 @@ export const DEFAULT: ThemeSpec = resolveMap({
     buttons: {
         primary: {
             states: {
-                disabled: ($) => `moon-gray bg-${$("/global.disabled")}`,
-                default: ($) => `white bg-${$("/global.bodyText")} hover-bg-${$("/global.hover")} bg-animate`,
-                selected: ($) => `white bg-${$("/global.selected")} hover-bg-${$("/global.hover")} bg-animate`,
+                disabled: ($) => `moon-gray bg-${$("/global/disabled")}`,
+                default: ($) => `white bg-${$("/global/bodyText")} hover-bg-${$("/global/hover")} bg-animate`,
+                selected: ($) => `white bg-${$("/global/selected")} hover-bg-${$("/global/hover")} bg-animate`,
             },
             common: "dib",
             normal: {
@@ -38,9 +38,9 @@ export const DEFAULT: ThemeSpec = resolveMap({
         secondary: ($) => ({
             ...$("primary"),
             states: {
-                disabled: $("/global.disabled"),
-                default: `${$("/global.bodyText")} hover-bg-${$("/global.hover")} hover-white bg-animate`,
-                selected: `${$("/global.selected")} hover-bg-${$("/global.hover")} hover-white bg-animate`
+                disabled: $("/global/disabled"),
+                default: `${$("/global/bodyText")} hover-bg-${$("/global/hover")} hover-white bg-animate`,
+                selected: `${$("/global/selected")} hover-bg-${$("/global/hover")} hover-white bg-animate`
             },
             common: "dib ba",
         })
