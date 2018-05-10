@@ -1,0 +1,11 @@
+bench
+build
+coverage
+dev
+doc
+src*
+test
+.nyc_output
+tsconfig.json
+*.tgz
+*.html

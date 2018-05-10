@@ -1,15 +1,21 @@
 import { Predicate } from "@thi.ng/api/api";
+import { illegalArity } from "@thi.ng/errors/illegal-arity";
 import { isFunction } from "@thi.ng/checks/is-function";
 import { DCons } from "@thi.ng/dcons";
 import { Reducer, Transducer } from "@thi.ng/transducers/api";
-import { isReduced, unreduced } from "@thi.ng/transducers/reduced";
 import { cycle } from "@thi.ng/transducers/iter/cycle";
 import { range } from "@thi.ng/transducers/iter/range";
+import { isReduced, unreduced } from "@thi.ng/transducers/reduced";
 import { delayed } from "@thi.ng/transducers/xform/delayed";
 
-import { ChannelItem, ErrorHandler, IBuffer, IReadWriteableChannel, State } from "./api";
+import {
+    ChannelItem,
+    ErrorHandler,
+    IBuffer,
+    IReadWriteableChannel,
+    State
+} from "./api";
 import { FixedBuffer } from "./buffer";
-
 import { shuffle } from "./utils/shuffle";
 
 export class Channel<T> implements
@@ -99,7 +105,7 @@ export class Channel<T> implements
                 close = args[2];
                 break;
             default:
-                throw new Error(`invalid arity ${args.length}`);
+                illegalArity(args.length);
         }
         const chan = new Channel<T>(tx);
         chan.into(args[0], close);
@@ -300,7 +306,7 @@ export class Channel<T> implements
                 [id, buf, tx, err] = args;
                 break;
             default:
-                throw new Error(`invalid arity ${args.length}`);
+                illegalArity(args.length);
         }
         this.id = id || `chan-${Channel.NEXT_ID++}`;
         buf = buf || 1;

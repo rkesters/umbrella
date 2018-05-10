@@ -1,7 +1,8 @@
 import { Predicate } from "@thi.ng/api/api";
+
 import { ISubscribable, State } from "../api";
-import { Stream } from "../stream";
 import { Subscription } from "../index";
+import { Stream } from "../stream";
 
 export class SidechainPartition<A, B> extends Subscription<A, A[]> {
 
@@ -30,11 +31,17 @@ export class SidechainPartition<A, B> extends Subscription<A, A[]> {
         });
     }
 
+    unsubscribe(sub?: Subscription<any, any>) {
+        const res = super.unsubscribe(sub);
+        if (!sub || !this.subs.size) {
+            this.sideSub.unsubscribe();
+        }
+        return res;
+    }
+
     next(x: A) {
         if (this.state < State.DONE) {
             this.buf.push(x);
-        } else {
-            throw new Error(`called next() in ${State[this.state]} state`);
         }
     }
 

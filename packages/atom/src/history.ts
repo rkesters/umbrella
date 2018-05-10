@@ -1,8 +1,19 @@
 import { Predicate2, Watch } from "@thi.ng/api/api";
-import { equiv } from "@thi.ng/api/equiv";
-import { Path, getIn, setIn, updateIn } from "@thi.ng/paths";
+import { equiv } from "@thi.ng/equiv";
+import {
+    getIn,
+    Path,
+    setIn,
+    updateIn
+} from "@thi.ng/paths";
 
-import { IAtom, SwapFn, IView, ViewTransform } from "./api";
+import {
+    IAtom,
+    IHistory,
+    IView,
+    SwapFn,
+    ViewTransform
+} from "./api";
 import { View } from "./view";
 
 /**
@@ -13,7 +24,7 @@ import { View } from "./view";
  * `record()` directly.
  */
 export class History<T> implements
-    IAtom<T> {
+    IHistory<T> {
 
     state: IAtom<T>;
     maxLen: number;
@@ -81,14 +92,17 @@ export class History<T> implements
     /**
      * `IAtom.reset()` implementation. Delegates to wrapped atom/cursor,
      * but too applies `changed` predicate to determine if there was a
-     * change and previous value should be recorded.
+     * change and if the previous value should be recorded.
      *
      * @param val
      */
     reset(val: T) {
         const prev = this.state.deref();
-        this.changed(prev, val) && this.record(prev);
         this.state.reset(val);
+        const changed = this.changed(prev, this.state.deref());
+        if (changed) {
+            this.record(prev);
+        }
         return val;
     }
 
@@ -96,15 +110,15 @@ export class History<T> implements
         const prev = this.state.deref();
         const prevV = getIn(prev, path);
         const curr = setIn(prev, path, val);
-        this.changed(prevV, getIn(curr, path)) && this.record(prev);
         this.state.reset(curr);
+        this.changed(prevV, getIn(curr, path)) && this.record(prev);
         return curr;
     }
 
     /**
      * `IAtom.swap()` implementation. Delegates to wrapped atom/cursor,
      * but too applies `changed` predicate to determine if there was a
-     * change and previous value should be recorded.
+     * change and if the previous value should be recorded.
      *
      * @param val
      */
@@ -113,7 +127,12 @@ export class History<T> implements
     }
 
     swapIn<V>(path: Path, fn: SwapFn<V>, ...args: any[]) {
-        return this.reset(updateIn(this.state.deref(), path, fn, ...args));
+        const prev = this.state.deref();
+        const prevV = getIn(prev, path);
+        const curr = updateIn(this.state.deref(), path, fn, ...args);
+        this.state.reset(curr);
+        this.changed(prevV, getIn(curr, path)) && this.record(prev);
+        return curr;
     }
 
     /**
@@ -129,12 +148,21 @@ export class History<T> implements
      * @param state
      */
     record(state?: T) {
-        if (this.history.length >= this.maxLen) {
-            this.history.shift();
+        const history = this.history;
+        const n = history.length;
+        if (n >= this.maxLen) {
+            history.shift();
         }
         // check for arg given and not if `state == null` we want to
         // allow null/undefined as possible values
-        this.history.push(arguments.length > 0 ? state : this.state.deref());
+        if (!arguments.length) {
+            state = this.state.deref();
+            if (!n || this.changed(history[n - 1], state)) {
+                history.push(state);
+            }
+        } else {
+            history.push(state);
+        }
         this.future.length = 0;
     }
 

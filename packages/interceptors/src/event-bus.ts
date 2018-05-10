@@ -1,9 +1,11 @@
-import { IObjectOf, IDeref } from "@thi.ng/api/api";
+import { IDeref, IObjectOf } from "@thi.ng/api/api";
 import { IAtom } from "@thi.ng/atom/api";
 import { Atom } from "@thi.ng/atom/atom";
+import { implementsFunction } from "@thi.ng/checks/implements-function";
 import { isArray } from "@thi.ng/checks/is-array";
 import { isFunction } from "@thi.ng/checks/is-function";
 import { isPromise } from "@thi.ng/checks/is-promise";
+import { illegalArgs } from "@thi.ng/errors/illegal-arguments";
 import { setIn, updateIn } from "@thi.ng/paths";
 
 import * as api from "./api";
@@ -18,7 +20,7 @@ const FX_STATE = api.FX_STATE;
  *
  * Events processed by this class are simple 2-element tuples/arrays of
  * this form: `["event-id", payload?]`, where the `payload` is optional
- * and can be any data.
+ * and can be of any type.
  *
  * Events are processed by registered handlers which transform each
  * event into a number of side effect descriptions to be executed later.
@@ -82,7 +84,8 @@ export class StatelessEventBus implements
      * definitions (all optional).
      *
      * In addition to the user provided handlers & effects, a number of
-     * built-ins are added automatically. See `addBuiltIns()`.
+     * built-ins are added automatically. See `addBuiltIns()`. User
+     * handlers can override built-ins.
      *
      * @param handlers
      * @param effects
@@ -198,7 +201,7 @@ export class StatelessEventBus implements
 
     addHandler(id: string, spec: api.EventDef) {
         const iceps = isArray(spec) ?
-            (<any>spec).map((i) => isFunction(i) ? { pre: i } : i) :
+            (<any>spec).map(asInterceptor) :
             isFunction(spec) ? [{ pre: spec }] : [spec];
         if (iceps.length > 0) {
             if (this.handlers[id]) {
@@ -207,7 +210,7 @@ export class StatelessEventBus implements
             }
             this.handlers[id] = iceps;
         } else {
-            throw new Error(`no handlers in spec for ID: ${id}`);
+            illegalArgs(`no handlers in spec for ID: ${id}`);
         }
     }
 
@@ -241,6 +244,25 @@ export class StatelessEventBus implements
                 this.addEffect(id, fx[0], fx[1]);
             } else {
                 this.addEffect(id, fx);
+            }
+        }
+    }
+
+    /**
+     * Prepends given interceptors (or interceptor functions) to
+     * selected handlers. If no handler IDs are given, applies
+     * instrumentation to all currently registered handlers.
+     *
+     * @param inject
+     * @param ids
+     */
+    instrumentWith(inject: (api.Interceptor | api.InterceptorFn)[], ids?: string[]) {
+        const iceps = inject.map(asInterceptor);
+        const handlers = this.handlers;
+        for (let id of ids || Object.keys(handlers)) {
+            const h = handlers[id];
+            if (h) {
+                handlers[id] = iceps.concat(h);
             }
         }
     }
@@ -303,6 +325,17 @@ export class StatelessEventBus implements
     }
 
     /**
+     * Dispatches given event after `delay` milliseconds
+     * (by default 17).
+     *
+     * @param e
+     * @param delay
+     */
+    dispatchLater(e: api.Event, delay = 17) {
+        setTimeout(() => this.dispatch(e), delay);
+    }
+
+    /**
      * Triggers processing of current event queue and returns `true` if
      * any events have been processed.
      *
@@ -349,12 +382,12 @@ export class StatelessEventBus implements
      * invocations of the same effect type per frame. If no side effects
      * are requested, an interceptor can return `undefined`.
      *
-     * Processing of the current event stops immediatedly, if an
+     * Processing of the current event stops immediately, if an
      * interceptor sets the `FX_CANCEL` side effect key to `true`.
      * However, the results of any previous interceptors (incl. the one
      * which cancelled) are kept and processed further as usual.
      *
-     * @param fx
+     * @param ctx
      * @param e
      */
     protected processEvent(ctx: api.InterceptorContext, e: api.Event) {
@@ -368,7 +401,7 @@ export class StatelessEventBus implements
         for (let i = 0; i <= n && !ctx[FX_CANCEL]; i++) {
             const icep = iceps[i];
             if (icep.pre) {
-                this.mergeEffects(ctx, icep.pre(ctx[FX_STATE], e, this));
+                this.mergeEffects(ctx, icep.pre(ctx[FX_STATE], e, this, ctx));
             }
             hasPost = hasPost || !!icep.post;
         }
@@ -378,7 +411,7 @@ export class StatelessEventBus implements
         for (let i = n; i >= 0 && !ctx[FX_CANCEL]; i--) {
             const icep = iceps[i];
             if (icep.post) {
-                this.mergeEffects(ctx, icep.post(ctx[FX_STATE], e, this));
+                this.mergeEffects(ctx, icep.post(ctx[FX_STATE], e, this, ctx));
             }
         }
     }
@@ -387,7 +420,7 @@ export class StatelessEventBus implements
      * Takes a collection of side effects generated during event
      * processing and applies them in order of configured priorities.
      *
-     * @param fx
+     * @param ctx
      */
     protected processEffects(ctx: api.InterceptorContext) {
         const effects = this.effects;
@@ -398,10 +431,10 @@ export class StatelessEventBus implements
                 const fn = effects[id];
                 if (id !== FX_STATE) {
                     for (let v of val) {
-                        fn(v, this);
+                        fn(v, this, ctx);
                     }
                 } else {
-                    fn(val, this);
+                    fn(val, this, ctx);
                 }
             }
         }
@@ -461,20 +494,19 @@ export class StatelessEventBus implements
             } else if (k === FX_DISPATCH_NOW) {
                 if (isArray(v[0])) {
                     for (let e of v) {
-                        this.dispatchNow(e);
+                        e && this.dispatchNow(e);
                     }
                 } else {
                     this.dispatchNow(v);
                 }
             } else {
-                if (ctx[k]) {
-                    if (isArray(v[0])) {
-                        Array.prototype.push.apply(ctx[k], v);
-                    } else {
-                        ctx[k].push(v)
+                ctx[k] || (ctx[k] = []);
+                if (isArray(v[0])) {
+                    for (let e of v) {
+                        e !== undefined && ctx[k].push(e);
                     }
                 } else {
-                    ctx[k] = [v];
+                    ctx[k].push(v)
                 }
             }
         }
@@ -499,7 +531,8 @@ export class EventBus extends StatelessEventBus implements
      * automatically creates an `Atom` with empty state object.
      *
      * In addition to the user provided handlers & effects, a number of
-     * built-ins are added automatically. See `addBuiltIns()`.
+     * built-ins are added automatically. See `addBuiltIns()`. User
+     * handlers can override built-ins.
      *
      * @param state
      * @param handlers
@@ -520,7 +553,7 @@ export class EventBus extends StatelessEventBus implements
 
     /**
      * Adds same built-in event & side effect handlers as in
-     * `StatelessEventBus.addBuiltIns()` with the following additions:
+     * `StatelessEventBus.addBuiltIns()` and the following additions:
      *
      * ### Handlers
      *
@@ -543,26 +576,70 @@ export class EventBus extends StatelessEventBus implements
      * [EV_UPDATE_VALUE, ["path.to.value", (x, y) => x + y, 1]]
      * ```
      *
+     * #### `EV_TOGGLE_VALUE`
+     *
+     * Negates a boolean state value at given path.
+     *
+     * Example event definition:
+     * ```
+     * [EV_TOGGLE_VALUE, "path.to.value"]
+     * ```
+     *
+     * #### `EV_UNDO`
+     *
+     * Calls `ctx[id].undo()` and uses return value as new state.
+     * Assumes `ctx[id]` is a @thi.ng/atom `History` instance, provided
+     * via e.g. `processQueue({ history })`. The event can be triggered
+     * with or without ID. By default `"history"` is used as default key
+     * to lookup the `History` instance. Furthermore, an additional
+     * event can be triggered based on if a previous state has been
+     * restored or not (basically, if the undo was successful). This is
+     * useful for resetting/re-initializing stateful resources after a
+     * successful undo action or to notify the user that no more undo's
+     * are possible. The new event will be processed in the same frame
+     * and has access to the (possibly) restored state. The event
+     * structure for these options is shown below:
+     *
+     * ```
+     * // using default ID
+     * bus.dispatch([EV_UNDO]);
+     *
+     * // using custom history ID
+     * bus.dispatch([EV_UNDO, ["custom"]]);
+     *
+     * // using custom ID and dispatch another event after undo
+     * bus.dispatch([EV_UNDO, ["custom", ["ev-undo-success"], ["ev-undo-fail"]]]);
+     * ```
+     *
+     * #### `EV_REDO`
+     *
+     * Similar to `EV_UNDO`, but for redo actions.
+     *
      * ### Side effects
      *
      * #### `FX_STATE`
      *
      * Resets state atom to provided value (only a single update per
-     * processing frame)
-     *
+     * processing frame).
      */
     addBuiltIns(): any {
         super.addBuiltIns();
         // handlers
-        this.addHandler(api.EV_SET_VALUE,
-            (state, [_, [path, val]]) =>
-                ({ [FX_STATE]: setIn(state, path, val) }));
-        this.addHandler(api.EV_UPDATE_VALUE,
-            (state, [_, [path, fn, ...args]]) =>
-                ({ [FX_STATE]: updateIn(state, path, fn, ...args) }));
+        this.addHandlers({
+            [api.EV_SET_VALUE]: (state, [_, [path, val]]) =>
+                ({ [FX_STATE]: setIn(state, path, val) }),
+            [api.EV_UPDATE_VALUE]: (state, [_, [path, fn, ...args]]) =>
+                ({ [FX_STATE]: updateIn(state, path, fn, ...args) }),
+            [api.EV_TOGGLE_VALUE]: (state, [_, path]) =>
+                ({ [FX_STATE]: updateIn(state, path, (x) => !x) }),
+            [api.EV_UNDO]: undoHandler("undo"),
+            [api.EV_REDO]: undoHandler("redo"),
+        });
 
         // effects
-        this.addEffect(FX_STATE, (x) => this.state.reset(x), -1000);
+        this.addEffects({
+            [FX_STATE]: [(state) => this.state.reset(state), -1000],
+        });
     }
 
     /**
@@ -572,13 +649,26 @@ export class EventBus extends StatelessEventBus implements
      * If an event handler triggers the `FX_DISPATCH_NOW` side effect,
      * the new event will be added to the currently processed batch and
      * therefore executed in the same frame. Also see `dispatchNow()`.
+     *
+     * If the optional `ctx` arg is provided it will be merged into the
+     * `InterceptorContext` object passed to each interceptor. Since the
+     * merged object is also used to collect triggered side effects,
+     * care must be taken that there're no key name clashes.
+     *
+     * In order to use the built-in `EV_UNDO`, `EV_REDO` events, users
+     * MUST provide a @thi.ng/atom History (or compatible undo history
+     * instance) via the `ctx` arg, e.g.
+     *
+     * ```
+     * bus.processQueue({ history });
+     * ```
      */
-    processQueue() {
+    processQueue(ctx?: api.InterceptorContext) {
         if (this.eventQueue.length > 0) {
             const prev = this.state.deref();
             this.currQueue = [...this.eventQueue];
             this.eventQueue.length = 0;
-            const ctx = this.currCtx = { [FX_STATE]: prev };
+            ctx = this.currCtx = { ...ctx, [FX_STATE]: prev };
             for (let e of this.currQueue) {
                 this.processEvent(ctx, e);
             }
@@ -589,3 +679,23 @@ export class EventBus extends StatelessEventBus implements
         return false;
     }
 }
+
+const asInterceptor = (i: api.Interceptor | api.InterceptorFn) =>
+    isFunction(i) ? { pre: i } : i;
+
+const undoHandler = (action: string) =>
+    (_, [__, ev], bus, ctx) => {
+        let id = ev ? ev[0] : "history";
+        if (implementsFunction(ctx[id], action)) {
+            const ok = ctx[id][action]();
+            return {
+                [FX_STATE]: bus.state.deref(),
+                [FX_DISPATCH_NOW]: ev ?
+                    ok !== undefined ? ev[1] : ev[2] :
+                    undefined,
+            };
+        } else {
+            console.warn("no history in context");
+        }
+    };
+

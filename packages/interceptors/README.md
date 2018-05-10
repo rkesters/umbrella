@@ -2,6 +2,9 @@
 
 [![npm (scoped)](https://img.shields.io/npm/v/@thi.ng/interceptors.svg)](https://www.npmjs.com/package/@thi.ng/interceptors)
 
+This project is part of the
+[@thi.ng/umbrella](https://github.com/thi-ng/umbrella/) monorepo.
+
 ## About
 
 Interceptor based event, side effect & immutable state handling.
@@ -20,7 +23,8 @@ import * as interceptors from "@thi.ng/interceptors";
 
 ### Event bus, interceptors, side effects
 
-Description forthcoming. Please check the detailed commented source code and examples for now:
+Description forthcoming. Please check the detailed commented source code
+and examples for now:
 
 - [/src/event-bus.ts](https://github.com/thi-ng/umbrella/tree/master/packages/interceptors/src/event-bus.ts)
 
@@ -31,7 +35,10 @@ Introductory:
 
 Advanced:
 
+- [/examples/rstream-dataflow](https://github.com/thi-ng/umbrella/tree/master/examples/rstream-dataflow) | [live demo](http://demo.thi.ng/umbrella/rstream-dataflow)
+- [/examples/rstream-grid](https://github.com/thi-ng/umbrella/tree/master/examples/rstream-grid) | [live demo](http://demo.thi.ng/umbrella/rstream-grid)
 - [/examples/router-basics](https://github.com/thi-ng/umbrella/tree/master/examples/router-basics) | [live demo](http://demo.thi.ng/umbrella/router-basics)
+- [/examples/svg-waveform](https://github.com/thi-ng/umbrella/tree/master/examples/svg-waveform) | [live demo](http://demo.thi.ng/umbrella/svg-waveform)
 
 - [create-hdom-app](https://github.com/thi-ng/create-hdom-app) Yarn project generator. Uses: @thi.ng/atom + hdom + interceptors + router
 

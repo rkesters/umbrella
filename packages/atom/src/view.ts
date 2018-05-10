@@ -1,5 +1,5 @@
-import { equiv as _equiv } from "@thi.ng/api/equiv";
-import { Path, getter, toPath } from "@thi.ng/paths";
+import { equiv as _equiv } from "@thi.ng/equiv";
+import { getter, Path, toPath } from "@thi.ng/paths";
 
 import { IView, ReadonlyAtom, ViewTransform } from "./api";
 
@@ -22,7 +22,7 @@ import { IView, ReadonlyAtom, ViewTransform } from "./api";
  * regardless of value change).
  *
  * Related, the actual value change predicate can be customized. If not
- * given, the default `@thi.ng/api/equiv` will be used.
+ * given, the default `@thi.ng/equiv` will be used.
  *
  * ```
  * a = new Atom({a: {b: 1}});

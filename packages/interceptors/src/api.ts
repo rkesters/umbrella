@@ -1,9 +1,9 @@
 import { ReadonlyAtom } from "@thi.ng/atom/api";
 
-export type InterceptorFn = (state: any, e: Event, bus?: IDispatch) => InterceptorContext | void;
-export type InterceptorPredicate = (state: any, e: Event, fx?: any) => boolean;
+export type InterceptorFn = (state: any, e: Event, bus?: IDispatch, ctx?: InterceptorContext) => InterceptorContext | void;
+export type InterceptorPredicate = (state: any, e: Event, bus?: IDispatch, ctx?: InterceptorContext) => boolean;
 
-export type SideEffect = (x: any, bus?: IDispatch) => any;
+export type SideEffect = (x: any, bus?: IDispatch, ctx?: InterceptorContext) => any;
 export type EventDef = Interceptor | InterceptorFn | (Interceptor | InterceptorFn)[];
 export type EffectDef = SideEffect | [SideEffect, number];
 export type AsyncEffectDef = [string, any, string, string];
@@ -13,6 +13,7 @@ export type EffectPriority = [string, number];
 
 export const EV_SET_VALUE = "--set-value";
 export const EV_UPDATE_VALUE = "--update-value";
+export const EV_TOGGLE_VALUE = "--toggle-value";
 
 // Built-in side effect ID constants
 
@@ -25,22 +26,21 @@ export const FX_FETCH = "--fetch";
 export const FX_STATE = "--state";
 
 /**
- * Currently unused
+ * Event ID to trigger redo action.
+ * See `EventBus.addBuiltIns()` for further details.
+ * Also see `snapshot()` interceptor docs.
  */
-export const FX_REDO_RESTORE = "--redo-restore";
+export const EV_REDO = "--redo";
 
 /**
- * Currently unused
+ * Event ID to trigger undo action.
+ * See `EventBus.addBuiltIns()` for further details.
+ * Also see `snapshot()` interceptor docs.
  */
-export const FX_UNDO_STORE = "--undo-store";
-
-/**
- * Currently unused
- */
-export const FX_UNDO_RESTORE = "--undo-restore";
+export const EV_UNDO = "--undo";
 
 export interface Event extends Array<any> {
-    [0]: string;
+    [0]: PropertyKey;
     [1]?: any;
 }
 
@@ -48,6 +48,7 @@ export interface IDispatch {
     readonly state: ReadonlyAtom<any>;
     dispatch(event: Event);
     dispatchNow(event: Event);
+    dispatchLater(event: Event, delay?: number);
 }
 
 export interface Interceptor {

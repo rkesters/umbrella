@@ -1,31 +1,49 @@
-import { isArray } from "@thi.ng/checks/is-array";
-import { isFunction } from "@thi.ng/checks/is-function";
-import { isIterable } from "@thi.ng/checks/is-iterable";
-import { isString } from "@thi.ng/checks/is-string";
-import { SVG_TAGS, SVG_NS } from "@thi.ng/hiccup/api";
+import * as isa from "@thi.ng/checks/is-array";
+import * as isf from "@thi.ng/checks/is-function";
+import * as isi from "@thi.ng/checks/is-iterable";
+import * as iss from "@thi.ng/checks/is-string";
+import { SVG_NS, SVG_TAGS } from "@thi.ng/hiccup/api";
 import { css } from "@thi.ng/hiccup/css";
 import { map } from "@thi.ng/iterators/map";
 
-export function createDOM(parent: Element, tag: any, opts?: any, insert?: number) {
+const isArray = isa.isArray;
+const isFunction = isf.isFunction;
+const isIterable = isi.isIterable
+const isString = iss.isString;
+
+/**
+ * Creates an actual DOM tree from given hiccup component and `parent`
+ * element. Calls `init` with created element (user provided context and
+ * other args) for any components with `init` life cycle method. Returns
+ * created root element(s) - usually only a single one, but can be an
+ * array of elements, if the provided tree is an iterable. Creates DOM
+ * text nodes for non-component values. Returns `parent` if tree is
+ * `null` or `undefined`.
+ *
+ * @param parent
+ * @param tag
+ * @param insert
+ */
+export function createDOM(parent: Element, tag: any, insert?: number) {
     if (isArray(tag)) {
-        if (isFunction(tag[0])) {
-            return createDOM(parent, tag[0].apply(null, tag.slice(1), opts));
+        const t = tag[0];
+        if (isFunction(t)) {
+            return createDOM(parent, t.apply(null, tag.slice(1)));
         }
-        const el = createElement(parent, tag[0], tag[1], insert);
+        const el = createElement(parent, t, tag[1], insert);
         if ((<any>tag).__init) {
-            const args = [el, ...((<any>tag).__args)]; // Safari https://bugs.webkit.org/show_bug.cgi?format=multiple&id=162003
-            (<any>tag).__init.apply(tag, args);
+            (<any>tag).__init.apply(tag, [el, ...(<any>tag).__args]);
         }
         if (tag[2]) {
             const n = tag.length;
             for (let i = 2; i < n; i++) {
-                createDOM(el, tag[i], opts);
+                createDOM(el, tag[i]);
             }
         }
         return el;
     }
     if (!isString(tag) && isIterable(tag)) {
-        return [...(map((x) => createDOM(parent, x, opts), tag))];
+        return [...(map((x) => createDOM(parent, x), tag))];
     }
     if (tag == null) {
         return parent;
@@ -110,6 +128,10 @@ export function setAttrib(el: Element, id: string, val: any, attribs?: any) {
             case "value":
                 updateValueAttrib(<HTMLInputElement>el, val);
                 break;
+            case "checked":
+                // TODO add more native attribs?
+                el[id] = val;
+                break;
             default:
                 if (isListener) {
                     el.addEventListener(id.substr(2), val);
@@ -118,7 +140,7 @@ export function setAttrib(el: Element, id: string, val: any, attribs?: any) {
                 }
         }
     } else {
-        el.removeAttribute(id);
+        el[id] != null ? (el[id] = null) : el.removeAttribute(id);
     }
     return el;
 }
@@ -143,9 +165,14 @@ export function updateValueAttrib(el: HTMLInputElement, v: any) {
     }
 }
 
-export function removeAttribs(el: Element, attribs: string[]) {
-    for (let i = attribs.length - 1; i >= 0; i--) {
-        el.removeAttribute(attribs[i]);
+export function removeAttribs(el: Element, attribs: string[], prev: any) {
+    for (let i = attribs.length; --i >= 0;) {
+        const a = attribs[i];
+        if (a.indexOf("on") === 0) {
+            el.removeEventListener(a.substr(2), prev[a]);
+        } else {
+            el[a] ? (el[a] = null) : el.removeAttribute(a);
+        }
     }
 }
 

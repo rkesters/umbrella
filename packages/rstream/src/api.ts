@@ -1,8 +1,8 @@
-import { IID } from "@thi.ng/api/api";
+import { IDeref, IID } from "@thi.ng/api/api";
 import { Transducer } from "@thi.ng/transducers/api";
 
-import { Subscription } from "./subscription";
 import { Stream } from "./stream";
+import { Subscription } from "./subscription";
 
 export enum State {
     IDLE,
@@ -21,12 +21,20 @@ export interface ISubscriber<T> {
     [id: string]: any;
 }
 
-export interface ISubscribable<T> extends IID<string> {
+export interface ISubscribable<T> extends
+    IDeref<T>,
+    IID<string> {
+
     subscribe<C>(xform: Transducer<T, C>, id?: string): Subscription<T, C>;
     subscribe<C>(sub: Partial<ISubscriber<T>>, xform: Transducer<T, C>, id?: string): Subscription<T, C>;
     subscribe(sub: Partial<ISubscriber<T>>, id?: string): Subscription<T, T>;
     unsubscribe(sub?: Partial<ISubscriber<T>>): boolean;
     getState(): State;
+}
+
+export interface ISubscribableSubscriber<T> extends
+    ISubscriber<T>,
+    ISubscribable<any> {
 }
 
 export interface IStream<T> extends ISubscriber<T> {

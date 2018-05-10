@@ -3,6 +3,121 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.8.6"></a>
+## [1.8.6](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.8.5...@thi.ng/transducers@1.8.6) (2018-05-10)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/transducers
+
+<a name="1.8.5"></a>
+## [1.8.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.8.4...@thi.ng/transducers@1.8.5) (2018-05-09)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/transducers
+
+<a name="1.8.4"></a>
+## [1.8.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.8.3...@thi.ng/transducers@1.8.4) (2018-04-29)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/transducers
+
+<a name="1.8.3"></a>
+## [1.8.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.8.2...@thi.ng/transducers@1.8.3) (2018-04-26)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/transducers
+
+<a name="1.8.2"></a>
+## [1.8.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.8.1...@thi.ng/transducers@1.8.2) (2018-04-26)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/transducers
+
+<a name="1.8.1"></a>
+## [1.8.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.8.0...@thi.ng/transducers@1.8.1) (2018-04-18)
+
+
+### Bug Fixes
+
+* **transducers:** add generics for compR(), fix types in mapNth() ([3b7c9d9](https://github.com/thi-ng/umbrella/commit/3b7c9d9))
+* **transducers:** Provide argument types for compR() and deepTransform() ([de89f00](https://github.com/thi-ng/umbrella/commit/de89f00))
+
+
+
+
+<a name="1.8.0"></a>
+# [1.8.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.7.5...@thi.ng/transducers@1.8.0) (2018-04-11)
+
+
+### Features
+
+* **transducers:** add run() for executing side effects only, update readme ([52c7508](https://github.com/thi-ng/umbrella/commit/52c7508))
+
+
+
+
+<a name="1.7.5"></a>
+## [1.7.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.7.4...@thi.ng/transducers@1.7.5) (2018-04-08)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/transducers
+
+<a name="1.7.4"></a>
+## [1.7.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.7.3...@thi.ng/transducers@1.7.4) (2018-04-04)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/transducers
+
+<a name="1.7.3"></a>
+## [1.7.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.7.2...@thi.ng/transducers@1.7.3) (2018-04-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/transducers
+
+<a name="1.7.2"></a>
+## [1.7.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.7.1...@thi.ng/transducers@1.7.2) (2018-03-28)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/transducers
+
+<a name="1.7.1"></a>
+## [1.7.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.7.0...@thi.ng/transducers@1.7.1) (2018-03-21)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/transducers
+
+<a name="1.7.0"></a>
+# [1.7.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.6.2...@thi.ng/transducers@1.7.0) (2018-03-19)
+
+
+### Features
+
+* **transducers:** add mapVals() xform ([abc195a](https://github.com/thi-ng/umbrella/commit/abc195a))
+* **transducers:** add partitionSync() xform ([bebd118](https://github.com/thi-ng/umbrella/commit/bebd118))
+
+
+
+
 <a name="1.6.2"></a>
 ## [1.6.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.6.1...@thi.ng/transducers@1.6.2) (2018-03-08)
 

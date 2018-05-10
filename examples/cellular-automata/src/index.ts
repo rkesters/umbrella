@@ -1,16 +1,15 @@
 import { start } from "@thi.ng/hdom";
 import { dropdown, DropDownOption } from "@thi.ng/hdom-components/dropdown";
-
-import { transduce } from "@thi.ng/transducers/transduce";
-import { step } from "@thi.ng/transducers/step";
 import { comp } from "@thi.ng/transducers/func/comp";
 import { lookup2d } from "@thi.ng/transducers/func/lookup";
 import { range2d } from "@thi.ng/transducers/iter/range2d";
 import { repeatedly } from "@thi.ng/transducers/iter/repeatedly";
 import { push } from "@thi.ng/transducers/rfn/push";
 import { str } from "@thi.ng/transducers/rfn/str";
+import { step } from "@thi.ng/transducers/step";
+import { transduce } from "@thi.ng/transducers/transduce";
 import { bits } from "@thi.ng/transducers/xform/bits";
-import { convolve2d, buildKernel2d } from "@thi.ng/transducers/xform/convolve";
+import { buildKernel2d, convolve2d } from "@thi.ng/transducers/xform/convolve";
 import { map } from "@thi.ng/transducers/xform/map";
 import { multiplex } from "@thi.ng/transducers/xform/multiplex";
 import { partition } from "@thi.ng/transducers/xform/partition";
@@ -110,18 +109,23 @@ const ruleBoxes = (prefix, i, rstride = 9) =>
             .map((rule, j) => checkbox(rule, (e) => setRule(i, j, e.target.checked))),
     ];
 
+const isPreset = (id) => presets.findIndex((x) => x[0] === id) !== -1;
+
 // Use Conway CA default state rules [[dead], [alive]] if no preset present in hash
 applyRules(location.hash.length > 18 ? location.hash.substr(1) : presets[1][0]);
 
 // define & start main app component
 start("app", () => {
+    const id = location.hash.substr(1);
     return ["div",
         ruleBoxes("birth", 0),
         ruleBoxes("survive", 1),
         ["div",
             ["button", { onclick: () => randomizeRules() }, "randomize rules"],
             ["button", { onclick: () => randomizeGrid() }, "reset grid"],
-            dropdown({ onchange: (e) => applyRules(e.target.value) }, presets, location.hash.substr(1))
+            [dropdown, { onchange: (e) => applyRules(e.target.value) },
+                presets,
+                isPreset(id) ? id : ""]
         ],
         ["pre", format(grid = convolve(grid, rules, W, H), W)]
     ];

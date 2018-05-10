@@ -1,0 +1,49 @@
+{
+    "name": "@thi.ng/pointfree-lang",
+    "version": "0.2.8",
+    "description": "Forth style syntax layer/compiler for the @thi.ng/pointfree DSL",
+    "main": "./index.js",
+    "typings": "./index.d.ts",
+    "repository": "https://github.com/thi-ng/umbrella",
+    "author": "Karsten Schmidt <k+npm@thi.ng>",
+    "license": "Apache-2.0",
+    "scripts": {
+        "build": "yarn clean && tsc --declaration && yarn peg",
+        "clean": "rm -rf *.js *.d.ts .nyc_output build coverage doc",
+        "cover": "yarn test && nyc report --reporter=lcov",
+        "doc": "node_modules/.bin/typedoc --mode modules --out doc src",
+        "peg": "pegjs -o parser.js src/grammar.pegjs",
+        "pegtest": "pegjs -o build/src/parser.js src/grammar.pegjs",
+        "pub": "yarn build && yarn publish --access public",
+        "test": "rm -rf build && tsc -p test && yarn pegtest && nyc mocha build/test/*.js"
+    },
+    "devDependencies": {
+        "@types/mocha": "^5.2.0",
+        "@types/node": "^10.0.6",
+        "mocha": "^5.1.1",
+        "pegjs": "^0.10.0",
+        "typedoc": "^0.11.1",
+        "typescript": "^2.8.3"
+    },
+    "dependencies": {
+        "@thi.ng/api": "^3.0.0",
+        "@thi.ng/errors": "^0.1.0",
+        "@thi.ng/pointfree": "^0.7.8"
+    },
+    "keywords": [
+        "concatenative",
+        "dataflow",
+        "DSL",
+        "ES6",
+        "Forth",
+        "functional",
+        "grammar",
+        "PEG",
+        "pointfree",
+        "syntax",
+        "typescript"
+    ],
+    "publishConfig": {
+        "access": "public"
+    }
+}
