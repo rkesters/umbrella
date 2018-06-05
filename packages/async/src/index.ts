@@ -1,4 +1,5 @@
 import { Predicate } from "@thi.ng/api/api";
+import { implementsFunction } from "@thi.ng/checks/implements-function";
 import { comp as _comp } from "@thi.ng/transducers/func/comp";
 import {
     isReduced,
@@ -97,6 +98,9 @@ export async function* dynamicSource<T>(x: MaybeAsyncValue<T>, ms = 0) {
 
 export function $iter<T>(x: Iterable<T> | AsyncIterable<T>) {
     let i: () => Iterator<T> | AsyncIterator<T>;
+    if (implementsFunction(x, "next")) {
+        return <Iterator<T>><any>x;
+    }
     if ((i = x[Symbol.iterator]) || (i = x[Symbol.asyncIterator])) {
         return i();
     }
@@ -296,7 +300,7 @@ export function producer<T>() {
  *   (usually < 4ms, VM specific).
  * - All following read attempts will use a delay starting with
  *   `startLatency` an exponentially increasing up to `maxLatency` to
- *   ease CPU load.
+ *   ease CPU load, using growth exponent `exp`.
  * - Any successful read resets the read attempt counter to temporarily
  *   switch back to min latency.
  *
@@ -307,10 +311,11 @@ export function producer<T>() {
  * @param src
  * @param maxWait
  * @param maxLatency
- * @param startLatency
+ * @param startLatency must be > 1
+ * @param exp
  */
-export async function* consumer<T>(src: AsyncProducer<T>, maxWait = 100, maxLatency = 33, startLatency = 1.01) {
-    let t: number = startLatency;
+export async function* consumer<T>(src: AsyncProducer<T>, maxWait = 100, maxLatency = 33, startLatency = 1.01, exp = 1.01) {
+    let t: number = Math.max(startLatency, 1.01);
     let wait: number = 0;
     for (; ;) {
         if (src.ready) {
@@ -323,7 +328,7 @@ export async function* consumer<T>(src: AsyncProducer<T>, maxWait = 100, maxLate
             wait = 0;
         } else if (wait > maxWait) {
             await delay(t);
-            t = Math.min(maxLatency, Math.pow(t, 1.01));
+            t = Math.min(maxLatency, Math.pow(t, exp));
         } else {
             await delay(0);
             wait++;
