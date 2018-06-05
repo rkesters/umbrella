@@ -13,7 +13,7 @@ export type MaybeAsyncIterable<T> = Iterable<T> | AsyncIterable<T>;
 export type MaybeAsyncGenerator<T> = IterableIterator<T> | AsyncIterableIterator<T>;
 
 export type AsyncTransducer<A, B> = (rfn: AsyncReducer<any, B>) => AsyncReducer<any, A>;
-export type AsyncReductionFn<Acc, Val> = (acc: Acc, x: MaybeAsyncValue<Val>) => Promise<Acc | Reduced<Acc>>;
+export type AsyncReductionFn<Acc, Val> = (acc: Acc, x: MaybeAsyncValue<Val>) => MaybeAsyncValue<Acc | Reduced<Acc>>;
 
 export interface AsyncProducer<T> extends AsyncIterableIterator<T> {
     ready: boolean;
@@ -108,7 +108,7 @@ export async function* tuples(...src: MaybeAsyncIterable<any>[]) {
     const iters = src.map($iter);
     while (true) {
         const chunk = [];
-        for (let i of iters) {
+        for (const i of iters) {
             const x = await i.next();
             if (x.done) {
                 return;
@@ -120,7 +120,7 @@ export async function* tuples(...src: MaybeAsyncIterable<any>[]) {
 }
 
 export async function trace(src: AsyncIterable<any>, prefix = "") {
-    for await (let x of src) {
+    for await (const x of src) {
         console.log(prefix, x);
     }
     console.log(prefix, "done");
@@ -141,8 +141,8 @@ export function mapcat<A, B>(fn: (x: A) => MaybeAsyncValue<Iterable<MaybeAsyncVa
             async function (acc, x: MaybeAsyncValue<A>) {
                 const y = await fn(await x);
                 if (y != null) {
-                    for (let yy of y) {
-                        acc = await rfn[2](acc, await yy);
+                    for await (const yy of y) {
+                        acc = await rfn[2](acc, yy);
                         if (isReduced(acc)) {
                             break;
                         }
@@ -200,18 +200,10 @@ export function append<T>(buf?: T[]): AsyncReducer<T[], T> {
     ]
 }
 
-export const xf = comp(
-    map((x: number) => delay(100, x * 3)),
-    filter((x: number) => !!(x & 1)),
-    mapcat((x: number) => [x - 1, x, x + 1].map((y) => delay(50, y))),
-    drop(1),
-    take(3),
-);
-
 export async function transduce<A, B, C>(xf: AsyncTransducer<A, B>, rfn: AsyncReducer<C, B>, src: Iterable<A> | AsyncIterable<A>) {
     const [init, complete, step] = xf(rfn);
     let acc = await init();
-    for await (let x of src) {
+    for await (const x of src) {
         acc = await step(acc, x);
         if (isReduced(acc)) {
             acc = unreduced(await acc);
@@ -228,6 +220,9 @@ export async function transduce<A, B, C>(xf: AsyncTransducer<A, B>, rfn: AsyncRe
  * been `yield`ed. Each transducer step/op can produce any number of
  * values (as promises or not) and also waits for any promises to
  * resolve. Therefore, sync and async transforms can be freely mixed.
+ *
+ * Note: The partial transformation results of each `xf` iteration are
+ * emitted as batch using `yield*`.
  *
  * ```
  * trace(
@@ -247,7 +242,7 @@ export async function transduce<A, B, C>(xf: AsyncTransducer<A, B>, rfn: AsyncRe
 export async function* transform<A, B>(xf: AsyncTransducer<A, B>, src: MaybeAsyncIterable<A>) {
     const [_, complete, step] = xf(append());
     let acc;
-    for await (let x of src) {
+    for await (const x of src) {
         acc = await step([], x);
         if (isReduced(acc)) {
             acc = unreduced(await acc);
@@ -368,10 +363,18 @@ export async function consumeWith<T>(fn: (x: T) => void, src: AsyncProducer<T>, 
     }
 }
 
+// export const xf = comp(
+//     map((x: number) => delay(100, x * 3)),
+//     filter((x: number) => !!(x & 1)),
+//     mapcat((x: number) => [x - 1, x, x + 1].map((y) => delay(50, y))),
+//     drop(1),
+//     take(3),
+// );
+
 // const foo = transform(map((x) => delay(100, x)), [1, 2, 3, 4, 5]);
 // trace(foo, "a");
 // trace(foo, "b");
 
-export const txresult = dynamicSource(null, 1000);
-//trace(txresult, "txres");
-export const demo = () => transduce(xf, append(), [1, 2, 3, 4, 5]).then((x) => txresult.next(x));
+// export const txresult = dynamicSource(null, 1000);
+// trace(txresult, "txres");
+// export const demo = () => transduce(xf, append(), [1, 2, 3, 4, 5]).then((x) => txresult.next(x));
