@@ -1,11 +1,19 @@
 import { Predicate } from "@thi.ng/api/api";
 import { comp as _comp } from "@thi.ng/transducers/func/comp";
+import {
+    isReduced,
+    reduced,
+    Reduced,
+    unreduced,
+    ensureReduced
+} from "@thi.ng/transducers/reduced";
 
 export type MaybeAsyncValue<T> = T | Promise<T>;
 export type MaybeAsyncIterable<T> = Iterable<T> | AsyncIterable<T>;
 export type MaybeAsyncGenerator<T> = IterableIterator<T> | AsyncIterableIterator<T>;
 
 export type AsyncTransducer<A, B> = (rfn: AsyncReducer<any, B>) => AsyncReducer<any, A>;
+export type AsyncReductionFn<Acc, Val> = (acc: Acc, x: MaybeAsyncValue<Val>) => Promise<Acc | Reduced<Acc>>;
 
 export interface AsyncProducer<T> extends AsyncIterableIterator<T> {
     ready: boolean;
@@ -14,7 +22,7 @@ export interface AsyncProducer<T> extends AsyncIterableIterator<T> {
 export interface AsyncReducer<Acc, Val> extends Array<any> {
     [0]: () => MaybeAsyncValue<Acc>;
     [1]: (acc: Acc) => MaybeAsyncValue<Acc>;
-    [2]: (acc: Acc, x: MaybeAsyncValue<Val>) => Promise<Acc>;
+    [2]: AsyncReductionFn<Acc, Val>;
 }
 
 export function comp<A, B>(a: AsyncTransducer<A, B>): AsyncTransducer<A, B>;
@@ -29,6 +37,10 @@ export function comp<A, B, C, D, E, F, G, H, I, J>(a: AsyncTransducer<A, B>, b: 
 export function comp<A, B, C, D, E, F, G, H, I, J, K>(a: AsyncTransducer<A, B>, b: AsyncTransducer<B, C>, c: AsyncTransducer<C, D>, d: AsyncTransducer<D, E>, e: AsyncTransducer<E, F>, f: AsyncTransducer<F, G>, g: AsyncTransducer<G, H>, h: AsyncTransducer<H, I>, i: AsyncTransducer<I, J>, j: AsyncTransducer<J, K>, ...fns: AsyncTransducer<any, any>[]): AsyncTransducer<A, any>;
 export function comp(...fns: any[]) {
     return _comp.apply(null, fns);
+}
+
+export function compR<Outer, Inner, Acc>(rfn: AsyncReducer<Acc, Inner>, fn: AsyncReductionFn<Acc, Outer>) {
+    return <AsyncReducer<Acc, Outer>>[rfn[0], rfn[1], fn];
 }
 
 /**
@@ -116,45 +128,68 @@ export async function trace(src: AsyncIterable<any>, prefix = "") {
 
 export function map<A, B>(fn: (x: A) => MaybeAsyncValue<B>): AsyncTransducer<A, B> {
     return (rfn: AsyncReducer<any, B>) => {
-        return [
-            rfn[0],
-            rfn[1],
+        return compR(rfn,
             async function (acc, x: MaybeAsyncValue<A>) {
                 return rfn[2](acc, fn(await x));
-            }];
+            });
     }
 }
 
 export function mapcat<A, B>(fn: (x: A) => MaybeAsyncValue<Iterable<MaybeAsyncValue<B>>>): AsyncTransducer<A, B> {
     return (rfn: AsyncReducer<any, B>) => {
-        return [
-            rfn[0],
-            rfn[1],
+        return compR(rfn,
             async function (acc, x: MaybeAsyncValue<A>) {
                 const y = await fn(await x);
                 if (y != null) {
                     for (let yy of y) {
                         acc = await rfn[2](acc, await yy);
+                        if (isReduced(acc)) {
+                            break;
+                        }
                     }
                 }
                 return acc;
-            }];
+            });
     }
 }
 
 export function filter<T>(fn: Predicate<T>): AsyncTransducer<T, T> {
     return (rfn: AsyncReducer<any, T>) => {
-        return [
-            rfn[0],
-            rfn[1],
+        return compR(rfn,
             async function (acc, x: MaybeAsyncValue<T>) {
                 const y = await x;
                 if (fn(y)) {
                     return rfn[2](acc, y);
                 }
                 return acc;
-            }];
+            });
     }
+}
+
+export function take<T>(n: number): AsyncTransducer<T, T> {
+    return (rfn: AsyncReducer<any, T>) => {
+        let m = n;
+        return compR(rfn,
+            async function (acc, x: MaybeAsyncValue<T>) {
+                return --m > 0 ? rfn[2](acc, x) :
+                    m === 0 ? ensureReduced(rfn[2](acc, x)) :
+                        reduced(acc)
+            });
+    };
+}
+
+export function drop<T>(n: number): AsyncTransducer<T, T> {
+    return (rfn: AsyncReducer<any, T>) => {
+        let m = n;
+        return compR(rfn,
+            async function (acc, x: MaybeAsyncValue<T>) {
+                if (m > 0) {
+                    m--;
+                    return acc;
+                }
+                return rfn[2](acc, x);
+            });
+    };
 }
 
 export function append<T>(buf?: T[]): AsyncReducer<T[], T> {
@@ -166,9 +201,11 @@ export function append<T>(buf?: T[]): AsyncReducer<T[], T> {
 }
 
 export const xf = comp(
-    map((x: number) => delay(1000, x * 3)),
+    map((x: number) => delay(100, x * 3)),
     filter((x: number) => !!(x & 1)),
-    mapcat((x: number) => delay(500, [x - 1, x, x + 1]))
+    mapcat((x: number) => [x - 1, x, x + 1].map((y) => delay(50, y))),
+    drop(1),
+    take(3),
 );
 
 export async function transduce<A, B, C>(xf: AsyncTransducer<A, B>, rfn: AsyncReducer<C, B>, src: Iterable<A> | AsyncIterable<A>) {
@@ -176,16 +213,49 @@ export async function transduce<A, B, C>(xf: AsyncTransducer<A, B>, rfn: AsyncRe
     let acc = await init();
     for await (let x of src) {
         acc = await step(acc, x);
+        if (isReduced(acc)) {
+            acc = unreduced(await acc);
+            break;
+        }
     }
-    return await complete(acc);
+    return unreduced(await complete(acc));
 }
 
+/**
+ * Yields a new async iterator of values from `src` transformed using
+ * async transducer `xf`. If `xf` causes early termination (e.g. via
+ * `take()`), the iterator stops after the last transformed value has
+ * been `yield`ed. Each transducer step/op can produce any number of
+ * values (as promises or not) and also waits for any promises to
+ * resolve. Therefore, sync and async transforms can be freely mixed.
+ *
+ * ```
+ * trace(
+ *   transform(
+ *     comp(take(3), map((x) => delay(1000, x*10))),
+ *     [1, 2, 3, 4, 5]
+ *   )
+ * )
+ * // 10
+ * // 20
+ * // 30
+ * // done
+ * ```
+ * @param xf
+ * @param src
+ */
 export async function* transform<A, B>(xf: AsyncTransducer<A, B>, src: MaybeAsyncIterable<A>) {
-    const [_, __, step] = xf(append());
+    const [_, complete, step] = xf(append());
+    let acc;
     for await (let x of src) {
-        yield* await step([], x);
+        acc = await step([], x);
+        if (isReduced(acc)) {
+            acc = unreduced(await acc);
+            yield* unreduced(await complete(acc));
+            break;
+        }
+        yield* acc;
     }
-    // TODO complete()
 }
 
 /**
@@ -298,9 +368,9 @@ export async function consumeWith<T>(fn: (x: T) => void, src: AsyncProducer<T>, 
     }
 }
 
-const foo = transform(map((x) => delay(100, x)), [1, 2, 3, 4, 5]);
-trace(foo, "a");
-trace(foo, "b");
+// const foo = transform(map((x) => delay(100, x)), [1, 2, 3, 4, 5]);
+// trace(foo, "a");
+// trace(foo, "b");
 
 export const txresult = dynamicSource(null, 1000);
 //trace(txresult, "txres");
