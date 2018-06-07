@@ -1,5 +1,6 @@
 import { Predicate } from "@thi.ng/api/api";
 import { implementsFunction } from "@thi.ng/checks/implements-function";
+import { illegalArgs } from "@thi.ng/errors/illegal-arguments";
 import { comp as _comp } from "@thi.ng/transducers/func/comp";
 import {
     isReduced,
@@ -15,6 +16,8 @@ export type MaybeAsyncGenerator<T> = IterableIterator<T> | AsyncIterableIterator
 
 export type AsyncTransducer<A, B> = (rfn: AsyncReducer<any, B>) => AsyncReducer<any, A>;
 export type AsyncReductionFn<Acc, Val> = (acc: Acc, x: MaybeAsyncValue<Val>) => MaybeAsyncValue<Acc | Reduced<Acc>>;
+
+export type ErrorHandler = (e: any) => void;
 
 export interface AsyncProducer<T> extends AsyncIterableIterator<T> {
     ready: boolean;
@@ -97,13 +100,14 @@ export async function* dynamicSource<T>(x: MaybeAsyncValue<T>, ms = 0) {
 }
 
 export function $iter<T>(x: Iterable<T> | AsyncIterable<T>) {
-    let i: () => Iterator<T> | AsyncIterator<T>;
     if (implementsFunction(x, "next")) {
         return <Iterator<T>><any>x;
     }
+    let i: () => Iterator<T> | AsyncIterator<T>;
     if ((i = x[Symbol.iterator]) || (i = x[Symbol.asyncIterator])) {
-        return i();
+        return i.call(x);
     }
+    illegalArgs(`value not iterable: ${x}`);
 }
 
 export function tuples<A, B>(a: MaybeAsyncIterable<A>, b: MaybeAsyncIterable<B>): AsyncIterableIterator<[A, B]>;
@@ -235,25 +239,63 @@ export async function transduce<A, B, C>(xf: AsyncTransducer<A, B>, rfn: AsyncRe
  *     [1, 2, 3, 4, 5]
  *   )
  * )
+ *
  * // 10
  * // 20
  * // 30
  * // done
  * ```
+ *
+ * #### Error handling
+ *
+ * The optional `err` error handler is called for each error caught
+ * during the transformation of a single input value. This way erroneous
+ * values or rejected input promises do not cause the entire
+ * transformation process to stop and will simply be omitted from the
+ * result stream. If no error handler is given, any error caught will be
+ * re-thrown and the entire iterator fails. This is useful if errors
+ * should be dealt with in the surrounding context.
+ *
+ * ```
+ * trace(
+ *   transform(
+ *     map((x) => x * 10),
+ *     [Promise.resolve(23), Promise.reject(42), 66],
+ *     (e) => console.log("failed", e)
+ *   )
+ * )
+ * // 230
+ * // failed 42
+ * // 660
+ * ```
+ *
  * @param xf
  * @param src
+ * @param err
  */
-export async function* transform<A, B>(xf: AsyncTransducer<A, B>, src: MaybeAsyncIterable<A>) {
+export async function* transform<A, B>(xf: AsyncTransducer<A, B>, src: MaybeAsyncIterable<A>, err?: ErrorHandler) {
     const [_, complete, step] = xf(append());
+    const i = $iter(src);
     let acc;
-    for await (const x of src) {
-        acc = await step([], x);
-        if (isReduced(acc)) {
-            acc = unreduced(await acc);
-            yield* unreduced(await complete(acc));
-            break;
+    let x;
+    while (true) {
+        try {
+            x = await i.next();
+            if (x.done) break;
+            acc = await step([], x.value);
+            if (isReduced(acc)) {
+                acc = unreduced(await acc);
+                yield* unreduced(await complete(acc));
+                break;
+            }
+            yield* acc;
+        } catch (e) {
+            if (err) {
+                err(e);
+            } else {
+                throw e;
+            }
         }
-        yield* acc;
     }
 }
 
