@@ -76,6 +76,15 @@ export async function* constantly<T>(x: MaybeAsyncValue<T>, ms = 0) {
     }
 }
 
+export async function* repeatedly<T>(fn: () => MaybeAsyncValue<T>, ms = 0) {
+    for (; ;) {
+        yield await fn();
+        if (ms > 0) {
+            await delay(ms);
+        }
+    }
+}
+
 /**
  * ```
  * stream = dynamicSource(1, 1000);
