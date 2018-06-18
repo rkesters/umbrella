@@ -1,7 +1,7 @@
 {
     "name": "@thi.ng/dot",
-    "version": "0.1.6",
-    "description": "TODO",
+    "version": "0.1.7",
+    "description": "Graphviz DOM abstraction as vanilla JS objects & serialization to DOT format",
     "main": "./index.js",
     "typings": "./index.d.ts",
     "repository": "https://github.com/thi-ng/umbrella",
@@ -25,7 +25,7 @@
     },
     "dependencies": {
         "@thi.ng/api": "^4.0.3",
-        "@thi.ng/checks": "^1.5.3"
+        "@thi.ng/checks": "^1.5.4"
     },
     "keywords": [
         "ES6",
