@@ -1,9 +1,31 @@
 import { IObjectOf } from "@thi.ng/api";
-import * as fsm from "@thi.ng/transducers-fsm";
+import { fsm, FSMState, FSMStateMap } from "@thi.ng/transducers-fsm";
 import { Transducer } from "@thi.ng/transducers/api";
 
 export interface ParseOpts {
+    /**
+     * If `true`, unescape standard XML entities in body text and attrib
+     * values.
+     *
+     * Default: false
+     */
     entities: boolean;
+    /**
+     * If `true`, include children tags in `ELEM_END` events. For very
+     * large documents, this should be disabled to save (or even fit
+     * into) memory.
+     *
+     * Default: true
+     */
+    children: boolean;
+    /**
+     * If `true`, trims element body, comments and CDATA content. If the
+     * remaining string is empty, no event will be generated for this
+     * value.
+     *
+     * Default: false
+     */
+    trim: boolean;
 }
 
 export interface ParseElement {
@@ -18,16 +40,41 @@ export interface ParseEvent extends Partial<ParseElement> {
 }
 
 export enum Type {
+    /**
+     * XML processing instruction event
+     */
     PROC,
+    /**
+     * XML Doctype element event
+     */
     DOCTYPE,
+    /**
+     * XML comment element event
+     */
     COMMENT,
+    /**
+     * XML CDATA content event
+     */
+    CDATA,
+    /**
+     * XML element start (incl. attribs) event
+     */
     ELEM_START,
+    /**
+     * XML element end event (possibly incl. already parsed children)
+     */
     ELEM_END,
+    /**
+     * XML element body (text) event
+     */
     ELEM_BODY,
+    /**
+     * Parser error event
+     */
     ERROR,
 }
 
-interface ParseState extends fsm.FSMState {
+interface ParseState extends FSMState {
     scope: any[];
     tag: string;
     attribs: any;
@@ -59,6 +106,9 @@ enum State {
     DOCTYPE,
     PROC_DECL,
     PROC_END,
+    CDATA,
+    // H_CHAR,
+    // U_CHAR,
 }
 
 const ENTITIES = {
@@ -71,40 +121,73 @@ const ENTITIES = {
 
 const ENTITY_RE = new RegExp(`(${Object.keys(ENTITIES).join("|")})`, "g");
 
-export const parse = (opts: Partial<ParseOpts> = {}): Transducer<string, ParseEvent> =>
-    fsm.fsm({
+const ESCAPE_SEQS = {
+    "n": "\n",
+    "r": "\r",
+    "t": "\t",
+    "v": "\v",
+    "f": "\f",
+    "b": "\b",
+    "\"": "\"",
+    "'": "'",
+    "\\": "\\"
+};
+
+/**
+ * Returns XML parser transducer, optionally configured with given
+ * options.
+ *
+ * @param opts
+ */
+export const parse = (opts?: Partial<ParseOpts>): Transducer<string, ParseEvent> =>
+    fsm({
         states: PARSER,
         init: () => (<ParseState>{
             state: State.WAIT,
             scope: [],
             pos: 0,
-            opts,
+            opts: {
+                children: true,
+                entities: false,
+                trim: false,
+                ...opts
+            },
         }),
         terminate: State.ERROR
     });
 
-const isWS = (x: string) =>
-    x == " " || x == "\t" || x == "\n" || x == "\r";
+const isWS = (x: string) => {
+    const c = x.charCodeAt(0);
+    return c === 0x20 || // space
+        c === 0x09 ||    // tab
+        c === 0x0a ||    // LF
+        c === 0x0d;      // CR
+};
 
-const isTagChar = (x: string) =>
-    (x >= "A" && x <= "Z") ||
-    (x >= "a" && x <= "z") ||
-    (x >= "0" && x <= "9") ||
-    x == "-" ||
-    x == "_" ||
-    x == ":";
+const isTagChar = (x: string) => {
+    const c = x.charCodeAt(0);
+    return (c >= 0x41 && c <= 0x5a) || // A-Z
+        (c >= 0x61 && c <= 0x7a) ||    // a-z
+        (c >= 0x30 && c <= 0x39) ||    // 0-9
+        c == 0x2d ||                   // -
+        c == 0x5f ||                   // _
+        c == 0x3a;                     // :
+};
 
 const error = (s: ParseState, body: string) => {
     s.state = State.ERROR;
-    return { type: Type.ERROR, body };
+    return [{ type: Type.ERROR, body }];
 };
+
+const illegalEscape = (s: ParseState, ch: string) =>
+    error(s, `illegal escape sequence: \\${ch} @ pos ${s.pos - 1}`);
 
 const unexpected = (s: ParseState, x: string) =>
     error(s, `unexpected char: '${x}' @ pos ${s.pos}`);
 
 const replaceEntities = (x: string) => x.replace(ENTITY_RE, (y) => ENTITIES[y]);
 
-const PARSER: fsm.FSMStateMap<ParseState, string, ParseEvent> = {
+const PARSER: FSMStateMap<ParseState, string, ParseEvent[]> = {
 
     [State.ERROR]: () => { },
 
@@ -150,11 +233,10 @@ const PARSER: fsm.FSMStateMap<ParseState, string, ParseEvent> = {
         } else if (isWS(ch)) {
             state.state = State.MAYBE_ATTRIB;
         } else if (ch === ">") {
-            const res = { type: Type.ELEM_START, tag: state.tag, attribs: state.attribs };
             state.state = State.ELEM_BODY;
             state.scope.push({ tag: state.tag, attribs: state.attribs, children: [] });
             state.body = "";
-            return res;
+            return [{ type: Type.ELEM_START, tag: state.tag, attribs: state.attribs }];
         } else if (ch === "/") {
             state.state = State.ELEM_SINGLE;
         } else {
@@ -167,17 +249,17 @@ const PARSER: fsm.FSMStateMap<ParseState, string, ParseEvent> = {
         if (isTagChar(ch)) {
             state.tag += ch;
         } else if (ch === ">") {
-            const n = state.scope.length;
-            if (n > 0 && state.tag === state.scope[n - 1].tag) {
-                const res = state.scope[n - 1];
-                state.scope.pop();
-                if (n > 1) {
-                    state.scope[n - 2].children.push(res);
+            const scope = state.scope;
+            const n = scope.length;
+            if (n > 0 && state.tag === scope[n - 1].tag) {
+                const res = scope.pop();
+                if (n > 1 && state.opts.children) {
+                    scope[n - 2].children.push(res);
                 }
                 state.state = State.WAIT;
-                return { type: Type.ELEM_END, ...res };
+                return [{ type: Type.ELEM_END, ...res }];
             } else {
-                error(state, state.tag);
+                return error(state, `unmatched tag: '${state.tag}' @ pos ${state.pos - state.tag.length - 2}`);
             }
         }
     },
@@ -188,10 +270,13 @@ const PARSER: fsm.FSMStateMap<ParseState, string, ParseEvent> = {
             state.state = State.WAIT;
             const n = state.scope.length;
             const res = { tag: state.tag, attribs: state.attribs };
-            if (n > 0) {
+            if (n > 0 && state.opts.children) {
                 state.scope[n - 1].children.push(res);
             }
-            return { type: Type.ELEM_END, ...res };
+            return [
+                { type: Type.ELEM_START, ...res },
+                { type: Type.ELEM_END, ...res }
+            ];
         } else {
             return unexpected(state, ch);
         }
@@ -199,19 +284,36 @@ const PARSER: fsm.FSMStateMap<ParseState, string, ParseEvent> = {
 
     [State.ELEM_BODY]: (state, ch) => {
         state.pos++;
+        let b = state.body;
         if (ch === "<") {
             let res;
-            if (state.body.length > 0) {
-                if (state.opts.entities) {
-                    state.body = replaceEntities(state.body);
-                }
-                state.scope[state.scope.length - 1].body = state.body;
-                res = { type: Type.ELEM_BODY, tag: state.tag, body: state.body };
-            }
+            const t = state.tag;
             state.state = State.MAYBE_ELEM;
             state.tag = "";
+            if (b.length > 0) {
+                if (state.opts.trim) {
+                    b = b.trim();
+                    if (!b.length) {
+                        return;
+                    }
+                }
+                if (state.opts.entities) {
+                    b = replaceEntities(b);
+                }
+                state.scope[state.scope.length - 1].body = b;
+                res = [{ type: Type.ELEM_BODY, tag: t, body: b }];
+            }
             return res;
         } else {
+            if (b.charAt(b.length - 1) === "\\") {
+                const e = ESCAPE_SEQS[ch];
+                if (e !== undefined) {
+                    state.body = b.substr(0, b.length - 1) + e;
+                    return;
+                } else {
+                    return illegalEscape(state, ch);
+                }
+            }
             state.body += ch;
         }
     },
@@ -231,11 +333,10 @@ const PARSER: fsm.FSMStateMap<ParseState, string, ParseEvent> = {
                 }
             } else {
                 if (ch === ">") {
-                    const res = { type: Type.ELEM_START, tag: state.tag, attribs: state.attribs };
                     state.state = State.ELEM_BODY;
                     state.scope.push({ tag: state.tag, attribs: state.attribs, children: [] });
                     state.body = "";
-                    return res;
+                    return [{ type: Type.ELEM_START, tag: state.tag, attribs: state.attribs }];
                 } else if (ch === "/") {
                     state.state = State.ELEM_SINGLE;
                 } else if (!isWS(ch)) {
@@ -268,15 +369,25 @@ const PARSER: fsm.FSMStateMap<ParseState, string, ParseEvent> = {
 
     [State.ATTRIB_VALUE]: (state, ch) => {
         state.pos++;
-        if (ch === state.quote) {
-            if (state.opts.entities) {
-                state.val = replaceEntities(state.val);
+        let v = state.val;
+        if (v.charAt(v.length - 1) == "\\") {
+            const e = ESCAPE_SEQS[ch];
+            if (e !== undefined) {
+                state.val = v.substr(0, v.length - 1) + e;
+                return;
+            } else {
+                return illegalEscape(state, ch);
             }
-            state.attribs[state.name] = state.val;
-            state.state = State.MAYBE_ATTRIB;
-        } else {
-            state.val += ch;
         }
+        if (ch !== state.quote) {
+            state.val += ch;
+            return;
+        }
+        if (state.opts.entities) {
+            v = replaceEntities(v);
+        }
+        state.attribs[state.name] = v;
+        state.state = State.MAYBE_ATTRIB;
     },
 
     [State.MAYBE_INSTRUCTION]: (state, ch) => {
@@ -285,6 +396,10 @@ const PARSER: fsm.FSMStateMap<ParseState, string, ParseEvent> = {
             state.state = State.COMMENT;
         } else if (ch === "D") {
             state.state = State.DOCTYPE;
+            state.phase = 1;
+            state.body = "";
+        } else if (ch === "[") {
+            state.state = State.CDATA;
             state.phase = 1;
             state.body = "";
         } else {
@@ -310,7 +425,14 @@ const PARSER: fsm.FSMStateMap<ParseState, string, ParseEvent> = {
                 return unexpected(state, ch);
             }
             state.state = State.WAIT;
-            return { type: Type.COMMENT, body: state.body.substr(0, n - 2) };
+            let b = state.body.substr(0, n - 2);
+            if (state.opts.trim) {
+                b = b.trim();
+                if (!b.length) {
+                    return;
+                }
+            }
+            return [{ type: Type.COMMENT, body: b }];
         } else {
             state.body += ch;
         }
@@ -326,7 +448,35 @@ const PARSER: fsm.FSMStateMap<ParseState, string, ParseEvent> = {
             }
         } else if (ch === ">") {
             state.state = State.WAIT;
-            return { type: Type.DOCTYPE, body: state.body.trim() };
+            return [{ type: Type.DOCTYPE, body: state.body.trim() }];
+        } else {
+            state.body += ch;
+        }
+    },
+
+    [State.CDATA]: (state, ch) => {
+        state.pos++;
+        if (state.phase < 7) {
+            if (ch === "[CDATA["[state.phase]) {
+                state.phase++;
+            } else {
+                return unexpected(state, ch);
+            }
+        } else if (ch === ">") {
+            const n = state.body.length;
+            if (state.body.substr(n - 2) !== "]]") {
+                state.body += ch;
+                return;
+            }
+            state.state = State.WAIT;
+            let b = state.body.substr(0, n - 2);
+            if (state.opts.trim) {
+                b = b.trim();
+                if (!b.length) {
+                    return;
+                }
+            }
+            return [{ type: Type.CDATA, body: b }];
         } else {
             state.body += ch;
         }
@@ -350,7 +500,7 @@ const PARSER: fsm.FSMStateMap<ParseState, string, ParseEvent> = {
         if (ch === ">") {
             state.state = State.WAIT;
             state.isProc = false;
-            return { type: Type.PROC, tag: state.tag, attribs: state.attribs };
+            return [{ type: Type.PROC, tag: state.tag, attribs: state.attribs }];
         } else {
             return unexpected(state, ch);
         }
