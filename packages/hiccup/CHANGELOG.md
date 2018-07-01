@@ -3,6 +3,88 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.0.5"></a>
+## [2.0.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@2.0.4...@thi.ng/hiccup@2.0.5) (2018-06-21)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup
+
+<a name="2.0.4"></a>
+## [2.0.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@2.0.3...@thi.ng/hiccup@2.0.4) (2018-06-18)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup
+
+<a name="2.0.3"></a>
+## [2.0.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@2.0.2...@thi.ng/hiccup@2.0.3) (2018-05-30)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup
+
+<a name="2.0.2"></a>
+## [2.0.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@2.0.1...@thi.ng/hiccup@2.0.2) (2018-05-14)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup
+
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@2.0.0...@thi.ng/hiccup@2.0.1) (2018-05-14)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup
+
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@1.3.16...@thi.ng/hiccup@2.0.0) (2018-05-13)
+
+
+### Code Refactoring
+
+* **hiccup:** fix [#19](https://github.com/thi-ng/umbrella/issues/19), add support for context object ([feca566](https://github.com/thi-ng/umbrella/commit/feca566))
+
+
+### Performance Improvements
+
+* **hiccup:** update css() ([b1cb7d9](https://github.com/thi-ng/umbrella/commit/b1cb7d9))
+
+
+### BREAKING CHANGES
+
+* **hiccup:** component functions now take a global context object as
+first argument (like w/ @thi.ng/hdom)
+
+- update serialize() to accept & pass optional context
+- add support for component objects
+- add/update tests
+
+
+
+
+<a name="1.3.16"></a>
+## [1.3.16](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@1.3.15...@thi.ng/hiccup@1.3.16) (2018-05-12)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup
+
+<a name="1.3.15"></a>
+## [1.3.15](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@1.3.14...@thi.ng/hiccup@1.3.15) (2018-05-10)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup
+
 <a name="1.3.14"></a>
 ## [1.3.14](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@1.3.13...@thi.ng/hiccup@1.3.14) (2018-05-10)
 

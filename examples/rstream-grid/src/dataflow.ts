@@ -1,4 +1,4 @@
-import { svgdoc } from "@thi.ng/hiccup-svg/doc";
+import { svg } from "@thi.ng/hiccup-svg/svg";
 import { group } from "@thi.ng/hiccup-svg/group";
 import { rect } from "@thi.ng/hiccup-svg/rect";
 import { EventBus } from "@thi.ng/interceptors/event-bus";
@@ -32,22 +32,24 @@ export function initDataflow(bus: EventBus) {
         rotation: {
             fn: rotate,
             ins: {
-                shapes: { stream: "grid" },
+                shapes: { stream: "/grid/node" },
                 theta: { path: paths.THETA },
             },
         },
         svg: {
             fn: createSVG,
             ins: {
-                shapes: { stream: "rotation" },
+                shapes: { stream: "/rotation/node" },
                 cols: { path: paths.COLS },
                 rows: { path: paths.ROWS },
                 stroke: { path: paths.STROKE },
             },
             // dispatch SVG result doc as event
-            out: (node) => node.subscribe({
-                next: (svg) => bus.dispatch([ev.UPDATE_SVG, svg])
-            })
+            outs: {
+                "*": (node) => node.subscribe({
+                    next: (svg) => bus.dispatch([ev.UPDATE_SVG, svg])
+                })
+            }
         }
     });
     return graph;
@@ -80,7 +82,7 @@ const rotate = node(map(
  */
 const createSVG = node(map(
     ({ shapes, cols, rows, stroke }) =>
-        svgdoc(
+        svg(
             {
                 class: "w-100 h-100",
                 preserveAspectRatio: "xMidYMid",

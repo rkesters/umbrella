@@ -3,6 +3,68 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.8.4"></a>
+## [0.8.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/pointfree@0.8.3...@thi.ng/pointfree@0.8.4) (2018-06-21)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/pointfree
+
+<a name="0.8.3"></a>
+## [0.8.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/pointfree@0.8.2...@thi.ng/pointfree@0.8.3) (2018-06-18)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/pointfree
+
+<a name="0.8.2"></a>
+## [0.8.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/pointfree@0.8.1...@thi.ng/pointfree@0.8.2) (2018-05-14)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/pointfree
+
+<a name="0.8.1"></a>
+## [0.8.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/pointfree@0.8.0...@thi.ng/pointfree@0.8.1) (2018-05-14)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/pointfree
+
+<a name="0.8.0"></a>
+# [0.8.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/pointfree@0.7.10...@thi.ng/pointfree@0.8.0) (2018-05-13)
+
+
+### Features
+
+* **pointfree:** add execjs for host calls, update readme ([373701b](https://github.com/thi-ng/umbrella/commit/373701b))
+
+
+
+
+<a name="0.7.10"></a>
+## [0.7.10](https://github.com/thi-ng/umbrella/compare/@thi.ng/pointfree@0.7.9...@thi.ng/pointfree@0.7.10) (2018-05-12)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/pointfree
+
+<a name="0.7.9"></a>
+## [0.7.9](https://github.com/thi-ng/umbrella/compare/@thi.ng/pointfree@0.7.8...@thi.ng/pointfree@0.7.9) (2018-05-10)
+
+
+### Bug Fixes
+
+* **pointfree:** minor update error handling ([5391d98](https://github.com/thi-ng/umbrella/commit/5391d98))
+
+
+
+
 <a name="0.7.8"></a>
 ## [0.7.8](https://github.com/thi-ng/umbrella/compare/@thi.ng/pointfree@0.7.7...@thi.ng/pointfree@0.7.8) (2018-05-10)
 

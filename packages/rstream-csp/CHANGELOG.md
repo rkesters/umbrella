@@ -3,6 +3,110 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.1.78"></a>
+## [0.1.78](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-csp@0.1.77...@thi.ng/rstream-csp@0.1.78) (2018-06-21)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-csp
+
+<a name="0.1.77"></a>
+## [0.1.77](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-csp@0.1.76...@thi.ng/rstream-csp@0.1.77) (2018-06-19)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-csp
+
+<a name="0.1.76"></a>
+## [0.1.76](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-csp@0.1.75...@thi.ng/rstream-csp@0.1.76) (2018-06-18)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-csp
+
+<a name="0.1.75"></a>
+## [0.1.75](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-csp@0.1.74...@thi.ng/rstream-csp@0.1.75) (2018-05-30)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-csp
+
+<a name="0.1.74"></a>
+## [0.1.74](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-csp@0.1.73...@thi.ng/rstream-csp@0.1.74) (2018-05-20)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-csp
+
+<a name="0.1.73"></a>
+## [0.1.73](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-csp@0.1.72...@thi.ng/rstream-csp@0.1.73) (2018-05-14)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-csp
+
+<a name="0.1.72"></a>
+## [0.1.72](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-csp@0.1.71...@thi.ng/rstream-csp@0.1.72) (2018-05-14)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-csp
+
+<a name="0.1.71"></a>
+## [0.1.71](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-csp@0.1.70...@thi.ng/rstream-csp@0.1.71) (2018-05-14)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-csp
+
+<a name="0.1.70"></a>
+## [0.1.70](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-csp@0.1.69...@thi.ng/rstream-csp@0.1.70) (2018-05-13)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-csp
+
+<a name="0.1.69"></a>
+## [0.1.69](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-csp@0.1.68...@thi.ng/rstream-csp@0.1.69) (2018-05-12)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-csp
+
+<a name="0.1.68"></a>
+## [0.1.68](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-csp@0.1.67...@thi.ng/rstream-csp@0.1.68) (2018-05-10)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-csp
+
+<a name="0.1.67"></a>
+## [0.1.67](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-csp@0.1.66...@thi.ng/rstream-csp@0.1.67) (2018-05-10)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-csp
+
+<a name="0.1.66"></a>
+## [0.1.66](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-csp@0.1.65...@thi.ng/rstream-csp@0.1.66) (2018-05-10)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-csp
+
 <a name="0.1.65"></a>
 ## [0.1.65](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-csp@0.1.64...@thi.ng/rstream-csp@0.1.65) (2018-05-10)
 

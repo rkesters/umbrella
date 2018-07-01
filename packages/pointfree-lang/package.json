@@ -1,10 +1,14 @@
 {
     "name": "@thi.ng/pointfree-lang",
-    "version": "0.2.8",
+    "version": "0.2.15",
     "description": "Forth style syntax layer/compiler for the @thi.ng/pointfree DSL",
     "main": "./index.js",
     "typings": "./index.d.ts",
-    "repository": "https://github.com/thi-ng/umbrella",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/thi-ng/umbrella.git"
+    },
+    "homepage": "https://github.com/thi-ng/umbrella/tree/master/packages/pointfree-lang",
     "author": "Karsten Schmidt <k+npm@thi.ng>",
     "license": "Apache-2.0",
     "scripts": {
@@ -26,9 +30,9 @@
         "typescript": "^2.8.3"
     },
     "dependencies": {
-        "@thi.ng/api": "^3.0.0",
-        "@thi.ng/errors": "^0.1.0",
-        "@thi.ng/pointfree": "^0.7.8"
+        "@thi.ng/api": "^4.0.4",
+        "@thi.ng/errors": "^0.1.4",
+        "@thi.ng/pointfree": "^0.8.4"
     },
     "keywords": [
         "concatenative",

@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.0.19"></a>
+## [1.0.19](https://github.com/thi-ng/umbrella/compare/@thi.ng/diff@1.0.18...@thi.ng/diff@1.0.19) (2018-06-21)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/diff
+
+<a name="1.0.18"></a>
+## [1.0.18](https://github.com/thi-ng/umbrella/compare/@thi.ng/diff@1.0.17...@thi.ng/diff@1.0.18) (2018-06-18)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/diff
+
+<a name="1.0.17"></a>
+## [1.0.17](https://github.com/thi-ng/umbrella/compare/@thi.ng/diff@1.0.16...@thi.ng/diff@1.0.17) (2018-05-14)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/diff
+
+<a name="1.0.16"></a>
+## [1.0.16](https://github.com/thi-ng/umbrella/compare/@thi.ng/diff@1.0.15...@thi.ng/diff@1.0.16) (2018-05-14)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/diff
+
+<a name="1.0.15"></a>
+## [1.0.15](https://github.com/thi-ng/umbrella/compare/@thi.ng/diff@1.0.14...@thi.ng/diff@1.0.15) (2018-05-13)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/diff
+
+<a name="1.0.14"></a>
+## [1.0.14](https://github.com/thi-ng/umbrella/compare/@thi.ng/diff@1.0.13...@thi.ng/diff@1.0.14) (2018-05-12)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/diff
+
+<a name="1.0.13"></a>
+## [1.0.13](https://github.com/thi-ng/umbrella/compare/@thi.ng/diff@1.0.12...@thi.ng/diff@1.0.13) (2018-05-10)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/diff
+
 <a name="1.0.12"></a>
 ## [1.0.12](https://github.com/thi-ng/umbrella/compare/@thi.ng/diff@1.0.11...@thi.ng/diff@1.0.12) (2018-05-10)
 

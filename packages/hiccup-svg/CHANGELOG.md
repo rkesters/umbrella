@@ -3,6 +3,87 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.0.5"></a>
+## [1.0.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup-svg@1.0.4...@thi.ng/hiccup-svg@1.0.5) (2018-06-21)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup-svg
+
+<a name="1.0.4"></a>
+## [1.0.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup-svg@1.0.3...@thi.ng/hiccup-svg@1.0.4) (2018-06-18)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup-svg
+
+<a name="1.0.3"></a>
+## [1.0.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup-svg@1.0.2...@thi.ng/hiccup-svg@1.0.3) (2018-05-30)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup-svg
+
+<a name="1.0.2"></a>
+## [1.0.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup-svg@1.0.1...@thi.ng/hiccup-svg@1.0.2) (2018-05-14)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup-svg
+
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup-svg@1.0.0...@thi.ng/hiccup-svg@1.0.1) (2018-05-14)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup-svg
+
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup-svg@0.2.13...@thi.ng/hiccup-svg@1.0.0) (2018-05-13)
+
+
+### Code Refactoring
+
+* **hiccup-svg:** rename svgdoc => svg ([396faec](https://github.com/thi-ng/umbrella/commit/396faec))
+
+
+### Documentation
+
+* **hiccup-svg:** resolve [#19](https://github.com/thi-ng/umbrella/issues/19), update readme, add invocation notes ([dc77540](https://github.com/thi-ng/umbrella/commit/dc77540))
+
+
+### BREAKING CHANGES
+
+* **hiccup-svg:** technically identical to previous version, however
+due to breaking changes and new context support in @thi.ng/hiccup,
+SVG functions MUST be invoked directly now and do not support lazy
+evaluation anymore. see notice in readme.
+* **hiccup-svg:** rename svgdoc => svg
+
+
+
+
+<a name="0.2.13"></a>
+## [0.2.13](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup-svg@0.2.12...@thi.ng/hiccup-svg@0.2.13) (2018-05-12)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup-svg
+
+<a name="0.2.12"></a>
+## [0.2.12](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup-svg@0.2.11...@thi.ng/hiccup-svg@0.2.12) (2018-05-10)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup-svg
+
 <a name="0.2.11"></a>
 ## [0.2.11](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup-svg@0.2.10...@thi.ng/hiccup-svg@0.2.11) (2018-05-10)
 
