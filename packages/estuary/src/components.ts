@@ -1,6 +1,6 @@
 import { IObjectOf } from "@thi.ng/api/api";
 import { getter } from "@thi.ng/paths";
-import { polyline, svgdoc, text } from "@thi.ng/hdom-components/svg";
+import { polyline, svg, text } from "@thi.ng/hiccup-svg";
 
 import { EdgeFn, Node, NodeOpts, Port, PortOpts, PortSymbolFn, Graph, GraphOpts, IPortLayout, LabelOpts } from "./api";
 
@@ -134,5 +134,5 @@ export function nodeGraph(graph: Graph, opts: GraphOpts) {
         const n = graph.nodes[id];
         body.push(n.ui.component.render(n));
     }
-    return svgdoc(opts.attribs, opts.defs, body);
+    return svg(opts.attribs, opts.defs, body);
 }

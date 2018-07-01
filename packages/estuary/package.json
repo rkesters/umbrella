@@ -28,18 +28,21 @@
         "webpack": "^3.11.0"
     },
     "dependencies": {
-        "@thi.ng/api": "^2.0.4",
-        "@thi.ng/atom": "^1.0.3",
-        "@thi.ng/hdom": "^2.2.4",
-        "@thi.ng/hdom-components": "^1.0.6",
-        "@thi.ng/rstream": "^1.0.20",
-        "@thi.ng/transducers": "^1.6.2"
+        "@thi.ng/api": "^4.0.4",
+        "@thi.ng/atom": "^1.4.2",
+        "@thi.ng/hdom": "^3.0.26",
+        "@thi.ng/hiccup-svg": "^1.0.5",
+        "@thi.ng/rstream": "^1.8.0",
+        "@thi.ng/transducers": "^1.11.1"
     },
     "keywords": [
+        "components",
         "dataflow",
         "ES6",
         "graph",
-        "typescript"
+        "SVG",
+        "typescript",
+        "UI"
     ],
     "publishConfig": {
         "access": "public"
