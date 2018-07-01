@@ -31,7 +31,11 @@ cat << EOF > $MODULE/package.json
     "description": "TODO",
     "main": "./index.js",
     "typings": "./index.d.ts",
-    "repository": "https://github.com/thi-ng/umbrella",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/thi-ng/umbrella.git"
+    },
+    "homepage": "https://github.com/thi-ng/umbrella/tree/master/packages/$1",
     "author": "$AUTHOR <$EMAIL>",
     "license": "Apache-2.0",
     "scripts": {
@@ -51,7 +55,7 @@ cat << EOF > $MODULE/package.json
         "typescript": "^2.8.3"
     },
     "dependencies": {
-        "@thi.ng/api": "^2.3.2"
+        "@thi.ng/api": "^4.0.3"
     },
     "keywords": [
         "ES6",

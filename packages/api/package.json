@@ -1,10 +1,14 @@
 {
     "name": "@thi.ng/api",
-    "version": "3.0.0",
+    "version": "4.0.4",
     "description": "Common, generic types & interfaces for thi.ng projects",
     "main": "./index.js",
     "typings": "./index.d.ts",
-    "repository": "https://github.com/thi-ng/umbrella",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/thi-ng/umbrella.git"
+    },
+    "homepage": "https://github.com/thi-ng/umbrella/tree/master/packages/api",
     "author": "Karsten Schmidt <k+npm@thi.ng>",
     "license": "Apache-2.0",
     "scripts": {
@@ -24,7 +28,7 @@
         "typescript": "^2.8.3"
     },
     "dependencies": {
-        "@thi.ng/errors": "^0.1.0"
+        "@thi.ng/errors": "^0.1.4"
     },
     "keywords": [
         "compare",

@@ -3,6 +3,92 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.0.26"></a>
+## [3.0.26](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.25...@thi.ng/hdom@3.0.26) (2018-06-21)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.25"></a>
+## [3.0.25](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.24...@thi.ng/hdom@3.0.25) (2018-06-18)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.24"></a>
+## [3.0.24](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.23...@thi.ng/hdom@3.0.24) (2018-05-30)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.23"></a>
+## [3.0.23](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.22...@thi.ng/hdom@3.0.23) (2018-05-15)
+
+
+### Bug Fixes
+
+* **hdom:** delay init() lifecycle call to ensure children are available ([2482b16](https://github.com/thi-ng/umbrella/commit/2482b16))
+
+
+
+
+<a name="3.0.22"></a>
+## [3.0.22](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.21...@thi.ng/hdom@3.0.22) (2018-05-14)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.21"></a>
+## [3.0.21](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.20...@thi.ng/hdom@3.0.21) (2018-05-14)
+
+
+### Bug Fixes
+
+* **hdom:** component obj lifecycle method thisArg handling ([ade96f8](https://github.com/thi-ng/umbrella/commit/ade96f8))
+
+
+
+
+<a name="3.0.20"></a>
+## [3.0.20](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.19...@thi.ng/hdom@3.0.20) (2018-05-14)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.19"></a>
+## [3.0.19](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.18...@thi.ng/hdom@3.0.19) (2018-05-13)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.18"></a>
+## [3.0.18](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.17...@thi.ng/hdom@3.0.18) (2018-05-12)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.17"></a>
+## [3.0.17](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.16...@thi.ng/hdom@3.0.17) (2018-05-10)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
 <a name="3.0.16"></a>
 ## [3.0.16](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.15...@thi.ng/hdom@3.0.16) (2018-05-10)
 

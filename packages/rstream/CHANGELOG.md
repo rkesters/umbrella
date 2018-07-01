@@ -3,6 +3,122 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.8.0"></a>
+# [1.8.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.7.3...@thi.ng/rstream@1.8.0) (2018-06-21)
+
+
+### Features
+
+* **rstream:** option to avoid auto-closing `fromInterval()`, add docs ([cc5b736](https://github.com/thi-ng/umbrella/commit/cc5b736))
+
+
+
+
+<a name="1.7.3"></a>
+## [1.7.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.7.2...@thi.ng/rstream@1.7.3) (2018-06-19)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.7.2"></a>
+## [1.7.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.7.1...@thi.ng/rstream@1.7.2) (2018-06-18)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.7.1"></a>
+## [1.7.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.7.0...@thi.ng/rstream@1.7.1) (2018-05-30)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.7.0"></a>
+# [1.7.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.6.14...@thi.ng/rstream@1.7.0) (2018-05-20)
+
+
+### Bug Fixes
+
+* **rstream:** minor update PubSub topic fn return type ([cbc600e](https://github.com/thi-ng/umbrella/commit/cbc600e))
+
+
+### Features
+
+* **rstream:** re-implement bisect() using PubSub, update tests ([846aaf9](https://github.com/thi-ng/umbrella/commit/846aaf9))
+* **rstream:** update resolve(), update subscribe() overrides ([23fdd39](https://github.com/thi-ng/umbrella/commit/23fdd39))
+
+
+
+
+<a name="1.6.14"></a>
+## [1.6.14](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.6.13...@thi.ng/rstream@1.6.14) (2018-05-14)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.6.13"></a>
+## [1.6.13](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.6.12...@thi.ng/rstream@1.6.13) (2018-05-14)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.6.12"></a>
+## [1.6.12](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.6.11...@thi.ng/rstream@1.6.12) (2018-05-14)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.6.11"></a>
+## [1.6.11](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.6.10...@thi.ng/rstream@1.6.11) (2018-05-13)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.6.10"></a>
+## [1.6.10](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.6.9...@thi.ng/rstream@1.6.10) (2018-05-12)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.6.9"></a>
+## [1.6.9](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.6.8...@thi.ng/rstream@1.6.9) (2018-05-10)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.6.8"></a>
+## [1.6.8](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.6.7...@thi.ng/rstream@1.6.8) (2018-05-10)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.6.7"></a>
+## [1.6.7](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.6.6...@thi.ng/rstream@1.6.7) (2018-05-10)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
 <a name="1.6.6"></a>
 ## [1.6.6](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.6.5...@thi.ng/rstream@1.6.6) (2018-05-10)
 

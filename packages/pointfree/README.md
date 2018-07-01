@@ -11,6 +11,7 @@ This project is part of the
     - [A brief comparison](#a-brief-comparison)
 - [Status](#status)
 - [Installation](#installation)
+- [Dependencies](#dependencies)
 - [Usage](#usage)
     - [Custom word definitions](#custom-word-definitions)
     - [Factoring](#factoring)
@@ -159,6 +160,13 @@ ALPHA - in active development, API still undergoing major changes
 ```
 yarn add @thi.ng/pointfree
 ```
+
+## Dependencies
+
+- [@thi.ng/api](https://github.com/thi-ng/umbrella/tree/master/packages/api)
+- [@thi.ng/checks](https://github.com/thi-ng/umbrella/tree/master/packages/checks)
+- [@thi.ng/equiv](https://github.com/thi-ng/umbrella/tree/master/packages/equiv)
+- [@thi.ng/errors](https://github.com/thi-ng/umbrella/tree/master/packages/errors)
 
 ## Usage
 
@@ -324,6 +332,25 @@ pf.runU(
     [[10]]
 );
 // 100
+```
+
+#### Quotations as vanilla JS function calls
+
+Quoations can be used to define (or dynamically construct) JS function
+calls. For that a quotation needs to take the form of an
+[S-expression](https://en.wikipedia.org/wiki/S-expression), i.e. the
+first element of the quotation is the actual function to be called and
+all other values in the quotation are passed as arguments. The result of
+the function call is placed back on the stack.
+
+```ts
+pf.runU(
+    [
+        [(a,b) => a + b, 1, 2],
+        pf.execjs
+    ]
+);
+// 3
 ```
 
 #### Currying & composing quotations

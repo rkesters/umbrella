@@ -7,7 +7,7 @@ This project is part of the
 
 ## About
 
-Deep equivalence checking for any data types. Supports:
+Extensible deep equivalence checking for any data types. Supports:
 
 - JS primitives
 - arrays
@@ -27,12 +27,49 @@ package.
 yarn add @thi.ng/equiv
 ```
 
+## Dependencies
+
+- [@thi.ng/checks](https://github.com/thi-ng/umbrella/tree/master/packages/checks)
+
 ## Usage examples
 
 ```typescript
 import { equiv } from "@thi.ng/equiv";
 
 equiv({a: {b: [1, 2]}}, {a: {b: [1, 2]}});
+// true
+```
+
+### Implement IEquiv interface
+
+This is useful & required for custom types to take part in `equiv`
+checks, by default only plain objects & array are traversed deeply.
+
+Furthemore by implementing this interface we can better control which
+internal values / criteria are required to establish equivalence. In
+this example we exclude the `meta` property and only check for same type
+& `children` equality.
+
+```ts
+import { IEquiv } from "@thi.ng/api";
+import { equiv } from "@thi.ng/equiv";
+
+class Node implements IEquiv {
+
+    meta: any;
+    children: any[];
+
+    constructor(children: any[], meta?) {
+        this.children = children;
+        this.meta = meta;
+    }
+
+    equiv(o: any) {
+        return o instanceof Node && equiv(this.children, o.children);
+    }
+}
+
+equiv(new Node([1,2,3], "foo"), new Node([1,2,3], "bar"));
 // true
 ```
 

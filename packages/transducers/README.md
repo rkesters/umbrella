@@ -7,8 +7,8 @@ This project is part of the
 
 ## About
 
-Lightweight transducer implementations for ES6 / TypeScript (~24KB
-minified, full lib).
+Lightweight transducer and supporting generators / iterator
+implementations for ES6 / TypeScript (~8.5KB gzipped, full lib).
 
 ## TOC
 
@@ -24,21 +24,24 @@ minified, full lib).
 
 ## About
 
-This library provides altogether 90+ transducers, reducers and sequence
-generators (iterators) for composing data transformation pipelines.
+This library provides altogether 130+ transducers, reducers, sequence
+generators (iterators) and other supporting functions for composing data
+transformation pipelines.
 
 The overall concept and many of the core functions offered here are
 directly inspired by the original Clojure implementation by Rich Hickey,
-though the implementation does differ (also in contrast to some other JS
-based implementations) and dozens of less common, but generally highly
-useful operators have been added. See full list below.
+though the implementation does heavily differ (also in contrast to some
+other JS based implementations) and dozens of less common, but generally
+highly useful operators have been added. See full list below.
 
-The
-[@thi.ng/rstream](https://github.com/thi-ng/umbrella/tree/master/packages/rstream)
-&
-[@thi.ng/csp](https://github.com/thi-ng/umbrella/tree/master/packages/csp)
-partner modules provide related functionality, supplementing features of
-this library and depending on it.
+### Related functionality / packages
+
+- [@thi.ng/csp](https://github.com/thi-ng/umbrella/tree/master/packages/csp)
+- [@thi.ng/rstream](https://github.com/thi-ng/umbrella/tree/master/packages/rstream)
+- [@thi.ng/rstream-graph](https://github.com/thi-ng/umbrella/tree/master/packages/rstream-graph)
+- [@thi.ng/rstream-log](https://github.com/thi-ng/umbrella/tree/master/packages/rstream-log)
+- [@thi.ng/sax](https://github.com/thi-ng/umbrella/tree/master/packages/sax)
+- [@thi.ng/transducers-fsm](https://github.com/thi-ng/umbrella/tree/master/packages/transducers-fsm)
 
 Since 0.8.0 this project largely supersedes the
 [@thi.ng/iterators](https://github.com/thi-ng/umbrella/tree/master/packages/iterators)
@@ -51,6 +54,13 @@ ES generator overheads).
 ```
 yarn add @thi.ng/transducers
 ```
+
+## Dependencies
+
+- [@thi.ng/api](https://github.com/thi-ng/umbrella/tree/master/packages/api)
+- [@thi.ng/checks](https://github.com/thi-ng/umbrella/tree/master/packages/checks)
+- [@thi.ng/compare](https://github.com/thi-ng/umbrella/tree/master/packages/compare)
+- [@thi.ng/errors](https://github.com/thi-ng/umbrella/tree/master/packages/errors)
 
 ## Usage examples
 
@@ -104,6 +114,29 @@ f(3) // 9
 f(4) // undefined
 
 f = tx.step(take)
+```
+
+### Fuzzy search
+
+```ts
+[...tx.iterator(tx.filterFuzzy("ho"), ["hello", "hallo", "hey", "heyoka"])]
+// ["hello", "hallo", "heyoka"]
+[...tx.iterator(tx.filterFuzzy("hlo"), ["hello", "hallo", "hey", "heyoka"])]
+// ["hello", "hallo"]
+
+// works with any array-like values & supports custom key extractors
+[...tx.iterator(
+    tx.filterFuzzy([1, 3], (x) => x.tags),
+    [
+        { tags: [1, 2, 3] },
+        { tags: [1, 3, 4] },
+        { tags: [4, 5, 6] },
+        { tags: [1, 3, 6] }
+    ]
+)]
+// [ { tags: [ 1, 2, 3 ] },
+//   { tags: [ 1, 3, 4 ] },
+//   { tags: [ 1, 3, 6 ] } ]
 ```
 
 ### Histogram generation & result grouping
@@ -610,6 +643,8 @@ itself. Returns nothing.
 
 #### `filter<T>(pred: Predicate<T>): Transducer<T, T>`
 
+#### `filterFuzzy<A, B>(query: ArrayLike<B>, key?: (x: A) => ArrayLike<B>, eq?: Predicate2<any>): Transducer<A, A>`
+
 #### `flatten<T>(): Transducer<T | Iterable<T>, T>`
 
 #### `flattenWith<T>(fn: (x: T) => Iterable<T>): Transducer<T | Iterable<T>, T>`
@@ -641,6 +676,10 @@ itself. Returns nothing.
 #### `mapNth<A, B>(n: number, offset?: number, fn: (x: A) => B): Transducer<A, A | B>`
 
 #### `mapVals<A, B>(fn: (v: A) => B, copy = true): Transducer<IObjectOf<A>, IObjectOf<B>>`
+
+#### `matchFirst<T>(pred: Predicate<T>): Transducer<T, T>`
+
+#### `matchLast<T>(pred: Predicate<T>): Transducer<T, T>`
 
 #### `movingAverage(n: number): Transducer<number, number>`
 
@@ -760,6 +799,8 @@ itself. Returns nothing.
 
 #### `keys(x: any): IterableIterator<string>`
 
+#### `normRange(n?: number): IterableIterator<number>`
+
 #### `pairs(x: any): IterableIterator<[string, any]>`
 
 #### `range(from?: number, to?: number, step?: number): IterableIterator<number>`
@@ -777,6 +818,8 @@ itself. Returns nothing.
 #### `tuples(...src: Iterable<any>[]): IterableIterator<any[]>`
 
 #### `vals<T>(x: IObjectOf<T>): IterableIterator<T>`
+
+#### `wrap<T>(src: T[], n = 1, left = true, right = true): IterableIterator<T>`
 
 ## Authors
 

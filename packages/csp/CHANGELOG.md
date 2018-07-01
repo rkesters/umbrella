@@ -3,6 +3,94 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.3.45"></a>
+## [0.3.45](https://github.com/thi-ng/umbrella/compare/@thi.ng/csp@0.3.44...@thi.ng/csp@0.3.45) (2018-06-21)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/csp
+
+<a name="0.3.44"></a>
+## [0.3.44](https://github.com/thi-ng/umbrella/compare/@thi.ng/csp@0.3.43...@thi.ng/csp@0.3.44) (2018-06-19)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/csp
+
+<a name="0.3.43"></a>
+## [0.3.43](https://github.com/thi-ng/umbrella/compare/@thi.ng/csp@0.3.42...@thi.ng/csp@0.3.43) (2018-06-18)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/csp
+
+<a name="0.3.42"></a>
+## [0.3.42](https://github.com/thi-ng/umbrella/compare/@thi.ng/csp@0.3.41...@thi.ng/csp@0.3.42) (2018-05-14)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/csp
+
+<a name="0.3.41"></a>
+## [0.3.41](https://github.com/thi-ng/umbrella/compare/@thi.ng/csp@0.3.40...@thi.ng/csp@0.3.41) (2018-05-14)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/csp
+
+<a name="0.3.40"></a>
+## [0.3.40](https://github.com/thi-ng/umbrella/compare/@thi.ng/csp@0.3.39...@thi.ng/csp@0.3.40) (2018-05-14)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/csp
+
+<a name="0.3.39"></a>
+## [0.3.39](https://github.com/thi-ng/umbrella/compare/@thi.ng/csp@0.3.38...@thi.ng/csp@0.3.39) (2018-05-13)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/csp
+
+<a name="0.3.38"></a>
+## [0.3.38](https://github.com/thi-ng/umbrella/compare/@thi.ng/csp@0.3.37...@thi.ng/csp@0.3.38) (2018-05-12)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/csp
+
+<a name="0.3.37"></a>
+## [0.3.37](https://github.com/thi-ng/umbrella/compare/@thi.ng/csp@0.3.36...@thi.ng/csp@0.3.37) (2018-05-10)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/csp
+
+<a name="0.3.36"></a>
+## [0.3.36](https://github.com/thi-ng/umbrella/compare/@thi.ng/csp@0.3.35...@thi.ng/csp@0.3.36) (2018-05-10)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/csp
+
+<a name="0.3.35"></a>
+## [0.3.35](https://github.com/thi-ng/umbrella/compare/@thi.ng/csp@0.3.34...@thi.ng/csp@0.3.35) (2018-05-10)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/csp
+
 <a name="0.3.34"></a>
 ## [0.3.34](https://github.com/thi-ng/umbrella/compare/@thi.ng/csp@0.3.33...@thi.ng/csp@0.3.34) (2018-05-10)
 

@@ -51,6 +51,14 @@ yarn install
 yarn start
 ```
 
+## Dependencies
+
+- [@thi.ng/api](https://github.com/thi-ng/umbrella/tree/master/packages/api)
+- [@thi.ng/checks](https://github.com/thi-ng/umbrella/tree/master/packages/checks)
+- [@thi.ng/equiv](https://github.com/thi-ng/umbrella/tree/master/packages/equiv)
+- [@thi.ng/errors](https://github.com/thi-ng/umbrella/tree/master/packages/errors)
+- [@thi.ng/paths](https://github.com/thi-ng/umbrella/tree/master/packages/paths)
+
 ## Usage examples
 
 Several projects in the
@@ -219,7 +227,7 @@ value change (in contrast to normal watches, which execute with each
 update, regardless of value change).
 
 Related, the actual value change predicate can be customized. If not
-given, the default `@thi.ng/api/equiv` will be used.
+given, the default `@thi.ng/equiv` will be used.
 
 ```typescript
 let x;

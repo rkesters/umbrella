@@ -20,12 +20,17 @@ package.
 yarn add @thi.ng/compare
 ```
 
+## Dependencies
+
+None
+
 ## Usage examples
 
 ```typescript
+import { ICompare } from "@thi.ng/api";
 import { compare } from "@thi.ng/compare";
 
-class Foo {
+class Foo implements ICompare<Foo> {
 
     x: number;
 

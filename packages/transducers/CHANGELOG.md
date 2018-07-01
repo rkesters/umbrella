@@ -3,6 +3,104 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.11.1"></a>
+## [1.11.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.11.0...@thi.ng/transducers@1.11.1) (2018-06-21)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/transducers
+
+<a name="1.11.0"></a>
+# [1.11.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.10.3...@thi.ng/transducers@1.11.0) (2018-06-19)
+
+
+### Features
+
+* **transducers:** add matchFirst()/matchLast() xforms, update readme ([bc261e5](https://github.com/thi-ng/umbrella/commit/bc261e5))
+
+
+
+
+<a name="1.10.3"></a>
+## [1.10.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.10.2...@thi.ng/transducers@1.10.3) (2018-06-18)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/transducers
+
+<a name="1.10.2"></a>
+## [1.10.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.10.1...@thi.ng/transducers@1.10.2) (2018-05-14)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/transducers
+
+<a name="1.10.1"></a>
+## [1.10.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.10.0...@thi.ng/transducers@1.10.1) (2018-05-14)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/transducers
+
+<a name="1.10.0"></a>
+# [1.10.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.9.4...@thi.ng/transducers@1.10.0) (2018-05-14)
+
+
+### Features
+
+* **transducers:** add filterFuzzy() xform ([2bebba2](https://github.com/thi-ng/umbrella/commit/2bebba2))
+* **transducers:** add wrap*() iterators ([306625d](https://github.com/thi-ng/umbrella/commit/306625d))
+
+
+
+
+<a name="1.9.4"></a>
+## [1.9.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.9.3...@thi.ng/transducers@1.9.4) (2018-05-13)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/transducers
+
+<a name="1.9.3"></a>
+## [1.9.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.9.2...@thi.ng/transducers@1.9.3) (2018-05-12)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/transducers
+
+<a name="1.9.2"></a>
+## [1.9.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.9.1...@thi.ng/transducers@1.9.2) (2018-05-10)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/transducers
+
+<a name="1.9.1"></a>
+## [1.9.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.9.0...@thi.ng/transducers@1.9.1) (2018-05-10)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/transducers
+
+<a name="1.9.0"></a>
+# [1.9.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.8.6...@thi.ng/transducers@1.9.0) (2018-05-10)
+
+
+### Features
+
+* **transducers:** add normRange() iterator ([55f29b8](https://github.com/thi-ng/umbrella/commit/55f29b8))
+
+
+
+
 <a name="1.8.6"></a>
 ## [1.8.6](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.8.5...@thi.ng/transducers@1.8.6) (2018-05-10)
 

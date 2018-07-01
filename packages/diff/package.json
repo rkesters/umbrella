@@ -1,10 +1,14 @@
 {
     "name": "@thi.ng/diff",
-    "version": "1.0.12",
+    "version": "1.0.19",
     "description": "Array & object Diff",
     "main": "./index.js",
     "typings": "./index.d.ts",
-    "repository": "https://github.com/thi-ng/umbrella",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/thi-ng/umbrella.git"
+    },
+    "homepage": "https://github.com/thi-ng/umbrella/tree/master/packages/diff",
     "author": "Karsten Schmidt <k+npm@thi.ng>",
     "license": "Apache-2.0",
     "scripts": {
@@ -22,8 +26,8 @@
         "typescript": "^2.8.3"
     },
     "dependencies": {
-        "@thi.ng/api": "^3.0.0",
-        "@thi.ng/equiv": "^0.1.0"
+        "@thi.ng/api": "^4.0.4",
+        "@thi.ng/equiv": "^0.1.5"
     },
     "keywords": [
         "array",
