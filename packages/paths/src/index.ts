@@ -6,13 +6,11 @@ export type Path = PropertyKey | PropertyKey[];
 
 export type UpdateFn<T> = (curr: T, ...args: any[]) => T;
 
-function compS(k, f) {
-    return (s, v) => ({ ...s, [k]: f((s || {})[k], v) });
-}
+const _copy = (s) => Array.isArray(s) ? s.slice() : { ...s };
 
-function compG(k, f) {
-    return (s) => s ? f(s[k]) : undefined;
-}
+const compS = (k, f) => (s, v) => { s = _copy(s); s[k] = f ? f(s[k], v) : v; return s; }
+
+const compG = (k, f) => (s) => s ? f(s[k]) : undefined;
 
 /**
  * Converts the given key path to canonical form (array).
@@ -37,6 +35,8 @@ export function toPath(path: Path) {
 /**
  * Composes a getter function for given nested lookup path. Optimized
  * fast execution paths are provided for path lengths less than 5.
+ * Supports any `[]`-indexable data structure (arrays, objects,
+ * strings).
  *
  * If `path` is given as string, it will be split using `.`. Returns
  * function which accepts single object and when called, returns value
@@ -87,8 +87,12 @@ export function getter(path: Path) {
 }
 
 /**
- * Composes a setter function for given nested lookup path. Optimized
- * fast execution paths are provided for path lengths less than 5.
+ * Composes a setter function for given nested update path. Optimized
+ * fast execution paths are provided for path lengths less up to 4.
+ * Supports both arrays and objects and creates intermediate shallow
+ * copies at each level of the path. Thus provides structural sharing
+ * with the original data for any branches not being updated by the
+ * setter.
  *
  * If `path` is given as string, it will be split using `.`. Returns
  * function which accepts single object and when called, **immutably**
@@ -118,7 +122,7 @@ export function getter(path: Path) {
  * // { a: { b: { c: 24 } } }
  * ```
  *
- * Only keys in the path will be modied, all other keys present in the
+ * Only keys in the path will be modified, all other keys present in the
  * given object retain their original values to provide efficient
  * structural sharing / re-use.
  *
@@ -135,24 +139,23 @@ export function getter(path: Path) {
  *
  * @param path
  */
-export function setter(path: Path) {
+export function setter(path: Path): (s: any, v: any) => any {
     const ks = toPath(path);
     let [a, b, c, d] = ks;
     switch (ks.length) {
         case 0:
             return (_, v) => v;
         case 1:
-            return (s, v) => ({ ...s, [a]: v });
+            return (s, v) => (s = _copy(s), s[a] = v, s);
         case 2:
-            return (s, v) => ({ ...(s = s || {}), [a]: { ...s[a], [b]: v } });
+            return (s, v) => { let x; s = _copy(s); s[a] = x = _copy(s[a]); x[b] = v; return s; };
         case 3:
-            return (s, v) => ({ ...(s = s || {}), [a]: { ...(s = s[a] || {}), [b]: { ...s[b], [c]: v } } });
+            return (s, v) => { let x, y; s = _copy(s); s[a] = x = _copy(s[a]); x[b] = y = _copy(x[b]); y[c] = v; return s; };
         case 4:
-            return (s, v) => ({ ...(s = s || {}), [a]: { ...(s = s[a] || {}), [b]: { ...(s = s[b] || {}), [c]: { ...s[c], [d]: v } } } });
+            return (s, v) => { let x, y, z; s = _copy(s); s[a] = x = _copy(s[a]); x[b] = y = _copy(x[b]); y[c] = z = _copy(y[c]); z[d] = v; return s; };
         default:
-            const kl = ks[ks.length - 1];
-            let f = (s, v) => ({ ...(s || {}), [kl]: v });
-            for (let i = ks.length - 2; i >= 0; i--) {
+            let f;
+            for (let i = ks.length - 1; i >= 0; i--) {
                 f = compS(ks[i], f);
             }
             return f;
@@ -215,6 +218,31 @@ export function setInMany(state: any, ...pairs: any[]) {
 }
 
 /**
+ * Similar to `setter()`, returns a function to update values at given
+ * `path` using provided update `fn`. The returned function accepts a
+ * single object / array and applies `fn` to current path value (incl.
+ * any additional/optional arguments passed) and uses result as new
+ * value. Does not modify original state (unless given function does so
+ * itself).
+ *
+ * ```
+ * add = updater("a.b", (x, n) => x + n);
+ *
+ * add({a: {b: 10}}, 13);
+ * // { a: { b: 23 } }
+ * ```
+ *
+ * @param path
+ * @param fn
+ */
+export function updater(path: Path, fn: UpdateFn<any>) {
+    const g = getter(path);
+    const s = setter(path);
+    return (state: any, ...args: any[]) =>
+        s(state, fn.apply(null, (args.unshift(g(state)), args)));
+};
+
+/**
  * Similar to `setIn()`, but applies given function to current path
  * value (incl. any additional/optional arguments passed to `updateIn`)
  * and uses result as new value. Does not modify original state (unless
@@ -230,8 +258,7 @@ export function setInMany(state: any, ...pairs: any[]) {
  * @param path
  */
 export function updateIn(state: any, path: Path, fn: UpdateFn<any>, ...args: any[]) {
-    args.unshift(getIn(state, path));
-    return setter(path)(state, fn.apply(null, args));
+    return setter(path)(state, fn.apply(null, (args.unshift(getter(path)(state)), args)));
 }
 
 /**

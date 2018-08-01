@@ -3,6 +3,78 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.3.11"></a>
+## [0.3.11](https://github.com/thi-ng/umbrella/compare/@thi.ng/sax@0.3.10...@thi.ng/sax@0.3.11) (2018-08-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/sax
+
+<a name="0.3.10"></a>
+## [0.3.10](https://github.com/thi-ng/umbrella/compare/@thi.ng/sax@0.3.9...@thi.ng/sax@0.3.10) (2018-07-25)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/sax
+
+<a name="0.3.9"></a>
+## [0.3.9](https://github.com/thi-ng/umbrella/compare/@thi.ng/sax@0.3.8...@thi.ng/sax@0.3.9) (2018-07-20)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/sax
+
+<a name="0.3.8"></a>
+## [0.3.8](https://github.com/thi-ng/umbrella/compare/@thi.ng/sax@0.3.7...@thi.ng/sax@0.3.8) (2018-07-19)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/sax
+
+<a name="0.3.7"></a>
+## [0.3.7](https://github.com/thi-ng/umbrella/compare/@thi.ng/sax@0.3.6...@thi.ng/sax@0.3.7) (2018-07-13)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/sax
+
+<a name="0.3.6"></a>
+## [0.3.6](https://github.com/thi-ng/umbrella/compare/@thi.ng/sax@0.3.5...@thi.ng/sax@0.3.6) (2018-07-11)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/sax
+
+<a name="0.3.5"></a>
+## [0.3.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/sax@0.3.4...@thi.ng/sax@0.3.5) (2018-07-09)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/sax
+
+<a name="0.3.4"></a>
+## [0.3.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/sax@0.3.3...@thi.ng/sax@0.3.4) (2018-07-09)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/sax
+
+<a name="0.3.3"></a>
+## [0.3.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/sax@0.3.2...@thi.ng/sax@0.3.3) (2018-07-03)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/sax
+
 <a name="0.3.2"></a>
 ## [0.3.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/sax@0.3.1...@thi.ng/sax@0.3.2) (2018-06-21)
 

@@ -3,6 +3,78 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.2.12"></a>
+## [0.2.12](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup-css@0.2.11...@thi.ng/hiccup-css@0.2.12) (2018-08-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup-css
+
+<a name="0.2.11"></a>
+## [0.2.11](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup-css@0.2.10...@thi.ng/hiccup-css@0.2.11) (2018-07-25)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup-css
+
+<a name="0.2.10"></a>
+## [0.2.10](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup-css@0.2.9...@thi.ng/hiccup-css@0.2.10) (2018-07-20)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup-css
+
+<a name="0.2.9"></a>
+## [0.2.9](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup-css@0.2.8...@thi.ng/hiccup-css@0.2.9) (2018-07-19)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup-css
+
+<a name="0.2.8"></a>
+## [0.2.8](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup-css@0.2.7...@thi.ng/hiccup-css@0.2.8) (2018-07-13)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup-css
+
+<a name="0.2.7"></a>
+## [0.2.7](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup-css@0.2.6...@thi.ng/hiccup-css@0.2.7) (2018-07-10)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup-css
+
+<a name="0.2.6"></a>
+## [0.2.6](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup-css@0.2.5...@thi.ng/hiccup-css@0.2.6) (2018-07-09)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup-css
+
+<a name="0.2.5"></a>
+## [0.2.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup-css@0.2.4...@thi.ng/hiccup-css@0.2.5) (2018-07-09)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup-css
+
+<a name="0.2.4"></a>
+## [0.2.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup-css@0.2.3...@thi.ng/hiccup-css@0.2.4) (2018-07-03)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup-css
+
 <a name="0.2.3"></a>
 ## [0.2.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup-css@0.2.2...@thi.ng/hiccup-css@0.2.3) (2018-06-21)
 

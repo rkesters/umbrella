@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.0.32"></a>
+## [3.0.32](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.31...@thi.ng/hdom@3.0.32) (2018-08-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.31"></a>
+## [3.0.31](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.30...@thi.ng/hdom@3.0.31) (2018-08-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.30"></a>
+## [3.0.30](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.29...@thi.ng/hdom@3.0.30) (2018-07-20)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.29"></a>
+## [3.0.29](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.28...@thi.ng/hdom@3.0.29) (2018-07-11)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.28"></a>
+## [3.0.28](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.27...@thi.ng/hdom@3.0.28) (2018-07-10)
+
+
+### Bug Fixes
+
+* **hdom:** always update "value" attrib last in diffAttributes() ([126103b](https://github.com/thi-ng/umbrella/commit/126103b))
+
+
+
+
+<a name="3.0.27"></a>
+## [3.0.27](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.26...@thi.ng/hdom@3.0.27) (2018-07-04)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
 <a name="3.0.26"></a>
 ## [3.0.26](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.25...@thi.ng/hdom@3.0.26) (2018-06-21)
 

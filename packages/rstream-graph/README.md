@@ -23,7 +23,7 @@ these).
 
 ## Installation
 
-```
+```bash
 yarn add @thi.ng/rstream-graph
 ```
 
@@ -41,16 +41,16 @@ yarn add @thi.ng/rstream-graph
 
 Small(ish), fully commented projects can be found in the `/examples` folder:
 
-* **SVG grid gen** -
+- **SVG grid gen** -
   [Source](https://github.com/thi-ng/umbrella/tree/master/examples/rstream-grid),
-  [Live version](http://demo.thi.ng/umbrella/rstream-grid)
-* **Dataflow circles** -
+  [Live version](https://demo.thi.ng/umbrella/rstream-grid)
+- **Dataflow circles** -
   [Source](https://github.com/thi-ng/umbrella/tree/master/examples/rstream-dataflow),
-  [Live version](http://demo.thi.ng/umbrella/rstream-dataflow)
+  [Live version](https://demo.thi.ng/umbrella/rstream-dataflow)
 
 More basic:
 
-```typescript
+```ts
 import { Atom } from "@thi.ng/atom";
 import * as rs from "@thi.ng/rstream";
 import * as rsg from "@thi.ng/rstream-graph";

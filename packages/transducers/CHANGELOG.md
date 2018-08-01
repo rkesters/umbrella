@@ -3,6 +3,89 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.14.3"></a>
+## [1.14.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.14.2...@thi.ng/transducers@1.14.3) (2018-08-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/transducers
+
+<a name="1.14.2"></a>
+## [1.14.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.14.1...@thi.ng/transducers@1.14.2) (2018-07-25)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/transducers
+
+<a name="1.14.1"></a>
+## [1.14.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.14.0...@thi.ng/transducers@1.14.1) (2018-07-20)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/transducers
+
+<a name="1.14.0"></a>
+# [1.14.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.13.0...@thi.ng/transducers@1.14.0) (2018-07-19)
+
+
+### Features
+
+* **transducer:** add asIterable() helper ([ccc37c6](https://github.com/thi-ng/umbrella/commit/ccc37c6))
+* **transducers:** add juxtR() for multiplexed reductions from same src ([9b07d12](https://github.com/thi-ng/umbrella/commit/9b07d12))
+* **transducers:** allow key arrays for rename(), simplify call sites ([092154c](https://github.com/thi-ng/umbrella/commit/092154c))
+
+
+### Performance Improvements
+
+* **transducers:** update movingAverage() xform, add docs ([9874ace](https://github.com/thi-ng/umbrella/commit/9874ace))
+
+
+
+
+<a name="1.13.0"></a>
+# [1.13.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.12.2...@thi.ng/transducers@1.13.0) (2018-07-13)
+
+
+### Features
+
+* **transducers:** add wordWrap() xform ([81223dc](https://github.com/thi-ng/umbrella/commit/81223dc))
+
+
+
+
+<a name="1.12.2"></a>
+## [1.12.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.12.1...@thi.ng/transducers@1.12.2) (2018-07-09)
+
+
+### Bug Fixes
+
+* **transducers:** revert mean() from regression introduced in 095e6ef ([03543ee](https://github.com/thi-ng/umbrella/commit/03543ee))
+
+
+
+
+<a name="1.12.1"></a>
+## [1.12.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.12.0...@thi.ng/transducers@1.12.1) (2018-07-09)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/transducers
+
+<a name="1.12.0"></a>
+# [1.12.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.11.1...@thi.ng/transducers@1.12.0) (2018-07-03)
+
+
+### Features
+
+* **transducers:** add ensureArray(), refactor reverse() ([677c7cc](https://github.com/thi-ng/umbrella/commit/677c7cc))
+
+
+
+
 <a name="1.11.1"></a>
 ## [1.11.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/transducers@1.11.0...@thi.ng/transducers@1.11.1) (2018-06-21)
 

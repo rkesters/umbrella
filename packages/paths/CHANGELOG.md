@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.5.2"></a>
+## [1.5.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/paths@1.5.1...@thi.ng/paths@1.5.2) (2018-08-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/paths
+
+<a name="1.5.1"></a>
+## [1.5.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/paths@1.5.0...@thi.ng/paths@1.5.1) (2018-07-20)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/paths
+
+<a name="1.5.0"></a>
+# [1.5.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/paths@1.4.0...@thi.ng/paths@1.5.0) (2018-07-11)
+
+
+### Features
+
+* **paths:** add updater(), refactor updateIn(), update readme ([ad4caad](https://github.com/thi-ng/umbrella/commit/ad4caad))
+
+
+
+
+<a name="1.4.0"></a>
+# [1.4.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/paths@1.3.10...@thi.ng/paths@1.4.0) (2018-07-04)
+
+
+### Features
+
+* **paths:** update setter() to support arrays, optimize (~2.5x faster) ([3d9d620](https://github.com/thi-ng/umbrella/commit/3d9d620))
+
+
+
+
 <a name="1.3.10"></a>
 ## [1.3.10](https://github.com/thi-ng/umbrella/compare/@thi.ng/paths@1.3.9...@thi.ng/paths@1.3.10) (2018-06-21)
 

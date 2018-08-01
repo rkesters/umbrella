@@ -1,8 +1,9 @@
-import { equiv } from "@thi.ng/equiv";
 import * as isa from "@thi.ng/checks/is-array";
 import * as iss from "@thi.ng/checks/is-string";
-import * as diff from "@thi.ng/diff";
-
+import { DiffLogEntry } from "@thi.ng/diff/api";
+import { diffArray } from "@thi.ng/diff/array";
+import { diffObject } from "@thi.ng/diff/object";
+import { equiv } from "@thi.ng/equiv";
 import {
     createDOM,
     removeAttribs,
@@ -12,8 +13,8 @@ import {
 
 const isArray = isa.isArray;
 const isString = iss.isString;
-const diffArray = diff.diffArray;
-const diffObject = diff.diffObject;
+
+const SEMAPHORE = Symbol();
 
 /**
  * Takes a DOM root element and two hiccup trees, `prev` and `curr`.
@@ -128,21 +129,33 @@ function diffAttributes(el: Element, prev: any, curr: any) {
     let i, e, edits;
     const delta = diffObject(prev, curr);
     removeAttribs(el, delta.dels, prev);
+    let value = SEMAPHORE;
     for (edits = delta.edits, i = edits.length; --i >= 0;) {
         e = edits[i];
         const a = e[0];
         if (a.indexOf("on") === 0) {
             el.removeEventListener(a.substr(2), prev[a]);
         }
-        setAttrib(el, a, e[1], curr);
+        if (a !== "value") {
+            setAttrib(el, a, e[1], curr);
+        } else {
+            value = e[1];
+        }
     }
     for (edits = delta.adds, i = edits.length; --i >= 0;) {
         e = edits[i];
-        setAttrib(el, e, curr[e], curr);
+        if (e !== "value") {
+            setAttrib(el, e, curr[e], curr);
+        } else {
+            value = curr[e];
+        }
+    }
+    if (value !== SEMAPHORE) {
+        setAttrib(el, "value", value, curr);
     }
 }
 
-function extractEquivElements(edits: diff.DiffLogEntry<any>[]) {
+function extractEquivElements(edits: DiffLogEntry<any>[]) {
     let k, v, e, ek;
     const equiv = {};
     for (let i = edits.length; --i >= 0;) {

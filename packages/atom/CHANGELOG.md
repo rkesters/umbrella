@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.4.6"></a>
+## [1.4.6](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.4.5...@thi.ng/atom@1.4.6) (2018-08-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/atom
+
+<a name="1.4.5"></a>
+## [1.4.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.4.4...@thi.ng/atom@1.4.5) (2018-07-20)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/atom
+
+<a name="1.4.4"></a>
+## [1.4.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.4.3...@thi.ng/atom@1.4.4) (2018-07-11)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/atom
+
+<a name="1.4.3"></a>
+## [1.4.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.4.2...@thi.ng/atom@1.4.3) (2018-07-04)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/atom
+
 <a name="1.4.2"></a>
 ## [1.4.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.4.1...@thi.ng/atom@1.4.2) (2018-06-21)
 
