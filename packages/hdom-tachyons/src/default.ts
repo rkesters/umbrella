@@ -1,4 +1,7 @@
-export const DEFAULT = {
+import { resolve } from "@thi.ng/resolve-map";
+import { ThemeSpec } from "./api";
+
+export const DEFAULT = <ThemeSpec>resolve({
     global: {
         bodyBg: "white",
         bodyText: "dark-gray",
@@ -107,4 +110,4 @@ export const DEFAULT = {
             },
         }
     }
-};
+});
