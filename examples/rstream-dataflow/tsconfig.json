@@ -1,11 +1,15 @@
 {
     "extends": "../../tsconfig.json",
     "compilerOptions": {
-        "outDir": "build",
+        "outDir": ".",
+        "target": "es6",
         "sourceMap": true,
         "noUnusedLocals": false,
     },
     "include": [
         "./src/**/*.ts"
+    ],
+    "exclude": [
+        "**/node_modules"
     ]
 }

@@ -72,7 +72,7 @@ const randomizeRules = () => {
 export const convolve = (src: number[], rules: number[], width: number, height: number, rstride = 9, wrap = true) =>
     transduce(
         comp(
-            multiplex(convolve2d(src, width, height, kernel, wrap), map(lookup2d(src, width))),
+            multiplex(convolve2d({ src, width, height, kernel, wrap }), map(lookup2d(src, width))),
             map(lookup2d(rules, rstride))
         ),
         push(),
@@ -115,18 +115,20 @@ const isPreset = (id) => presets.findIndex((x) => x[0] === id) !== -1;
 applyRules(location.hash.length > 18 ? location.hash.substr(1) : presets[1][0]);
 
 // define & start main app component
-start("app", () => {
-    const id = location.hash.substr(1);
-    return ["div",
-        ruleBoxes("birth", 0),
-        ruleBoxes("survive", 1),
-        ["div",
-            ["button", { onclick: () => randomizeRules() }, "randomize rules"],
-            ["button", { onclick: () => randomizeGrid() }, "reset grid"],
-            [dropdown, { onchange: (e) => applyRules(e.target.value) },
-                presets,
-                isPreset(id) ? id : ""]
-        ],
-        ["pre", format(grid = convolve(grid, rules, W, H), W)]
-    ];
-});
+start(
+    () => {
+        const id = location.hash.substr(1);
+        return ["div",
+            ruleBoxes("birth", 0),
+            ruleBoxes("survive", 1),
+            ["div",
+                ["button", { onclick: () => randomizeRules() }, "randomize rules"],
+                ["button", { onclick: () => randomizeGrid() }, "reset grid"],
+                [dropdown, { onchange: (e) => applyRules(e.target.value) },
+                    presets,
+                    isPreset(id) ? id : ""]
+            ],
+            ["pre", format(grid = convolve(grid, rules, W, H), W)]
+        ];
+    }
+);

@@ -1,6 +1,8 @@
 # @thi.ng/csp
 
-[![npm (scoped)](https://img.shields.io/npm/v/@thi.ng/csp.svg)](https://www.npmjs.com/package/@thi.ng/csp)
+[![npm version](https://img.shields.io/npm/v/@thi.ng/csp.svg)](https://www.npmjs.com/package/@thi.ng/csp)
+![npm downloads](https://img.shields.io/npm/dm/@thi.ng/csp.svg)
+[![Twitter Follow](https://img.shields.io/twitter/follow/thing_umbrella.svg?style=flat-square&label=twitter)](https://twitter.com/thing_umbrella)
 
 This project is part of the
 [@thi.ng/umbrella](https://github.com/thi-ng/umbrella/) monorepo.
@@ -28,7 +30,7 @@ Lightweight ES6-promise based CSP implementation written in TypeScript
 
 ## Installation
 
-```
+```bash
 yarn add @thi.ng/csp
 ```
 
@@ -44,7 +46,7 @@ yarn add @thi.ng/csp
 
 ### File loading & word frequency analysis
 
-```js
+```ts
 import { Channel } from "@thi.ng/csp";
 import * as tx from "@thi.ng/transducers";
 
@@ -129,7 +131,7 @@ paths.into(["src/channel.ts", "src/mult.ts", "src/pubsub.ts"]);
 
 ### Channel merging
 
-```js
+```ts
 Channel.merge([
     Channel.range(0, 3),
     Channel.range(10, 15),
@@ -170,7 +172,7 @@ Channel.mergeTuples([
 
 ### PubSub
 
-```js
+```ts
 // define a channel publisher with transducer and topic function applied to each item
 // the input channel receives names and transforms them into indexable objects
 const pub = new PubSub(

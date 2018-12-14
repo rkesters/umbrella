@@ -3,6 +3,369 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.57](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.56...@thi.ng/rstream-query@0.3.57) (2018-12-13)
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+
+
+
+
+## [0.3.56](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.55...@thi.ng/rstream-query@0.3.56) (2018-12-08)
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+
+
+
+
+## [0.3.55](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.54...@thi.ng/rstream-query@0.3.55) (2018-12-01)
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+
+
+
+
+## [0.3.54](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.53...@thi.ng/rstream-query@0.3.54) (2018-11-24)
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+
+
+
+
+## [0.3.53](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.52...@thi.ng/rstream-query@0.3.53) (2018-11-08)
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+
+
+
+
+## [0.3.52](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.51...@thi.ng/rstream-query@0.3.52) (2018-10-21)
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+
+
+
+
+## [0.3.51](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.50...@thi.ng/rstream-query@0.3.51) (2018-10-17)
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+
+
+
+
+<a name="0.3.50"></a>
+## [0.3.50](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.49...@thi.ng/rstream-query@0.3.50) (2018-09-26)
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+
+
+
+
+<a name="0.3.49"></a>
+## [0.3.49](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.48...@thi.ng/rstream-query@0.3.49) (2018-09-25)
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+
+
+
+
+<a name="0.3.48"></a>
+## [0.3.48](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.47...@thi.ng/rstream-query@0.3.48) (2018-09-24)
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+
+
+
+
+<a name="0.3.47"></a>
+## [0.3.47](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.46...@thi.ng/rstream-query@0.3.47) (2018-09-24)
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+
+
+
+
+<a name="0.3.46"></a>
+## [0.3.46](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.45...@thi.ng/rstream-query@0.3.46) (2018-09-23)
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+
+
+
+
+<a name="0.3.45"></a>
+## [0.3.45](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.45-alpha.2...@thi.ng/rstream-query@0.3.45) (2018-09-22)
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+
+
+
+
+<a name="0.3.45-alpha.2"></a>
+## [0.3.45-alpha.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.45-alpha.1...@thi.ng/rstream-query@0.3.45-alpha.2) (2018-09-17)
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+
+
+
+
+<a name="0.3.45-alpha.1"></a>
+## [0.3.45-alpha.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.45-alpha.0...@thi.ng/rstream-query@0.3.45-alpha.1) (2018-09-17)
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+
+
+
+
+<a name="0.3.45-alpha.0"></a>
+## [0.3.45-alpha.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.44...@thi.ng/rstream-query@0.3.45-alpha.0) (2018-09-17)
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+
+
+
+
+<a name="0.3.44"></a>
+## [0.3.44](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.43...@thi.ng/rstream-query@0.3.44) (2018-09-10)
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+
+
+
+
+<a name="0.3.43"></a>
+## [0.3.43](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.42...@thi.ng/rstream-query@0.3.43) (2018-09-08)
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+
+
+
+
+<a name="0.3.42"></a>
+## [0.3.42](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.41...@thi.ng/rstream-query@0.3.42) (2018-09-06)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+<a name="0.3.41"></a>
+## [0.3.41](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.40...@thi.ng/rstream-query@0.3.41) (2018-09-03)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+<a name="0.3.40"></a>
+## [0.3.40](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.39...@thi.ng/rstream-query@0.3.40) (2018-09-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+<a name="0.3.39"></a>
+## [0.3.39](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.38...@thi.ng/rstream-query@0.3.39) (2018-09-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+<a name="0.3.38"></a>
+## [0.3.38](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.37...@thi.ng/rstream-query@0.3.38) (2018-08-27)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+<a name="0.3.37"></a>
+## [0.3.37](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.36...@thi.ng/rstream-query@0.3.37) (2018-08-27)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+<a name="0.3.36"></a>
+## [0.3.36](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.35...@thi.ng/rstream-query@0.3.36) (2018-08-24)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+<a name="0.3.35"></a>
+## [0.3.35](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.34...@thi.ng/rstream-query@0.3.35) (2018-08-24)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+<a name="0.3.34"></a>
+## [0.3.34](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.33...@thi.ng/rstream-query@0.3.34) (2018-08-08)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+<a name="0.3.33"></a>
+## [0.3.33](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.32...@thi.ng/rstream-query@0.3.33) (2018-08-06)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+<a name="0.3.32"></a>
+## [0.3.32](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.31...@thi.ng/rstream-query@0.3.32) (2018-08-03)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+<a name="0.3.31"></a>
+## [0.3.31](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.30...@thi.ng/rstream-query@0.3.31) (2018-08-02)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+<a name="0.3.30"></a>
+## [0.3.30](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.29...@thi.ng/rstream-query@0.3.30) (2018-08-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+<a name="0.3.29"></a>
+## [0.3.29](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.28...@thi.ng/rstream-query@0.3.29) (2018-08-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+<a name="0.3.28"></a>
+## [0.3.28](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.27...@thi.ng/rstream-query@0.3.28) (2018-07-25)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+<a name="0.3.27"></a>
+## [0.3.27](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.26...@thi.ng/rstream-query@0.3.27) (2018-07-20)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+<a name="0.3.26"></a>
+## [0.3.26](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.25...@thi.ng/rstream-query@0.3.26) (2018-07-19)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+<a name="0.3.25"></a>
+## [0.3.25](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.24...@thi.ng/rstream-query@0.3.25) (2018-07-16)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+<a name="0.3.24"></a>
+## [0.3.24](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.23...@thi.ng/rstream-query@0.3.24) (2018-07-13)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+<a name="0.3.23"></a>
+## [0.3.23](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.22...@thi.ng/rstream-query@0.3.23) (2018-07-11)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+<a name="0.3.22"></a>
+## [0.3.22](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.21...@thi.ng/rstream-query@0.3.22) (2018-07-09)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+<a name="0.3.21"></a>
+## [0.3.21](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.20...@thi.ng/rstream-query@0.3.21) (2018-07-09)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+<a name="0.3.20"></a>
+## [0.3.20](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.19...@thi.ng/rstream-query@0.3.20) (2018-07-04)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+<a name="0.3.19"></a>
+## [0.3.19](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.18...@thi.ng/rstream-query@0.3.19) (2018-07-04)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+<a name="0.3.18"></a>
+## [0.3.18](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.17...@thi.ng/rstream-query@0.3.18) (2018-07-03)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
+<a name="0.3.17"></a>
+## [0.3.17](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.16...@thi.ng/rstream-query@0.3.17) (2018-07-03)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream-query
+
 <a name="0.3.16"></a>
 ## [0.3.16](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream-query@0.3.15...@thi.ng/rstream-query@0.3.16) (2018-06-21)
 

@@ -3,6 +3,65 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.13](https://github.com/thi-ng/umbrella/compare/@thi.ng/checks@1.5.12...@thi.ng/checks@1.5.13) (2018-10-21)
+
+**Note:** Version bump only for package @thi.ng/checks
+
+
+
+
+
+## [1.5.12](https://github.com/thi-ng/umbrella/compare/@thi.ng/checks@1.5.11...@thi.ng/checks@1.5.12) (2018-10-17)
+
+**Note:** Version bump only for package @thi.ng/checks
+
+
+
+
+
+<a name="1.5.11"></a>
+## [1.5.11](https://github.com/thi-ng/umbrella/compare/@thi.ng/checks@1.5.10...@thi.ng/checks@1.5.11) (2018-09-24)
+
+**Note:** Version bump only for package @thi.ng/checks
+
+
+
+
+
+<a name="1.5.10"></a>
+## [1.5.10](https://github.com/thi-ng/umbrella/compare/@thi.ng/checks@1.5.9...@thi.ng/checks@1.5.10) (2018-09-22)
+
+**Note:** Version bump only for package @thi.ng/checks
+
+
+
+
+
+<a name="1.5.8"></a>
+## [1.5.8](https://github.com/thi-ng/umbrella/compare/@thi.ng/checks@1.5.7...@thi.ng/checks@1.5.8) (2018-09-10)
+
+**Note:** Version bump only for package @thi.ng/checks
+
+
+
+
+
+<a name="1.5.7"></a>
+## [1.5.7](https://github.com/thi-ng/umbrella/compare/@thi.ng/checks@1.5.6...@thi.ng/checks@1.5.7) (2018-08-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/checks
+
+<a name="1.5.6"></a>
+## [1.5.6](https://github.com/thi-ng/umbrella/compare/@thi.ng/checks@1.5.5...@thi.ng/checks@1.5.6) (2018-07-20)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/checks
+
 <a name="1.5.5"></a>
 ## [1.5.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/checks@1.5.4...@thi.ng/checks@1.5.5) (2018-06-21)
 

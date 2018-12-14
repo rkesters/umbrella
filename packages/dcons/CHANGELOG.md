@@ -3,6 +3,194 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.17](https://github.com/thi-ng/umbrella/compare/@thi.ng/dcons@1.1.16...@thi.ng/dcons@1.1.17) (2018-12-13)
+
+**Note:** Version bump only for package @thi.ng/dcons
+
+
+
+
+
+## [1.1.16](https://github.com/thi-ng/umbrella/compare/@thi.ng/dcons@1.1.15...@thi.ng/dcons@1.1.16) (2018-12-08)
+
+**Note:** Version bump only for package @thi.ng/dcons
+
+
+
+
+
+## [1.1.15](https://github.com/thi-ng/umbrella/compare/@thi.ng/dcons@1.1.14...@thi.ng/dcons@1.1.15) (2018-12-01)
+
+**Note:** Version bump only for package @thi.ng/dcons
+
+
+
+
+
+## [1.1.14](https://github.com/thi-ng/umbrella/compare/@thi.ng/dcons@1.1.13...@thi.ng/dcons@1.1.14) (2018-11-08)
+
+**Note:** Version bump only for package @thi.ng/dcons
+
+
+
+
+
+## [1.1.13](https://github.com/thi-ng/umbrella/compare/@thi.ng/dcons@1.1.12...@thi.ng/dcons@1.1.13) (2018-10-21)
+
+**Note:** Version bump only for package @thi.ng/dcons
+
+
+
+
+
+## [1.1.12](https://github.com/thi-ng/umbrella/compare/@thi.ng/dcons@1.1.11...@thi.ng/dcons@1.1.12) (2018-10-17)
+
+**Note:** Version bump only for package @thi.ng/dcons
+
+
+
+
+
+<a name="1.1.11"></a>
+## [1.1.11](https://github.com/thi-ng/umbrella/compare/@thi.ng/dcons@1.1.10...@thi.ng/dcons@1.1.11) (2018-09-26)
+
+**Note:** Version bump only for package @thi.ng/dcons
+
+
+
+
+
+<a name="1.1.10"></a>
+## [1.1.10](https://github.com/thi-ng/umbrella/compare/@thi.ng/dcons@1.1.9...@thi.ng/dcons@1.1.10) (2018-09-25)
+
+**Note:** Version bump only for package @thi.ng/dcons
+
+
+
+
+
+<a name="1.1.9"></a>
+## [1.1.9](https://github.com/thi-ng/umbrella/compare/@thi.ng/dcons@1.1.8...@thi.ng/dcons@1.1.9) (2018-09-24)
+
+**Note:** Version bump only for package @thi.ng/dcons
+
+
+
+
+
+<a name="1.1.8"></a>
+## [1.1.8](https://github.com/thi-ng/umbrella/compare/@thi.ng/dcons@1.1.7...@thi.ng/dcons@1.1.8) (2018-09-24)
+
+**Note:** Version bump only for package @thi.ng/dcons
+
+
+
+
+
+<a name="1.1.7"></a>
+## [1.1.7](https://github.com/thi-ng/umbrella/compare/@thi.ng/dcons@1.1.7-alpha.1...@thi.ng/dcons@1.1.7) (2018-09-22)
+
+**Note:** Version bump only for package @thi.ng/dcons
+
+
+
+
+
+<a name="1.1.7-alpha.1"></a>
+## [1.1.7-alpha.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/dcons@1.1.7-alpha.0...@thi.ng/dcons@1.1.7-alpha.1) (2018-09-17)
+
+**Note:** Version bump only for package @thi.ng/dcons
+
+
+
+
+
+<a name="1.1.7-alpha.0"></a>
+## [1.1.7-alpha.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/dcons@1.1.6...@thi.ng/dcons@1.1.7-alpha.0) (2018-09-17)
+
+**Note:** Version bump only for package @thi.ng/dcons
+
+
+
+
+
+<a name="1.1.6"></a>
+## [1.1.6](https://github.com/thi-ng/umbrella/compare/@thi.ng/dcons@1.1.5...@thi.ng/dcons@1.1.6) (2018-09-10)
+
+**Note:** Version bump only for package @thi.ng/dcons
+
+
+
+
+
+<a name="1.1.5"></a>
+## [1.1.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/dcons@1.1.4...@thi.ng/dcons@1.1.5) (2018-09-08)
+
+**Note:** Version bump only for package @thi.ng/dcons
+
+
+
+
+
+<a name="1.1.4"></a>
+## [1.1.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/dcons@1.1.3...@thi.ng/dcons@1.1.4) (2018-09-06)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/dcons
+
+<a name="1.1.3"></a>
+## [1.1.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/dcons@1.1.2...@thi.ng/dcons@1.1.3) (2018-09-03)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/dcons
+
+<a name="1.1.2"></a>
+## [1.1.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/dcons@1.1.1...@thi.ng/dcons@1.1.2) (2018-09-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/dcons
+
+<a name="1.1.1"></a>
+## [1.1.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/dcons@1.1.0...@thi.ng/dcons@1.1.1) (2018-08-24)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/dcons
+
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/dcons@1.0.7...@thi.ng/dcons@1.1.0) (2018-08-24)
+
+
+### Features
+
+* **dcons:** add IReducible impl, update deps & imports ([1280cfd](https://github.com/thi-ng/umbrella/commit/1280cfd))
+
+
+
+
+<a name="1.0.7"></a>
+## [1.0.7](https://github.com/thi-ng/umbrella/compare/@thi.ng/dcons@1.0.6...@thi.ng/dcons@1.0.7) (2018-08-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/dcons
+
+<a name="1.0.6"></a>
+## [1.0.6](https://github.com/thi-ng/umbrella/compare/@thi.ng/dcons@1.0.5...@thi.ng/dcons@1.0.6) (2018-07-20)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/dcons
+
 <a name="1.0.5"></a>
 ## [1.0.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/dcons@1.0.4...@thi.ng/dcons@1.0.5) (2018-06-21)
 

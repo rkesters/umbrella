@@ -3,6 +3,196 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@2.6.1...@thi.ng/hiccup@2.7.0) (2018-12-13)
+
+
+### Features
+
+* **hiccup:** add __skip support, add test, update readme ([d3500df](https://github.com/thi-ng/umbrella/commit/d3500df))
+
+
+
+
+
+## [2.6.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@2.6.0...@thi.ng/hiccup@2.6.1) (2018-12-08)
+
+**Note:** Version bump only for package @thi.ng/hiccup
+
+
+
+
+
+# [2.6.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@2.5.0...@thi.ng/hiccup@2.6.0) (2018-11-07)
+
+
+### Features
+
+* **hiccup:** update derefContext() to only apply to selected keys ([749925f](https://github.com/thi-ng/umbrella/commit/749925f))
+
+
+
+
+
+# [2.5.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@2.4.3...@thi.ng/hiccup@2.5.0) (2018-11-06)
+
+
+### Features
+
+* **hiccup:** add support for dynamic user context values ([a947873](https://github.com/thi-ng/umbrella/commit/a947873))
+
+
+
+
+
+## [2.4.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@2.4.2...@thi.ng/hiccup@2.4.3) (2018-10-21)
+
+**Note:** Version bump only for package @thi.ng/hiccup
+
+
+
+
+
+## [2.4.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@2.4.1...@thi.ng/hiccup@2.4.2) (2018-10-17)
+
+**Note:** Version bump only for package @thi.ng/hiccup
+
+
+
+
+
+<a name="2.4.1"></a>
+## [2.4.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@2.4.0...@thi.ng/hiccup@2.4.1) (2018-09-24)
+
+**Note:** Version bump only for package @thi.ng/hiccup
+
+
+
+
+
+<a name="2.4.0"></a>
+# [2.4.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@2.3.0...@thi.ng/hiccup@2.4.0) (2018-09-23)
+
+
+### Features
+
+* **hiccup:** emmet class & class attrib merging in normalize() ([1d8eeb4](https://github.com/thi-ng/umbrella/commit/1d8eeb4))
+
+
+
+
+
+<a name="2.3.0"></a>
+# [2.3.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@2.2.1-alpha.1...@thi.ng/hiccup@2.3.0) (2018-09-22)
+
+
+### Features
+
+* **hiccup:** add control attrib handling, add comment support ([363c241](https://github.com/thi-ng/umbrella/commit/363c241))
+
+
+
+
+
+<a name="2.2.1-alpha.1"></a>
+## [2.2.1-alpha.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@2.2.1-alpha.0...@thi.ng/hiccup@2.2.1-alpha.1) (2018-09-17)
+
+**Note:** Version bump only for package @thi.ng/hiccup
+
+
+
+
+
+<a name="2.2.1-alpha.0"></a>
+## [2.2.1-alpha.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@2.2.0...@thi.ng/hiccup@2.2.1-alpha.0) (2018-09-17)
+
+**Note:** Version bump only for package @thi.ng/hiccup
+
+
+
+
+
+<a name="2.1.2"></a>
+## [2.1.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@2.1.1...@thi.ng/hiccup@2.1.2) (2018-09-10)
+
+**Note:** Version bump only for package @thi.ng/hiccup
+
+
+
+
+
+<a name="2.1.1"></a>
+## [2.1.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@2.1.0...@thi.ng/hiccup@2.1.1) (2018-09-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup
+
+<a name="2.1.0"></a>
+# [2.1.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@2.0.11...@thi.ng/hiccup@2.1.0) (2018-08-31)
+
+
+### Bug Fixes
+
+* **hiccup:** disable spans for certain element types ([1b97a25](https://github.com/thi-ng/umbrella/commit/1b97a25))
+* **hiccup:** serialize() args ([1e8b4ef](https://github.com/thi-ng/umbrella/commit/1e8b4ef))
+
+
+### Features
+
+* **hiccup:** add optional support for spans & auto keying ([#39](https://github.com/thi-ng/umbrella/issues/39)) ([1b0deb2](https://github.com/thi-ng/umbrella/commit/1b0deb2))
+
+
+
+
+<a name="2.0.11"></a>
+## [2.0.11](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@2.0.10...@thi.ng/hiccup@2.0.11) (2018-08-27)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup
+
+<a name="2.0.10"></a>
+## [2.0.10](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@2.0.9...@thi.ng/hiccup@2.0.10) (2018-08-24)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup
+
+<a name="2.0.9"></a>
+## [2.0.9](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@2.0.8...@thi.ng/hiccup@2.0.9) (2018-08-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup
+
+<a name="2.0.8"></a>
+## [2.0.8](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@2.0.7...@thi.ng/hiccup@2.0.8) (2018-07-20)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup
+
+<a name="2.0.7"></a>
+## [2.0.7](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@2.0.6...@thi.ng/hiccup@2.0.7) (2018-07-11)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup
+
+<a name="2.0.6"></a>
+## [2.0.6](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@2.0.5...@thi.ng/hiccup@2.0.6) (2018-07-04)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hiccup
+
 <a name="2.0.5"></a>
 ## [2.0.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/hiccup@2.0.4...@thi.ng/hiccup@2.0.5) (2018-06-21)
 

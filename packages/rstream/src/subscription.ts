@@ -1,20 +1,59 @@
-import { IDeref } from "@thi.ng/api/api";
+import { IDeref, SEMAPHORE } from "@thi.ng/api/api";
 import { implementsFunction } from "@thi.ng/checks/implements-function";
 import { isFunction } from "@thi.ng/checks/is-function";
 import { isString } from "@thi.ng/checks/is-string";
 import { illegalArity } from "@thi.ng/errors/illegal-arity";
 import { illegalState } from "@thi.ng/errors/illegal-state";
-import { Reducer, SEMAPHORE, Transducer } from "@thi.ng/transducers/api";
+import { Reducer, Transducer } from "@thi.ng/transducers/api";
 import { comp } from "@thi.ng/transducers/func/comp";
 import { isReduced, unreduced } from "@thi.ng/transducers/reduced";
 import { push } from "@thi.ng/transducers/rfn/push";
 
 import {
+    __State,
     DEBUG,
     ISubscribable,
     ISubscriber,
     State
 } from "./api";
+
+/**
+ * Creates a new `Subscription` instance, the fundamental datatype &
+ * building block provided by this package (`Stream`s are
+ * `Subscription`s too). Subscriptions can be:
+ *
+ * - linked into directed graphs (if async, not necessarily DAGs)
+ * - transformed using transducers (incl. early termination)
+ * - can have any number of subscribers (optionally each w/ their own
+ *   transducer)
+ * - recursively unsubscribe themselves from parent after their last
+ *   subscriber unsubscribed
+ * - will go into a non-recoverable error state if NONE of the
+ *   subscribers has an error handler itself
+ * - implement the @thi.ng/api `IDeref` interface
+ *
+ * ```
+ * // as reactive value mechanism (same as with stream() above)
+ * s = rs.subscription();
+ * s.subscribe(trace("s1"));
+ * s.subscribe(trace("s2"), tx.filter((x) => x > 25));
+ *
+ * // external trigger
+ * s.next(23);
+ * // s1 23
+ * s.next(42);
+ * // s1 42
+ * // s2 42
+ * ```
+ *
+ * @param sub
+ * @param xform
+ * @param parent
+ * @param id
+ */
+export function subscription<A, B>(sub?: ISubscriber<B>, xform?: Transducer<A, B>, parent?: ISubscribable<A>, id?: string) {
+    return new Subscription(sub, xform, parent, id);
+}
 
 export class Subscription<A, B> implements
     IDeref<B>,
@@ -26,7 +65,7 @@ export class Subscription<A, B> implements
     id: string;
 
     protected parent: ISubscribable<A>;
-    protected subs: Set<ISubscriber<B>>;
+    protected subs: ISubscriber<B>[];
     protected xform: Reducer<B[], A>;
     protected state: State = State.IDLE;
 
@@ -36,9 +75,9 @@ export class Subscription<A, B> implements
         this.parent = parent;
         this.id = id || `sub-${Subscription.NEXT_ID++}`;
         this.last = SEMAPHORE;
-        this.subs = new Set();
+        this.subs = [];
         if (sub) {
-            this.subs.add(<ISubscriber<B>>sub);
+            this.subs.push(<ISubscriber<B>>sub);
         }
         if (xform) {
             this.xform = xform(push());
@@ -154,9 +193,10 @@ export class Subscription<A, B> implements
         }
         if (this.subs) {
             DEBUG && console.log(this.id, "unsub child", sub.id);
-            if (this.subs.has(sub)) {
-                this.subs.delete(sub);
-                if (!this.subs.size) {
+            const idx = this.subs.indexOf(sub);
+            if (idx >= 0) {
+                this.subs.splice(idx, 1);
+                if (!this.subs.length) {
                     this.unsubscribe();
                 }
                 return true;
@@ -206,8 +246,8 @@ export class Subscription<A, B> implements
     error(e: any) {
         this.state = State.ERROR;
         let notified = false;
-        if (this.subs && this.subs.size) {
-            for (let s of [...this.subs]) {
+        if (this.subs && this.subs.length) {
+            for (let s of this.subs.slice()) {
                 if (s.error) {
                     s.error(e);
                     notified = true;
@@ -225,7 +265,7 @@ export class Subscription<A, B> implements
     }
 
     protected addWrapped(wrapped: Subscription<any, any>) {
-        this.subs.add(wrapped);
+        this.subs.push(wrapped);
         this.state = State.ACTIVE;
         return wrapped;
     }
@@ -233,24 +273,36 @@ export class Subscription<A, B> implements
     protected dispatch(x: B) {
         DEBUG && console.log(this.id, "dispatch", x);
         this.last = x;
-        for (let s of this.subs) {
+        const subs = this.subs;
+        let s: ISubscriber<B>;
+        if (subs.length == 1) {
+            s = subs[0];
             try {
                 s.next && s.next(x);
             } catch (e) {
                 s.error ? s.error(e) : this.error(e);
+            }
+        } else {
+            for (let i = subs.length - 1; i >= 0; i--) {
+                s = subs[i];
+                try {
+                    s.next && s.next(x);
+                } catch (e) {
+                    s.error ? s.error(e) : this.error(e);
+                }
             }
         }
     }
 
     protected ensureState() {
         if (this.state >= State.DONE) {
-            illegalState(`operation not allowed in ${State[this.state]} state`);
+            illegalState(`operation not allowed in ${__State[this.state]} state`);
         }
     }
 
     protected cleanup() {
         DEBUG && console.log(this.id, "cleanup");
-        this.subs.clear();
+        this.subs.length = 0;
         delete this.parent;
         delete this.xform;
         delete this.last;

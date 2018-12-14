@@ -1,6 +1,8 @@
 # @thi.ng/dot
 
-[![npm (scoped)](https://img.shields.io/npm/v/@thi.ng/dot.svg)](https://www.npmjs.com/package/@thi.ng/dot)
+[![npm version](https://img.shields.io/npm/v/@thi.ng/dot.svg)](https://www.npmjs.com/package/@thi.ng/dot)
+![npm downloads](https://img.shields.io/npm/dm/@thi.ng/dot.svg)
+[![Twitter Follow](https://img.shields.io/twitter/follow/thing_umbrella.svg?style=flat-square&label=twitter)](https://twitter.com/thing_umbrella)
 
 This project is part of the
 [@thi.ng/umbrella](https://github.com/thi-ng/umbrella/) monorepo.
@@ -21,7 +23,7 @@ details.
 
 ## Installation
 
-```
+```bash
 yarn add @thi.ng/dot
 ```
 
@@ -32,12 +34,12 @@ yarn add @thi.ng/dot
 
 ## Usage examples
 
-![example graph](../../assets/dot-example.png)
+![example graph](https://raw.githubusercontent.com/thi-ng/umbrella/master/assets/dot-example.png)
 
 The source code of this example is also available in
 [/test/example.ts](https://github.com/thi-ng/umbrella/tree/master/packages/dot/test/example.ts).
 
-```typescript
+```ts
 import * as dot from "@thi.ng/dot";
 
 // node type style presets

@@ -3,6 +3,137 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.7](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.5.6...@thi.ng/atom@1.5.7) (2018-12-08)
+
+**Note:** Version bump only for package @thi.ng/atom
+
+
+
+
+
+## [1.5.6](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.5.5...@thi.ng/atom@1.5.6) (2018-10-21)
+
+**Note:** Version bump only for package @thi.ng/atom
+
+
+
+
+
+## [1.5.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.5.4...@thi.ng/atom@1.5.5) (2018-10-17)
+
+**Note:** Version bump only for package @thi.ng/atom
+
+
+
+
+
+<a name="1.5.4"></a>
+## [1.5.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.5.3...@thi.ng/atom@1.5.4) (2018-09-24)
+
+**Note:** Version bump only for package @thi.ng/atom
+
+
+
+
+
+<a name="1.5.3"></a>
+## [1.5.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.5.3-alpha.1...@thi.ng/atom@1.5.3) (2018-09-22)
+
+**Note:** Version bump only for package @thi.ng/atom
+
+
+
+
+
+<a name="1.5.3-alpha.1"></a>
+## [1.5.3-alpha.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.5.3-alpha.0...@thi.ng/atom@1.5.3-alpha.1) (2018-09-17)
+
+
+### Bug Fixes
+
+* **atom:** add .value getter to IView ([3e647a1](https://github.com/thi-ng/umbrella/commit/3e647a1))
+
+
+
+
+
+<a name="1.5.3-alpha.0"></a>
+## [1.5.3-alpha.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.5.2...@thi.ng/atom@1.5.3-alpha.0) (2018-09-17)
+
+**Note:** Version bump only for package @thi.ng/atom
+
+
+
+
+
+<a name="1.5.2"></a>
+## [1.5.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.5.1...@thi.ng/atom@1.5.2) (2018-09-10)
+
+**Note:** Version bump only for package @thi.ng/atom
+
+
+
+
+
+<a name="1.5.1"></a>
+## [1.5.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.5.0...@thi.ng/atom@1.5.1) (2018-09-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/atom
+
+<a name="1.5.0"></a>
+# [1.5.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.4.7...@thi.ng/atom@1.5.0) (2018-08-27)
+
+
+### Features
+
+* **atom:** add .value accessor aliases (for deref()/reset()) ([a0cbd2b](https://github.com/thi-ng/umbrella/commit/a0cbd2b))
+
+
+
+
+<a name="1.4.7"></a>
+## [1.4.7](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.4.6...@thi.ng/atom@1.4.7) (2018-08-24)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/atom
+
+<a name="1.4.6"></a>
+## [1.4.6](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.4.5...@thi.ng/atom@1.4.6) (2018-08-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/atom
+
+<a name="1.4.5"></a>
+## [1.4.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.4.4...@thi.ng/atom@1.4.5) (2018-07-20)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/atom
+
+<a name="1.4.4"></a>
+## [1.4.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.4.3...@thi.ng/atom@1.4.4) (2018-07-11)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/atom
+
+<a name="1.4.3"></a>
+## [1.4.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.4.2...@thi.ng/atom@1.4.3) (2018-07-04)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/atom
+
 <a name="1.4.2"></a>
 ## [1.4.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/atom@1.4.1...@thi.ng/atom@1.4.2) (2018-06-21)
 

@@ -1,6 +1,8 @@
 # @thi.ng/associative
 
-[![npm (scoped)](https://img.shields.io/npm/v/@thi.ng/associative.svg)](https://www.npmjs.com/package/@thi.ng/associative)
+[![npm version](https://img.shields.io/npm/v/@thi.ng/associative.svg)](https://www.npmjs.com/package/@thi.ng/associative)
+![npm downloads](https://img.shields.io/npm/dm/@thi.ng/associative.svg)
+[![Twitter Follow](https://img.shields.io/twitter/follow/thing_umbrella.svg?style=flat-square&label=twitter)](https://twitter.com/thing_umbrella)
 
 This project is part of the
 [@thi.ng/umbrella](https://github.com/thi-ng/umbrella/) monorepo.
@@ -117,7 +119,7 @@ map.get([3,4], "n/a");
 
 ## Installation
 
-```
+```bash
 yarn add @thi.ng/associative
 ```
 
@@ -129,7 +131,7 @@ yarn add @thi.ng/associative
 - [@thi.ng/dcons](https://github.com/thi-ng/umbrella/tree/master/packages/dcons)
 - [@thi.ng/equiv](https://github.com/thi-ng/umbrella/tree/master/packages/equiv)
 - [@thi.ng/errors](https://github.com/thi-ng/umbrella/tree/master/packages/errors)
-- [@thi.ng/iterators](https://github.com/thi-ng/umbrella/tree/master/packages/iterators)
+- [@thi.ng/transducers](https://github.com/thi-ng/umbrella/tree/master/packages/transducers)
 
 ## Types
 
@@ -175,7 +177,6 @@ Data structure description:
 - ftp://ftp.cs.umd.edu/pub/skipLists/skiplists.pdf
 - https://en.wikipedia.org/wiki/Skip_list
 
-
 #### Ranged queries
 
 ```ts
@@ -210,7 +211,7 @@ equality and comparison semantics and additional functionality:
 - range queries (via `entries`, `keys`, `values`)
 - multiple value addition/deletion via `into()` and `disj()`
 
-Furthermore, this class implements the `ICopy`, IEmpty`, `ICompare` and
+Furthermore, this class implements the `ICopy`, `IEmpty`, `ICompare` and
 `IEquiv` interfaces defined by `@thi.ng/api`. The latter two allow
 instances to be used as keys themselves in other data types defined in
 this (and other) package(s).

@@ -1,4 +1,5 @@
 import { Stream } from "../stream";
+import { Subscription } from "../subscription";
 
 /**
  * Returns a new `Stream` which emits a monotonically increasing counter
@@ -9,9 +10,10 @@ import { Stream } from "../stream";
  * @param delay
  * @param count
  */
-export function fromInterval(delay: number, count = Number.POSITIVE_INFINITY) {
+export function fromInterval(delay: number, count = Infinity) {
     return new Stream<number>((stream) => {
         let i = 0;
+        stream.next(i++);
         let id = setInterval(() => {
             stream.next(i++);
             if (--count <= 0) {
@@ -20,5 +22,5 @@ export function fromInterval(delay: number, count = Number.POSITIVE_INFINITY) {
             }
         }, delay);
         return () => clearInterval(id);
-    }, `interval-${Stream.NEXT_ID++}`);
+    }, `interval-${Subscription.NEXT_ID++}`);
 }

@@ -1,6 +1,6 @@
 import { IObjectOf } from "@thi.ng/api/api";
-import { join } from "@thi.ng/associative";
 import { intersection } from "@thi.ng/associative/intersection";
+import { join } from "@thi.ng/associative/join";
 import { equiv } from "@thi.ng/equiv";
 import { illegalArgs } from "@thi.ng/errors/illegal-arguments";
 import {
@@ -17,7 +17,6 @@ import { Reducer, Transducer } from "@thi.ng/transducers/api";
 import { comp } from "@thi.ng/transducers/func/comp";
 import { compR } from "@thi.ng/transducers/func/compr";
 import { keySelector } from "@thi.ng/transducers/func/key-selector";
-import { iterator } from "@thi.ng/transducers/iterator";
 import { assocObj } from "@thi.ng/transducers/rfn/assoc-obj";
 import { transduce } from "@thi.ng/transducers/transduce";
 import { dedupe } from "@thi.ng/transducers/xform/dedupe";
@@ -302,7 +301,6 @@ export class TripleStore implements
             id,
             src: { a, b },
             xform: comp(map(({ a, b }) => join(a, b)), dedupe(equiv)),
-            reset: false,
         });
     }
 
@@ -314,7 +312,7 @@ export class TripleStore implements
         );
         let xforms: Transducer<any, any>[] = [joinSolutions(Object.keys(src).length), dedupe(equiv)];
         keepVars && (xforms.push(filterSolutions(keepVars)));
-        return sync({ id, src, xform: <Transducer<any, any>>comp.apply(null, xforms), reset: false });
+        return sync({ id, src, xform: <Transducer<any, any>>comp.apply(null, xforms) });
     }
 
     /**
@@ -398,8 +396,8 @@ export class TripleStore implements
     }
 
     protected addParamQueries(patterns: Iterable<Pattern>) {
-        return iterator(
-            map<Pattern, QuerySolution>((q) => this.addParamQuery(q)),
+        return map<Pattern, QuerySolution>(
+            (q) => this.addParamQuery(q),
             patterns
         );
     }

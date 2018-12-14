@@ -2,9 +2,9 @@ import { svg } from "@thi.ng/hiccup-svg/svg";
 import { defs } from "@thi.ng/hiccup-svg/defs";
 import { linearGradient } from "@thi.ng/hiccup-svg/gradients";
 import { polyline } from "@thi.ng/hiccup-svg/polyline";
-import { map } from "@thi.ng/iterators/map";
-import { range } from "@thi.ng/iterators/range";
-import { reduce } from "@thi.ng/iterators/reduce";
+import { map } from "@thi.ng/transducers/xform/map";
+import { range } from "@thi.ng/transducers/iter/range";
+import { reduce, reducer } from "@thi.ng/transducers/reduce";
 
 import { AppContext } from "../api";
 
@@ -35,8 +35,8 @@ export function waveform(ctx: AppContext, opts: WaveformOpts) {
         { ...ctx.ui.waveform, viewBox: `0 -5 ${opts.res} 10` },
         defs(
             linearGradient(
-                "grad", 0, 0, 0, 1,
-                [[0, opts.fill2], [0.5, opts.fill1], [1, opts.fill2]]
+                "grad", [0, 0], [0, 1],
+                [[0, opts.fill2], [0.5, opts.fill1], [1, opts.fill2]],
             )
         ),
         polyline(
@@ -56,11 +56,13 @@ export function waveform(ctx: AppContext, opts: WaveformOpts) {
 function osc(x: number, phase: number, fscale: number, amp: number, harmonics: number, hstep: number) {
     const f = x * fscale;
     return reduce(
-        (sum, i) => {
-            const k = (1 + i * hstep);
-            return sum + Math.sin(phase + f * k) * amp / k;
-        },
-        0,
+        reducer<number, number>(
+            () => 0,
+            (sum, i) => {
+                const k = (1 + i * hstep);
+                return sum + Math.sin(phase + f * k) * amp / k;
+            }
+        ),
         range(0, harmonics + 1)
     );
 }

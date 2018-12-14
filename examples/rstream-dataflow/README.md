@@ -1,19 +1,20 @@
 # rstream-dataflow
 
-[Live demo](http://demo.thi.ng/umbrella/rstream-dataflow/)
+[Live demo](https://demo.thi.ng/umbrella/rstream-dataflow/)
 
-```
+```bash
 git clone https://github.com/thi-ng/umbrella.git
 cd umbrella/examples/rstream-dataflow
 yarn install
 yarn start
 ```
 
-Installs all dependencies, runs `webpack-dev-server` and opens the app in your browser.
+Installs all dependencies, runs `parcel serve` and opens the app in your
+browser.
 
 ## About
 
-![dataflow graph](../../assets/rs-dflow.png)
+![dataflow graph](https://raw.githubusercontent.com/thi-ng/umbrella/master/assets/rs-dflow.png)
 
 This example combines the following packages to create & execute the
 above dataflow graph in a declarative manner. The diagram generation

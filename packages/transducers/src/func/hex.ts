@@ -1,8 +1,11 @@
-const ZEROES = "00000000";
+import { Stringer } from "@thi.ng/strings/api";
+import { radix } from "@thi.ng/strings/radix";
 
-export function hex(digits = 2, prefix = "") {
-    return (x: number) => {
-        const s = x.toString(16);
-        return prefix + (s.length >= digits ? s : ZEROES.substring(0, digits - s.length) + s);
-    }
-}
+/**
+ * @deprecated use thi.ng/strings `radix()` instead
+ *
+ * @param digits
+ * @param prefix
+ */
+export const hex = (digits = 2, prefix = ""): Stringer<number> =>
+    radix(16, digits, prefix);

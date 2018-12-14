@@ -1,6 +1,8 @@
 # @thi.ng/paths
 
-[![npm (scoped)](https://img.shields.io/npm/v/@thi.ng/paths.svg)](https://www.npmjs.com/package/@thi.ng/paths)
+[![npm version](https://img.shields.io/npm/v/@thi.ng/paths.svg)](https://www.npmjs.com/package/@thi.ng/paths)
+![npm downloads](https://img.shields.io/npm/dm/@thi.ng/paths.svg)
+[![Twitter Follow](https://img.shields.io/twitter/follow/thing_umbrella.svg?style=flat-square&label=twitter)](https://twitter.com/thing_umbrella)
 
 This project is part of the
 [@thi.ng/umbrella](https://github.com/thi-ng/umbrella/) monorepo.
@@ -8,11 +10,12 @@ This project is part of the
 ## About
 
 This library provides immutable and mutable, optimized path-based
-accessors for vanilla JS objects.
+accessors for nested, vanilla JS objects & arrays with structural
+sharing.
 
 ## Installation
 
-```
+```bash
 yarn add @thi.ng/paths
 ```
 
@@ -23,25 +26,25 @@ yarn add @thi.ng/paths
 
 ## Usage
 
-```
+```ts
 import * as paths from "@thi.ng/paths";
 ```
 
-The `getter()` and `setter()` functions transform a path like `a.b.c`
-into a function operating directly at the value the path points to in
-nested object. For getters, this essentially compiles to `val =
-obj.a.b.c`, with the important difference that the function returns
-`undefined` if any intermediate values along the lookup path are
+The `getter()`, `setter()` and `updater()` functions compile a lookup
+path like `a.b.c` into a function operating directly at the value the
+path points to in nested object. For getters, this essentially compiles
+to `val = obj.a.b.c`, with the important difference that the function
+returns `undefined` if any intermediate values along the lookup path are
 undefined (and doesn't throw an error).
 
-The resulting setter function too accepts a single object to operate on
-and when called, **immutably** replaces the value at the given path,
-i.e. it produces a selective deep copy of obj up until given path. If
-any intermediate key is not present in the given object, it creates a
-plain empty object for that missing key and descends further along the
-path.
+The resulting setter function too accepts a single object (or array) to
+operate on and when called, **immutably** replaces the value at the
+given path, i.e. it produces a selective deep copy of obj up until given
+path. If any intermediate key is not present in the given object, it
+creates a plain empty object for that missing key and descends further
+along the path.
 
-```typescript
+```ts
 s = setter("a.b.c");
 // or
 s = setter(["a","b","c"]);
@@ -56,12 +59,31 @@ s(null, 24)
 // { a: { b: { c: 24 } } }
 ```
 
+Nested value updaters follow a similar pattern, but also take a user
+supplied function to apply to the existing value (incl. any other
+arguments passed):
+
+```ts
+inc = updater("a.b", (x) => x != null ? x + 1 : 1);
+
+inc({a: {b: 10}});
+// { a: { b: 11 } }
+inc({});
+// { a: { b: 1 } }
+
+// with additional arguments
+add = updater("a.b", (x, n) => x + n);
+
+add({a: {b: 10}}, 13);
+// { a: { b: 23 } }
+```
+
 In addition to these higher-order functions, the module also provides
 immediate-use wrappers: `getIn()`, `setIn()`, `updateIn()` and
 `deleteIn()`. These functions are using `getter` / `setter` internally,
 so have same behaviors.
 
-```typescript
+```ts
 state = {a: {b: {c: 23}}};
 
 getIn(state, "a.b.c")
@@ -79,15 +101,17 @@ deleteIn(state, "a.b.c.")
 // {a: {b: {}}}
 ```
 
+### Structural sharing
+
 Only keys in the path will be updated, all other keys present in the
 given object retain their original/identical values to provide efficient
 structural sharing / re-use. This is the same *behavior* as in Clojure's
 immutable maps or those provided by ImmutableJS (albeit those
 implementation are completely different - they're using trees, we're
-using the ES6 spread op and recursive functional composition to produce
-the setter/updater).
+using the ES6 spread op (for objects, `slice()` for arrays) and dynamic
+functional composition to produce the setter/updater).
 
-```typescript
+```ts
 s = setter("a.b.c");
 
 // original
@@ -124,6 +148,21 @@ mutIn({ a: { b: [10, 20] } }, ["a", "b", 1], 23);
 // fails (because of missing path structure in target object)
 mutIn({}, "a.b.c", 23);
 // undefined
+```
+
+### Path checking
+
+The `exists()` function takes an arbitrary object and lookup path.
+Descends into object along path and returns true if the full path exists
+(even if final leaf value is `null` or `undefined`). Checks are
+performed using `hasOwnProperty()`.
+
+```ts
+exists({ a: { b: { c: [null] } } }, "a.b.c.0");
+// true
+
+exists({ a: { b: { c: [null] } } }, "a.b.c.1");
+// false
 ```
 
 ## Authors

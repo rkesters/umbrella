@@ -3,6 +3,90 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.13](https://github.com/thi-ng/umbrella/compare/@thi.ng/pointfree@0.8.12...@thi.ng/pointfree@0.8.13) (2018-12-08)
+
+**Note:** Version bump only for package @thi.ng/pointfree
+
+
+
+
+
+## [0.8.12](https://github.com/thi-ng/umbrella/compare/@thi.ng/pointfree@0.8.11...@thi.ng/pointfree@0.8.12) (2018-10-21)
+
+**Note:** Version bump only for package @thi.ng/pointfree
+
+
+
+
+
+## [0.8.11](https://github.com/thi-ng/umbrella/compare/@thi.ng/pointfree@0.8.10...@thi.ng/pointfree@0.8.11) (2018-10-17)
+
+**Note:** Version bump only for package @thi.ng/pointfree
+
+
+
+
+
+<a name="0.8.10"></a>
+## [0.8.10](https://github.com/thi-ng/umbrella/compare/@thi.ng/pointfree@0.8.9...@thi.ng/pointfree@0.8.10) (2018-09-24)
+
+**Note:** Version bump only for package @thi.ng/pointfree
+
+
+
+
+
+<a name="0.8.9"></a>
+## [0.8.9](https://github.com/thi-ng/umbrella/compare/@thi.ng/pointfree@0.8.9-alpha.0...@thi.ng/pointfree@0.8.9) (2018-09-22)
+
+**Note:** Version bump only for package @thi.ng/pointfree
+
+
+
+
+
+<a name="0.8.9-alpha.0"></a>
+## [0.8.9-alpha.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/pointfree@0.8.8...@thi.ng/pointfree@0.8.9-alpha.0) (2018-09-17)
+
+**Note:** Version bump only for package @thi.ng/pointfree
+
+
+
+
+
+<a name="0.8.8"></a>
+## [0.8.8](https://github.com/thi-ng/umbrella/compare/@thi.ng/pointfree@0.8.7...@thi.ng/pointfree@0.8.8) (2018-09-10)
+
+**Note:** Version bump only for package @thi.ng/pointfree
+
+
+
+
+
+<a name="0.8.7"></a>
+## [0.8.7](https://github.com/thi-ng/umbrella/compare/@thi.ng/pointfree@0.8.6...@thi.ng/pointfree@0.8.7) (2018-08-24)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/pointfree
+
+<a name="0.8.6"></a>
+## [0.8.6](https://github.com/thi-ng/umbrella/compare/@thi.ng/pointfree@0.8.5...@thi.ng/pointfree@0.8.6) (2018-08-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/pointfree
+
+<a name="0.8.5"></a>
+## [0.8.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/pointfree@0.8.4...@thi.ng/pointfree@0.8.5) (2018-07-20)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/pointfree
+
 <a name="0.8.4"></a>
 ## [0.8.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/pointfree@0.8.3...@thi.ng/pointfree@0.8.4) (2018-06-21)
 

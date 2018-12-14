@@ -1,9 +1,10 @@
 import { Reducer } from "../api";
+import { reduce, reducer } from "../reduce";
 
-export function max(): Reducer<number, number> {
-    return [
-        () => Number.NEGATIVE_INFINITY,
-        (acc) => acc,
-        (acc, x) => Math.max(acc, x),
-    ];
+export function max(): Reducer<number, number>;
+export function max(xs: Iterable<number>): number;
+export function max(xs?: Iterable<number>): any {
+    return xs ?
+        reduce(max(), xs) :
+        reducer(() => -Infinity, (acc, x: number) => Math.max(acc, x));
 }

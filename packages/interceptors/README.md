@@ -1,6 +1,8 @@
 # @thi.ng/interceptors
 
-[![npm (scoped)](https://img.shields.io/npm/v/@thi.ng/interceptors.svg)](https://www.npmjs.com/package/@thi.ng/interceptors)
+[![npm version](https://img.shields.io/npm/v/@thi.ng/interceptors.svg)](https://www.npmjs.com/package/@thi.ng/interceptors)
+![npm downloads](https://img.shields.io/npm/dm/@thi.ng/interceptors.svg)
+[![Twitter Follow](https://img.shields.io/twitter/follow/thing_umbrella.svg?style=flat-square&label=twitter)](https://twitter.com/thing_umbrella)
 
 This project is part of the
 [@thi.ng/umbrella](https://github.com/thi-ng/umbrella/) monorepo.
@@ -11,7 +13,7 @@ Interceptor based event, side effect & immutable state handling.
 
 ## Installation
 
-```
+```bash
 yarn add @thi.ng/interceptors
 ```
 
@@ -25,7 +27,7 @@ yarn add @thi.ng/interceptors
 
 ## Usage examples
 
-```typescript
+```ts
 import * as interceptors from "@thi.ng/interceptors";
 ```
 
@@ -38,15 +40,16 @@ and examples for now:
 
 Introductory:
 
-- [/examples/interceptor-basics](https://github.com/thi-ng/umbrella/tree/master/examples/interceptor-basics) | [live demo](http://demo.thi.ng/umbrella/interceptor-basics)
-- [/examples/async-effect](https://github.com/thi-ng/umbrella/tree/master/examples/async-effect) | [live demo](http://demo.thi.ng/umbrella/async-effect)
+- [/examples/interceptor-basics](https://github.com/thi-ng/umbrella/tree/master/examples/interceptor-basics) | [live demo](https://demo.thi.ng/umbrella/interceptor-basics)
+- [/examples/interceptor-basics2](https://github.com/thi-ng/umbrella/tree/master/examples/interceptor-basics2) | [live demo](https://demo.thi.ng/umbrella/interceptor-basics2)
+- [/examples/async-effect](https://github.com/thi-ng/umbrella/tree/master/examples/async-effect) | [live demo](https://demo.thi.ng/umbrella/async-effect)
 
 Advanced:
 
-- [/examples/rstream-dataflow](https://github.com/thi-ng/umbrella/tree/master/examples/rstream-dataflow) | [live demo](http://demo.thi.ng/umbrella/rstream-dataflow)
-- [/examples/rstream-grid](https://github.com/thi-ng/umbrella/tree/master/examples/rstream-grid) | [live demo](http://demo.thi.ng/umbrella/rstream-grid)
-- [/examples/router-basics](https://github.com/thi-ng/umbrella/tree/master/examples/router-basics) | [live demo](http://demo.thi.ng/umbrella/router-basics)
-- [/examples/svg-waveform](https://github.com/thi-ng/umbrella/tree/master/examples/svg-waveform) | [live demo](http://demo.thi.ng/umbrella/svg-waveform)
+- [/examples/rstream-dataflow](https://github.com/thi-ng/umbrella/tree/master/examples/rstream-dataflow) | [live demo](https://demo.thi.ng/umbrella/rstream-dataflow)
+- [/examples/rstream-grid](https://github.com/thi-ng/umbrella/tree/master/examples/rstream-grid) | [live demo](https://demo.thi.ng/umbrella/rstream-grid)
+- [/examples/router-basics](https://github.com/thi-ng/umbrella/tree/master/examples/router-basics) | [live demo](https://demo.thi.ng/umbrella/router-basics)
+- [/examples/svg-waveform](https://github.com/thi-ng/umbrella/tree/master/examples/svg-waveform) | [live demo](https://demo.thi.ng/umbrella/svg-waveform)
 
 - [create-hdom-app](https://github.com/thi-ng/create-hdom-app) Yarn project generator. Uses: @thi.ng/atom + hdom + interceptors + router
 

@@ -1,6 +1,8 @@
 # @thi.ng/union-struct
 
 [![npm](https://img.shields.io/npm/v/@thi.ng/unionstruct.svg)](https://www.npmjs.com/package/@thi.ng/unionstruct)
+![npm downloads](https://img.shields.io/npm/dm/@thi.ng/unionstruct.svg)
+[![Twitter Follow](https://img.shields.io/twitter/follow/thing_umbrella.svg?style=flat-square&label=twitter)](https://twitter.com/thing_umbrella)
 
 This project is part of the
 [@thi.ng/umbrella](https://github.com/thi-ng/umbrella/) monorepo.
@@ -26,7 +28,7 @@ Currently does not support array fields (incl. strings).
 
 ## Installation
 
-```
+```bash
 yarn add @thi.ng/unionstruct
 ```
 
@@ -36,7 +38,7 @@ None
 
 ## API
 
-```js
+```ts
 let {struct, union, sizeOf} = require("@thi.ng/unionstruct");
 ```
 
@@ -69,7 +71,7 @@ typedef union {
 This library provides this similarly in JS. The field spec format,
 bitfields and alignment are described further below.
 
-```js
+```ts
 typedef_header = [
     ["flags", "u32"],
     ["state", "struct", [
@@ -144,7 +146,7 @@ Same as `union`, but field start addresses are arranged sequentially (and aligne
 
 Returns bit size of given field spec, taking into account alignment.
 
-```js
+```ts
 // struct
 sizeOf([["a", "u32", 14], ["b", "u32", 6], ["c","u8"]]);
 // 40
@@ -154,6 +156,7 @@ sizeOf([["a", "u32", 14], ["b", "u32", 6], ["c","u8"]], true);
 // 14
 
 ```
+
 ### Alignment
 
 For unions, if `align` is enabled (default), the entire type's offset
@@ -182,7 +185,7 @@ If `align` is enabled and the last bitfield in a group does not end at a
 word boundary, the field will be padded invisibly, based on its type
 (has no impact on size of last field).
 
-```js
+```ts
 bitfields = struct([
     // 2 packed bitfields (20 bits)
     ["a", "u32", 14],
@@ -206,10 +209,10 @@ allow for type checking of field specs (details
 These are exposed in the `index.d.ts` file, bundled in the release
 version.
 
-# Authors
+## Authors
 
 - Karsten Schmidt
 
-# License
+## License
 
 &copy; 2017 Karsten Schmidt // Apache Software License 2.0

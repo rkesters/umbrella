@@ -3,6 +3,145 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/interceptors@1.9.0...@thi.ng/interceptors@1.9.1) (2018-12-08)
+
+**Note:** Version bump only for package @thi.ng/interceptors
+
+
+
+
+
+# [1.9.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/interceptors@1.8.17...@thi.ng/interceptors@1.9.0) (2018-11-13)
+
+
+### Features
+
+* **interceptors:** update forwardSideFx(), refactor iceps as arrow fns ([9334f83](https://github.com/thi-ng/umbrella/commit/9334f83))
+
+
+
+
+
+## [1.8.17](https://github.com/thi-ng/umbrella/compare/@thi.ng/interceptors@1.8.16...@thi.ng/interceptors@1.8.17) (2018-10-21)
+
+**Note:** Version bump only for package @thi.ng/interceptors
+
+
+
+
+
+## [1.8.16](https://github.com/thi-ng/umbrella/compare/@thi.ng/interceptors@1.8.15...@thi.ng/interceptors@1.8.16) (2018-10-17)
+
+**Note:** Version bump only for package @thi.ng/interceptors
+
+
+
+
+
+<a name="1.8.15"></a>
+## [1.8.15](https://github.com/thi-ng/umbrella/compare/@thi.ng/interceptors@1.8.14...@thi.ng/interceptors@1.8.15) (2018-09-24)
+
+**Note:** Version bump only for package @thi.ng/interceptors
+
+
+
+
+
+<a name="1.8.14"></a>
+## [1.8.14](https://github.com/thi-ng/umbrella/compare/@thi.ng/interceptors@1.8.14-alpha.1...@thi.ng/interceptors@1.8.14) (2018-09-22)
+
+**Note:** Version bump only for package @thi.ng/interceptors
+
+
+
+
+
+<a name="1.8.14-alpha.1"></a>
+## [1.8.14-alpha.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/interceptors@1.8.14-alpha.0...@thi.ng/interceptors@1.8.14-alpha.1) (2018-09-17)
+
+**Note:** Version bump only for package @thi.ng/interceptors
+
+
+
+
+
+<a name="1.8.14-alpha.0"></a>
+## [1.8.14-alpha.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/interceptors@1.8.13...@thi.ng/interceptors@1.8.14-alpha.0) (2018-09-17)
+
+**Note:** Version bump only for package @thi.ng/interceptors
+
+
+
+
+
+<a name="1.8.13"></a>
+## [1.8.13](https://github.com/thi-ng/umbrella/compare/@thi.ng/interceptors@1.8.12...@thi.ng/interceptors@1.8.13) (2018-09-10)
+
+**Note:** Version bump only for package @thi.ng/interceptors
+
+
+
+
+
+<a name="1.8.12"></a>
+## [1.8.12](https://github.com/thi-ng/umbrella/compare/@thi.ng/interceptors@1.8.11...@thi.ng/interceptors@1.8.12) (2018-09-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/interceptors
+
+<a name="1.8.11"></a>
+## [1.8.11](https://github.com/thi-ng/umbrella/compare/@thi.ng/interceptors@1.8.10...@thi.ng/interceptors@1.8.11) (2018-08-27)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/interceptors
+
+<a name="1.8.10"></a>
+## [1.8.10](https://github.com/thi-ng/umbrella/compare/@thi.ng/interceptors@1.8.9...@thi.ng/interceptors@1.8.10) (2018-08-24)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/interceptors
+
+<a name="1.8.9"></a>
+## [1.8.9](https://github.com/thi-ng/umbrella/compare/@thi.ng/interceptors@1.8.8...@thi.ng/interceptors@1.8.9) (2018-08-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/interceptors
+
+<a name="1.8.8"></a>
+## [1.8.8](https://github.com/thi-ng/umbrella/compare/@thi.ng/interceptors@1.8.7...@thi.ng/interceptors@1.8.8) (2018-07-20)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/interceptors
+
+<a name="1.8.7"></a>
+## [1.8.7](https://github.com/thi-ng/umbrella/compare/@thi.ng/interceptors@1.8.6...@thi.ng/interceptors@1.8.7) (2018-07-11)
+
+
+### Performance Improvements
+
+* **interceptors:** update valueSetter()/valueUpdater() ([73c7b8a](https://github.com/thi-ng/umbrella/commit/73c7b8a))
+
+
+
+
+<a name="1.8.6"></a>
+## [1.8.6](https://github.com/thi-ng/umbrella/compare/@thi.ng/interceptors@1.8.5...@thi.ng/interceptors@1.8.6) (2018-07-04)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/interceptors
+
 <a name="1.8.5"></a>
 ## [1.8.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/interceptors@1.8.4...@thi.ng/interceptors@1.8.5) (2018-06-21)
 

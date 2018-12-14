@@ -1,9 +1,13 @@
 import { Reducer } from "../api";
+import { reduce, reducer } from "../reduce";
 
-export function conj<T>(): Reducer<Set<T>, T> {
-    return [
-        () => new Set(),
-        (acc) => acc,
-        (acc, x) => acc.add(x),
-    ];
+/**
+ * Reducer. Like `push()`, but for ES6 Sets.
+ */
+export function conj<T>(): Reducer<Set<T>, T>;
+export function conj<T>(xs: Iterable<T>): Set<T>;
+export function conj<T>(xs?: Iterable<T>): any {
+    return xs ?
+        reduce(conj(), xs) :
+        reducer(() => new Set(), (acc, x) => acc.add(x));
 }

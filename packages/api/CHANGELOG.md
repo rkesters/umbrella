@@ -3,6 +3,80 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/api@4.2.2...@thi.ng/api@4.2.3) (2018-10-21)
+
+**Note:** Version bump only for package @thi.ng/api
+
+
+
+
+
+## [4.2.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/api@4.2.1...@thi.ng/api@4.2.2) (2018-10-17)
+
+**Note:** Version bump only for package @thi.ng/api
+
+
+
+
+
+<a name="4.2.1"></a>
+## [4.2.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/api@4.2.0...@thi.ng/api@4.2.1) (2018-09-24)
+
+**Note:** Version bump only for package @thi.ng/api
+
+
+
+
+
+<a name="4.2.0"></a>
+# [4.2.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/api@4.1.1...@thi.ng/api@4.2.0) (2018-09-22)
+
+
+### Features
+
+* **api:** add `IToHiccup` interface ([e390a54](https://github.com/thi-ng/umbrella/commit/e390a54))
+
+
+
+
+
+<a name="4.1.1"></a>
+## [4.1.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/api@4.1.0...@thi.ng/api@4.1.1) (2018-09-10)
+
+**Note:** Version bump only for package @thi.ng/api
+
+
+
+
+
+<a name="4.1.0"></a>
+# [4.1.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/api@4.0.6...@thi.ng/api@4.1.0) (2018-08-24)
+
+
+### Features
+
+* **api:** add new/move type aliases into api.ts ([cf30ba2](https://github.com/thi-ng/umbrella/commit/cf30ba2))
+* **api:** add NumericArray and TypedArray types ([519394b](https://github.com/thi-ng/umbrella/commit/519394b))
+
+
+
+
+<a name="4.0.6"></a>
+## [4.0.6](https://github.com/thi-ng/umbrella/compare/@thi.ng/api@4.0.5...@thi.ng/api@4.0.6) (2018-08-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/api
+
+<a name="4.0.5"></a>
+## [4.0.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/api@4.0.4...@thi.ng/api@4.0.5) (2018-07-20)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/api
+
 <a name="4.0.4"></a>
 ## [4.0.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/api@4.0.3...@thi.ng/api@4.0.4) (2018-06-21)
 

@@ -3,6 +3,120 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/diff@2.0.0...@thi.ng/diff@2.0.1) (2018-12-09)
+
+
+### Performance Improvements
+
+* **diff:** further array caching/reuse ([19b0a55](https://github.com/thi-ng/umbrella/commit/19b0a55))
+
+
+
+
+
+# [2.0.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/diff@1.1.4...@thi.ng/diff@2.0.0) (2018-12-08)
+
+
+### Code Refactoring
+
+* **diff:** flatten linear edit logs, update readme & arg order ([64feacf](https://github.com/thi-ng/umbrella/commit/64feacf))
+
+
+### Features
+
+* **diff:** add fast paths for simple cases, add tests, refactor as arrow fns ([6c6da82](https://github.com/thi-ng/umbrella/commit/6c6da82))
+
+
+### Performance Improvements
+
+* **diff:** flatten linear edit logs, rewrite diffObject(), add DiffMode ([e8356cd](https://github.com/thi-ng/umbrella/commit/e8356cd))
+* **diff:** reduce amount of temp/internal array allocs (diffArray) ([d1ee6d9](https://github.com/thi-ng/umbrella/commit/d1ee6d9))
+
+
+### BREAKING CHANGES
+
+* **diff:** `ArrayDiff.linear` & `ObjectDiff.edits` now flat arrays
+
+- see commit e8356cd296c12462ad9b126f966b55545b6ef70d
+- this change drastically reduces the number of array allocations
+- each ArrayDiff.linear entry consists of 3 successive items
+- each ObjectDiff.edits entry constist of 2 successive items
+- add `DiffMode` enum to control level of detail & internal fast paths
+- update `ArrayDiff` & `ObjectDiff` types
+- remove obsolete `DiffLogEntry`
+- replace `diffObject` with 2.5x faster version
+
+
+
+
+
+## [1.1.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/diff@1.1.3...@thi.ng/diff@1.1.4) (2018-10-21)
+
+**Note:** Version bump only for package @thi.ng/diff
+
+
+
+
+
+## [1.1.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/diff@1.1.2...@thi.ng/diff@1.1.3) (2018-10-17)
+
+**Note:** Version bump only for package @thi.ng/diff
+
+
+
+
+
+<a name="1.1.2"></a>
+## [1.1.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/diff@1.1.1...@thi.ng/diff@1.1.2) (2018-09-24)
+
+**Note:** Version bump only for package @thi.ng/diff
+
+
+
+
+
+<a name="1.1.1"></a>
+## [1.1.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/diff@1.1.0...@thi.ng/diff@1.1.1) (2018-09-22)
+
+**Note:** Version bump only for package @thi.ng/diff
+
+
+
+
+
+<a name="1.0.23"></a>
+## [1.0.23](https://github.com/thi-ng/umbrella/compare/@thi.ng/diff@1.0.22...@thi.ng/diff@1.0.23) (2018-09-10)
+
+**Note:** Version bump only for package @thi.ng/diff
+
+
+
+
+
+<a name="1.0.22"></a>
+## [1.0.22](https://github.com/thi-ng/umbrella/compare/@thi.ng/diff@1.0.21...@thi.ng/diff@1.0.22) (2018-08-24)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/diff
+
+<a name="1.0.21"></a>
+## [1.0.21](https://github.com/thi-ng/umbrella/compare/@thi.ng/diff@1.0.20...@thi.ng/diff@1.0.21) (2018-08-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/diff
+
+<a name="1.0.20"></a>
+## [1.0.20](https://github.com/thi-ng/umbrella/compare/@thi.ng/diff@1.0.19...@thi.ng/diff@1.0.20) (2018-07-20)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/diff
+
 <a name="1.0.19"></a>
 ## [1.0.19](https://github.com/thi-ng/umbrella/compare/@thi.ng/diff@1.0.18...@thi.ng/diff@1.0.19) (2018-06-21)
 

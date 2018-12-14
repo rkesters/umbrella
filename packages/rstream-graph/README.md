@@ -1,6 +1,8 @@
 # @thi.ng/rstream-graph
 
-[![npm (scoped)](https://img.shields.io/npm/v/@thi.ng/rstream-graph.svg)](https://www.npmjs.com/package/@thi.ng/rstream-graph)
+[![npm version](https://img.shields.io/npm/v/@thi.ng/rstream-graph.svg)](https://www.npmjs.com/package/@thi.ng/rstream-graph)
+![npm downloads](https://img.shields.io/npm/dm/@thi.ng/rstream-graph.svg)
+[![Twitter Follow](https://img.shields.io/twitter/follow/thing_umbrella.svg?style=flat-square&label=twitter)](https://twitter.com/thing_umbrella)
 
 This project is part of the
 [@thi.ng/umbrella](https://github.com/thi-ng/umbrella/) monorepo.
@@ -23,7 +25,7 @@ these).
 
 ## Installation
 
-```
+```bash
 yarn add @thi.ng/rstream-graph
 ```
 
@@ -41,16 +43,16 @@ yarn add @thi.ng/rstream-graph
 
 Small(ish), fully commented projects can be found in the `/examples` folder:
 
-* **SVG grid gen** -
+- **SVG grid gen** -
   [Source](https://github.com/thi-ng/umbrella/tree/master/examples/rstream-grid),
-  [Live version](http://demo.thi.ng/umbrella/rstream-grid)
-* **Dataflow circles** -
+  [Live version](https://demo.thi.ng/umbrella/rstream-grid)
+- **Dataflow circles** -
   [Source](https://github.com/thi-ng/umbrella/tree/master/examples/rstream-dataflow),
-  [Live version](http://demo.thi.ng/umbrella/rstream-dataflow)
+  [Live version](https://demo.thi.ng/umbrella/rstream-dataflow)
 
 More basic:
 
-```typescript
+```ts
 import { Atom } from "@thi.ng/atom";
 import * as rs from "@thi.ng/rstream";
 import * as rsg from "@thi.ng/rstream-graph";

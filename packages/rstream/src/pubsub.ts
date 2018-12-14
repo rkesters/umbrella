@@ -63,20 +63,16 @@ export class PubSub<A, B> extends Subscription<A, B> {
 
     /**
      * Unsupported. Use `subscribeTopic()` instead.
-     *
-     * @param _
      */
-    subscribe(..._: any[]): Subscription<B, any> {
+    subscribe(): Subscription<B, any> {
         unsupported(`use subscribeTopic() instead`);
         return null;
     }
 
     /**
      * Unsupported. Use `subscribeTopic()` instead.
-     *
-     * @param _
      */
-    transform(..._: any[]): Subscription<B, any> {
+    transform(): Subscription<B, any> {
         unsupported(`use subscribeTopic() instead`);
         return null;
     }
@@ -135,6 +131,11 @@ export class PubSub<A, B> extends Subscription<A, B> {
     }
 }
 
+/**
+ * Creates a new `PubSub` instance. See class docs for further details.
+ *
+ * @param opts
+ */
 export function pubsub<A, B>(opts: PubSubOpts<A, B>) {
     return new PubSub(opts);
 }

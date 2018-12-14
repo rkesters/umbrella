@@ -1,13 +1,12 @@
+import { SEMAPHORE } from "@thi.ng/api/api";
 import { isArray } from "@thi.ng/checks/is-array";
 import { isFunction } from "@thi.ng/checks/is-function";
 import { isPlainObject } from "@thi.ng/checks/is-plain-object";
 import { isString } from "@thi.ng/checks/is-string";
 import { illegalArgs } from "@thi.ng/errors/illegal-arguments";
-import { getIn, mutIn } from "@thi.ng/paths";
+import { exists, getIn, mutIn } from "@thi.ng/paths";
 
-const SEMAPHORE = Symbol("SEMAPHORE");
-
-const RE_ARGS = /^(function\s+\w+)?\s*\(\{([\w\s,]+)\}/
+const RE_ARGS = /^(function\s+\w+)?\s*\(\{([\w\s,:]+)\}/
 
 export type ResolveFn = (path: string) => any;
 
@@ -146,7 +145,7 @@ const _resolve = (root: any, path: LookupPath, resolved: any, stack: string[]) =
             res = _resolve(root, absPath(path, v), resolved, stack);
         } else if (isFunction(v)) {
             res = resolveFunction(v, (p: string) => _resolve(root, absPath(path, p, 0), resolved, stack), pathID, resolved);
-        } else if (v === undefined) {
+        } else if (!exists(root, path)) {
             v = resolvePath(root, path, resolved, stack);
         }
         if (res !== SEMAPHORE) {
@@ -212,6 +211,7 @@ const resolveFunction = (fn: (x: any, r?: ResolveFn) => any, resolve: ResolveFn,
         const args = match[2]
             .replace(/\s/g, "")
             .split(/,/g)
+            .map((k) => k.split(":")[0])
             .reduce((acc, k) => (acc[k] = resolve(k), acc), {});
         res = fn(args, resolve);
     } else {

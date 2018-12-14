@@ -3,6 +3,191 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.38](https://github.com/thi-ng/umbrella/compare/@thi.ng/iterators@4.1.37...@thi.ng/iterators@4.1.38) (2018-12-13)
+
+**Note:** Version bump only for package @thi.ng/iterators
+
+
+
+
+
+## [4.1.37](https://github.com/thi-ng/umbrella/compare/@thi.ng/iterators@4.1.36...@thi.ng/iterators@4.1.37) (2018-12-08)
+
+**Note:** Version bump only for package @thi.ng/iterators
+
+
+
+
+
+## [4.1.36](https://github.com/thi-ng/umbrella/compare/@thi.ng/iterators@4.1.35...@thi.ng/iterators@4.1.36) (2018-12-01)
+
+**Note:** Version bump only for package @thi.ng/iterators
+
+
+
+
+
+## [4.1.35](https://github.com/thi-ng/umbrella/compare/@thi.ng/iterators@4.1.34...@thi.ng/iterators@4.1.35) (2018-11-08)
+
+**Note:** Version bump only for package @thi.ng/iterators
+
+
+
+
+
+## [4.1.34](https://github.com/thi-ng/umbrella/compare/@thi.ng/iterators@4.1.33...@thi.ng/iterators@4.1.34) (2018-10-21)
+
+**Note:** Version bump only for package @thi.ng/iterators
+
+
+
+
+
+## [4.1.33](https://github.com/thi-ng/umbrella/compare/@thi.ng/iterators@4.1.32...@thi.ng/iterators@4.1.33) (2018-10-17)
+
+**Note:** Version bump only for package @thi.ng/iterators
+
+
+
+
+
+<a name="4.1.32"></a>
+## [4.1.32](https://github.com/thi-ng/umbrella/compare/@thi.ng/iterators@4.1.31...@thi.ng/iterators@4.1.32) (2018-09-26)
+
+**Note:** Version bump only for package @thi.ng/iterators
+
+
+
+
+
+<a name="4.1.31"></a>
+## [4.1.31](https://github.com/thi-ng/umbrella/compare/@thi.ng/iterators@4.1.30...@thi.ng/iterators@4.1.31) (2018-09-25)
+
+**Note:** Version bump only for package @thi.ng/iterators
+
+
+
+
+
+<a name="4.1.30"></a>
+## [4.1.30](https://github.com/thi-ng/umbrella/compare/@thi.ng/iterators@4.1.29...@thi.ng/iterators@4.1.30) (2018-09-24)
+
+**Note:** Version bump only for package @thi.ng/iterators
+
+
+
+
+
+<a name="4.1.29"></a>
+## [4.1.29](https://github.com/thi-ng/umbrella/compare/@thi.ng/iterators@4.1.28...@thi.ng/iterators@4.1.29) (2018-09-24)
+
+**Note:** Version bump only for package @thi.ng/iterators
+
+
+
+
+
+<a name="4.1.28"></a>
+## [4.1.28](https://github.com/thi-ng/umbrella/compare/@thi.ng/iterators@4.1.28-alpha.1...@thi.ng/iterators@4.1.28) (2018-09-22)
+
+**Note:** Version bump only for package @thi.ng/iterators
+
+
+
+
+
+<a name="4.1.28-alpha.1"></a>
+## [4.1.28-alpha.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/iterators@4.1.28-alpha.0...@thi.ng/iterators@4.1.28-alpha.1) (2018-09-17)
+
+**Note:** Version bump only for package @thi.ng/iterators
+
+
+
+
+
+<a name="4.1.28-alpha.0"></a>
+## [4.1.28-alpha.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/iterators@4.1.27...@thi.ng/iterators@4.1.28-alpha.0) (2018-09-17)
+
+**Note:** Version bump only for package @thi.ng/iterators
+
+
+
+
+
+<a name="4.1.27"></a>
+## [4.1.27](https://github.com/thi-ng/umbrella/compare/@thi.ng/iterators@4.1.26...@thi.ng/iterators@4.1.27) (2018-09-10)
+
+**Note:** Version bump only for package @thi.ng/iterators
+
+
+
+
+
+<a name="4.1.26"></a>
+## [4.1.26](https://github.com/thi-ng/umbrella/compare/@thi.ng/iterators@4.1.25...@thi.ng/iterators@4.1.26) (2018-09-08)
+
+**Note:** Version bump only for package @thi.ng/iterators
+
+
+
+
+
+<a name="4.1.25"></a>
+## [4.1.25](https://github.com/thi-ng/umbrella/compare/@thi.ng/iterators@4.1.24...@thi.ng/iterators@4.1.25) (2018-09-06)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/iterators
+
+<a name="4.1.24"></a>
+## [4.1.24](https://github.com/thi-ng/umbrella/compare/@thi.ng/iterators@4.1.23...@thi.ng/iterators@4.1.24) (2018-09-03)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/iterators
+
+<a name="4.1.23"></a>
+## [4.1.23](https://github.com/thi-ng/umbrella/compare/@thi.ng/iterators@4.1.22...@thi.ng/iterators@4.1.23) (2018-09-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/iterators
+
+<a name="4.1.22"></a>
+## [4.1.22](https://github.com/thi-ng/umbrella/compare/@thi.ng/iterators@4.1.21...@thi.ng/iterators@4.1.22) (2018-08-24)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/iterators
+
+<a name="4.1.21"></a>
+## [4.1.21](https://github.com/thi-ng/umbrella/compare/@thi.ng/iterators@4.1.20...@thi.ng/iterators@4.1.21) (2018-08-24)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/iterators
+
+<a name="4.1.20"></a>
+## [4.1.20](https://github.com/thi-ng/umbrella/compare/@thi.ng/iterators@4.1.19...@thi.ng/iterators@4.1.20) (2018-08-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/iterators
+
+<a name="4.1.19"></a>
+## [4.1.19](https://github.com/thi-ng/umbrella/compare/@thi.ng/iterators@4.1.18...@thi.ng/iterators@4.1.19) (2018-07-20)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/iterators
+
 <a name="4.1.18"></a>
 ## [4.1.18](https://github.com/thi-ng/umbrella/compare/@thi.ng/iterators@4.1.17...@thi.ng/iterators@4.1.18) (2018-06-21)
 

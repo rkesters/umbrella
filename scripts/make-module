@@ -4,7 +4,13 @@ readonly MODULE="packages/$1"
 readonly AUTHOR="Karsten Schmidt"
 readonly EMAIL="k+npm@thi.ng"
 
-echo "generating module: $MODULE"
+IFS='-' read -r -a parts <<< "$1"
+
+for i in "${parts[@]}"; do
+    INITIAL="$INITIAL${i:0:1}"
+done
+
+echo "generating module: $MODULE ($INITIAL)"
 mkdir -p $MODULE
 
 echo "creating /src & /test folders..."
@@ -16,7 +22,7 @@ cp packages/api/LICENSE $MODULE/
 echo "writing test skeleton..."
 cat << EOF > $MODULE/test/index.ts
 // import * as assert from "assert";
-// import * as $1 from "../src/index";
+// import * as $INITIAL from "../src/index";
 
 describe("$1", () => {
     it("tests pending");
@@ -47,15 +53,15 @@ cat << EOF > $MODULE/package.json
         "test": "rm -rf build && tsc -p test && nyc mocha build/test/*.js"
     },
     "devDependencies": {
-        "@types/mocha": "^5.2.0",
-        "@types/node": "^10.0.6",
-        "mocha": "^5.1.1",
-        "nyc": "^11.7.1",
-        "typedoc": "^0.11.1",
-        "typescript": "^2.8.3"
+        "@types/mocha": "^5.2.5",
+        "@types/node": "^10.12.0",
+        "mocha": "^5.2.0",
+        "nyc": "^13.1.0",
+        "typedoc": "^0.13.0",
+        "typescript": "^3.1.3"
     },
     "dependencies": {
-        "@thi.ng/api": "^4.0.3"
+        "@thi.ng/api": "^4.2.2"
     },
     "keywords": [
         "ES6",
@@ -100,6 +106,7 @@ build
 coverage
 dev
 doc
+export
 src*
 test
 .nyc_output
@@ -113,9 +120,15 @@ cat << EOF > $MODULE/README.md
 # @thi.ng/$1
 
 [![npm (scoped)](https://img.shields.io/npm/v/@thi.ng/$1.svg)](https://www.npmjs.com/package/@thi.ng/$1)
+![npm downloads](https://img.shields.io/npm/dm/@thi.ng/$1.svg)
+[![Twitter Follow](https://img.shields.io/twitter/follow/thing_umbrella.svg?style=flat-square&label=twitter)](https://twitter.com/thing_umbrella)
 
 This project is part of the
 [@thi.ng/umbrella](https://github.com/thi-ng/umbrella/) monorepo.
+
+<!-- TOC depthFrom:2 depthTo:3 -->
+
+<!-- /TOC -->
 
 ## About
 
@@ -123,14 +136,18 @@ TODO...
 
 ## Installation
 
-\`\`\`
+\`\`\`bash
 yarn add @thi.ng/$1
 \`\`\`
 
+## Dependencies
+
+- TODO...
+
 ## Usage examples
 
-\`\`\`typescript
-import * as $1 from "@thi.ng/$1";
+\`\`\`ts
+import * as $INITIAL from "@thi.ng/$1";
 \`\`\`
 
 ## Authors

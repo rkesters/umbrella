@@ -2,7 +2,7 @@
 
 ## About
 
-[Live demo](http://demo.thi.ng/umbrella/rstream-grid/)
+[Live demo](https://demo.thi.ng/umbrella/rstream-grid/)
 
 Interactive SVG grid pattern creator with undo, local file download and
 implemented as rstream dataflow graph, combined with interceptor event &
@@ -23,23 +23,23 @@ template.
 
 ### Development
 
-```
+```bash
 git clone https://github.com/thi-ng/umbrella/
 cd umbrella/examples/rstream-grid
 yarn install
 yarn start
 ```
 
-Installs all dependencies, runs `webpack-dev-server` and opens the app
-in your browser.
+Installs all dependencies, runs `parcel serve` and opens the app in your
+browser.
 
 ### Production
 
-```
+```bash
 yarn build
 ```
 
-Builds a minified version of the app and places it in `/public`
+Builds a minified version of the app and places it in the `/out`
 directory.
 
 ## Authors

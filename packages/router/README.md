@@ -1,6 +1,8 @@
 # @thi.ng/router
 
-[![npm (scoped)](https://img.shields.io/npm/v/@thi.ng/router.svg)](https://www.npmjs.com/package/@thi.ng/router)
+[![npm version](https://img.shields.io/npm/v/@thi.ng/router.svg)](https://www.npmjs.com/package/@thi.ng/router)
+![npm downloads](https://img.shields.io/npm/dm/@thi.ng/router.svg)
+[![Twitter Follow](https://img.shields.io/twitter/follow/thing_umbrella.svg?style=flat-square&label=twitter)](https://twitter.com/thing_umbrella)
 
 This project is part of the
 [@thi.ng/umbrella](https://github.com/thi-ng/umbrella/) monorepo.
@@ -22,7 +24,7 @@ for:
 
 ## Installation
 
-```
+```bash
 yarn add @thi.ng/router
 ```
 
@@ -31,7 +33,7 @@ using @thi.ng/atom, @thi.ng/hdom & @thi.ng/router using the
 [create-hdom-app](https://github.com/thi-ng/create-hdom-app) project
 generator:**
 
-```
+```bash
 yarn create hdom-app my-app
 
 cd my-app
@@ -50,9 +52,10 @@ yarn start
 
 A complete, full commented demo app is here:
 
-[Source](https://github.com/thi-ng/umbrella/blob/master/examples/router-basics/) | [Live demo](http://demo.thi.ng/umbrella/router-basics/)
+[Source](https://github.com/thi-ng/umbrella/blob/master/examples/router-basics/) |
+[Live demo](https://demo.thi.ng/umbrella/router-basics/)
 
-```typescript
+```ts
 import * as r from "@thi.ng/router";
 
 // router configuration
@@ -142,7 +145,8 @@ router.addListener(r.EV_ROUTE_CHANGED, console.log);
 router.start();
 ```
 
-See [further comments in source code](https://github.com/thi-ng/umbrella/blob/master/packages/router/src/api.ts)
+See [further comments in source
+code](https://github.com/thi-ng/umbrella/blob/master/packages/router/src/api.ts)
 
 ## Authors
 

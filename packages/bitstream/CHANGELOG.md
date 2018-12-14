@@ -3,6 +3,65 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.20](https://github.com/thi-ng/umbrella/compare/@thi.ng/bitstream@0.4.19...@thi.ng/bitstream@0.4.20) (2018-10-21)
+
+**Note:** Version bump only for package @thi.ng/bitstream
+
+
+
+
+
+## [0.4.19](https://github.com/thi-ng/umbrella/compare/@thi.ng/bitstream@0.4.18...@thi.ng/bitstream@0.4.19) (2018-10-17)
+
+**Note:** Version bump only for package @thi.ng/bitstream
+
+
+
+
+
+<a name="0.4.18"></a>
+## [0.4.18](https://github.com/thi-ng/umbrella/compare/@thi.ng/bitstream@0.4.17...@thi.ng/bitstream@0.4.18) (2018-09-24)
+
+**Note:** Version bump only for package @thi.ng/bitstream
+
+
+
+
+
+<a name="0.4.17"></a>
+## [0.4.17](https://github.com/thi-ng/umbrella/compare/@thi.ng/bitstream@0.4.16...@thi.ng/bitstream@0.4.17) (2018-09-22)
+
+**Note:** Version bump only for package @thi.ng/bitstream
+
+
+
+
+
+<a name="0.4.16"></a>
+## [0.4.16](https://github.com/thi-ng/umbrella/compare/@thi.ng/bitstream@0.4.15...@thi.ng/bitstream@0.4.16) (2018-09-10)
+
+**Note:** Version bump only for package @thi.ng/bitstream
+
+
+
+
+
+<a name="0.4.15"></a>
+## [0.4.15](https://github.com/thi-ng/umbrella/compare/@thi.ng/bitstream@0.4.14...@thi.ng/bitstream@0.4.15) (2018-08-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/bitstream
+
+<a name="0.4.14"></a>
+## [0.4.14](https://github.com/thi-ng/umbrella/compare/@thi.ng/bitstream@0.4.13...@thi.ng/bitstream@0.4.14) (2018-07-20)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/bitstream
+
 <a name="0.4.13"></a>
 ## [0.4.13](https://github.com/thi-ng/umbrella/compare/@thi.ng/bitstream@0.4.12...@thi.ng/bitstream@0.4.13) (2018-06-21)
 

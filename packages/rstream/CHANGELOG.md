@@ -3,6 +3,420 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.14.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.14.2...@thi.ng/rstream@1.14.3) (2018-12-13)
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+
+
+
+
+## [1.14.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.14.1...@thi.ng/rstream@1.14.2) (2018-12-08)
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+
+
+
+
+## [1.14.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.14.0...@thi.ng/rstream@1.14.1) (2018-12-01)
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+
+
+
+
+# [1.14.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.13.8...@thi.ng/rstream@1.14.0) (2018-11-24)
+
+
+### Bug Fixes
+
+* **rstream:** make maxWorkers optional ([46c2882](https://github.com/thi-ng/umbrella/commit/46c2882))
+
+
+### Features
+
+* **rstream:** add StreamSync.getSources() / getSourceForID() ([ef0fe42](https://github.com/thi-ng/umbrella/commit/ef0fe42))
+* **rstream:** add support multiple workers in Tunnel & TunnelOpts ([67a5b10](https://github.com/thi-ng/umbrella/commit/67a5b10))
+* **rstream:** add worker tunnel() sub ([4750e79](https://github.com/thi-ng/umbrella/commit/4750e79))
+
+
+
+
+
+## [1.13.8](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.13.7...@thi.ng/rstream@1.13.8) (2018-11-08)
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+
+
+
+
+## [1.13.7](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.13.6...@thi.ng/rstream@1.13.7) (2018-10-21)
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+
+
+
+
+## [1.13.6](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.13.5...@thi.ng/rstream@1.13.6) (2018-10-17)
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+
+
+
+
+<a name="1.13.5"></a>
+## [1.13.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.13.4...@thi.ng/rstream@1.13.5) (2018-09-26)
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+
+
+
+
+<a name="1.13.4"></a>
+## [1.13.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.13.3...@thi.ng/rstream@1.13.4) (2018-09-25)
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+
+
+
+
+<a name="1.13.3"></a>
+## [1.13.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.13.2...@thi.ng/rstream@1.13.3) (2018-09-24)
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+
+
+
+
+<a name="1.13.2"></a>
+## [1.13.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.13.1...@thi.ng/rstream@1.13.2) (2018-09-24)
+
+
+### Performance Improvements
+
+* **rstream:** `State` => const enum ([7ac83c6](https://github.com/thi-ng/umbrella/commit/7ac83c6))
+
+
+
+
+
+<a name="1.13.1"></a>
+## [1.13.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.13.0...@thi.ng/rstream@1.13.1) (2018-09-23)
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+
+
+
+
+<a name="1.13.0"></a>
+# [1.13.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.12.2-alpha.2...@thi.ng/rstream@1.13.0) (2018-09-22)
+
+
+### Features
+
+* **rstream:** add trigger() generics ([288b68d](https://github.com/thi-ng/umbrella/commit/288b68d))
+* **rstream:** add trigger() utility stream ([929c6f4](https://github.com/thi-ng/umbrella/commit/929c6f4))
+
+
+
+
+
+<a name="1.12.2-alpha.2"></a>
+## [1.12.2-alpha.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.12.2-alpha.1...@thi.ng/rstream@1.12.2-alpha.2) (2018-09-17)
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+
+
+
+
+<a name="1.12.2-alpha.1"></a>
+## [1.12.2-alpha.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.12.2-alpha.0...@thi.ng/rstream@1.12.2-alpha.1) (2018-09-17)
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+
+
+
+
+<a name="1.12.2-alpha.0"></a>
+## [1.12.2-alpha.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.12.1...@thi.ng/rstream@1.12.2-alpha.0) (2018-09-17)
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+
+
+
+
+<a name="1.12.1"></a>
+## [1.12.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.12.0...@thi.ng/rstream@1.12.1) (2018-09-10)
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+
+
+
+
+<a name="1.12.0"></a>
+# [1.12.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.11.10...@thi.ng/rstream@1.12.0) (2018-09-08)
+
+
+### Features
+
+* **rstream:** add merge-only mode for StreamSync, update docs ([162aa2d](https://github.com/thi-ng/umbrella/commit/162aa2d))
+
+
+
+
+
+<a name="1.11.10"></a>
+## [1.11.10](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.11.9...@thi.ng/rstream@1.11.10) (2018-09-06)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.11.9"></a>
+## [1.11.9](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.11.8...@thi.ng/rstream@1.11.9) (2018-09-03)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.11.8"></a>
+## [1.11.8](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.11.7...@thi.ng/rstream@1.11.8) (2018-09-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.11.7"></a>
+## [1.11.7](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.11.6...@thi.ng/rstream@1.11.7) (2018-09-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.11.6"></a>
+## [1.11.6](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.11.5...@thi.ng/rstream@1.11.6) (2018-08-27)
+
+
+### Bug Fixes
+
+* **rstream:** Fix unbound this in method call expression ([34a97b4](https://github.com/thi-ng/umbrella/commit/34a97b4))
+
+
+
+
+<a name="1.11.5"></a>
+## [1.11.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.11.4...@thi.ng/rstream@1.11.5) (2018-08-27)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.11.4"></a>
+## [1.11.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.11.3...@thi.ng/rstream@1.11.4) (2018-08-24)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.11.3"></a>
+## [1.11.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.11.2...@thi.ng/rstream@1.11.3) (2018-08-24)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.11.2"></a>
+## [1.11.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.11.1...@thi.ng/rstream@1.11.2) (2018-08-08)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.11.1"></a>
+## [1.11.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.11.0...@thi.ng/rstream@1.11.1) (2018-08-06)
+
+
+### Bug Fixes
+
+* **rstream:** add generics for stream() ([378772f](https://github.com/thi-ng/umbrella/commit/378772f))
+
+
+
+
+<a name="1.11.0"></a>
+# [1.11.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.10.4...@thi.ng/rstream@1.11.0) (2018-08-03)
+
+
+### Features
+
+* **rstream:** add stream() & subscription() factories, add/update docs ([e97aac0](https://github.com/thi-ng/umbrella/commit/e97aac0))
+* **rstream:** update StreamSync to use `reset: false` by default, update docs ([55499cc](https://github.com/thi-ng/umbrella/commit/55499cc))
+
+
+
+
+<a name="1.10.4"></a>
+## [1.10.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.10.3...@thi.ng/rstream@1.10.4) (2018-08-02)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.10.3"></a>
+## [1.10.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.10.2...@thi.ng/rstream@1.10.3) (2018-08-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.10.2"></a>
+## [1.10.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.10.1...@thi.ng/rstream@1.10.2) (2018-08-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.10.1"></a>
+## [1.10.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.10.0...@thi.ng/rstream@1.10.1) (2018-07-25)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.10.0"></a>
+# [1.10.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.9.7...@thi.ng/rstream@1.10.0) (2018-07-20)
+
+
+### Features
+
+* **rstream:** Add a timeout() subscription ([aa55973](https://github.com/thi-ng/umbrella/commit/aa55973))
+* **rstream:** add reset option for timeout() ([cd751fb](https://github.com/thi-ng/umbrella/commit/cd751fb))
+
+
+### Performance Improvements
+
+* **rstream:** optimize dispatch if only single child ([a59c5c9](https://github.com/thi-ng/umbrella/commit/a59c5c9))
+
+
+
+
+<a name="1.9.7"></a>
+## [1.9.7](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.9.6...@thi.ng/rstream@1.9.7) (2018-07-19)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.9.6"></a>
+## [1.9.6](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.9.5...@thi.ng/rstream@1.9.6) (2018-07-16)
+
+
+### Bug Fixes
+
+* **rstream:** emit first value immediately in fromInterval() ([9be2018](https://github.com/thi-ng/umbrella/commit/9be2018))
+
+
+
+
+<a name="1.9.5"></a>
+## [1.9.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.9.4...@thi.ng/rstream@1.9.5) (2018-07-13)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.9.4"></a>
+## [1.9.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.9.3...@thi.ng/rstream@1.9.4) (2018-07-11)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.9.3"></a>
+## [1.9.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.9.2...@thi.ng/rstream@1.9.3) (2018-07-09)
+
+
+### Bug Fixes
+
+* **rstream:** Fix potential reference error in transduce() ([7f2d5dd](https://github.com/thi-ng/umbrella/commit/7f2d5dd))
+
+
+
+
+<a name="1.9.2"></a>
+## [1.9.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.9.1...@thi.ng/rstream@1.9.2) (2018-07-09)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.9.1"></a>
+## [1.9.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.9.0...@thi.ng/rstream@1.9.1) (2018-07-04)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.9.0"></a>
+# [1.9.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.8.2...@thi.ng/rstream@1.9.0) (2018-07-04)
+
+
+### Features
+
+* **rstream:** add support for event listener opts in `fromEvent()` ([d5ac264](https://github.com/thi-ng/umbrella/commit/d5ac264))
+
+
+
+
+<a name="1.8.2"></a>
+## [1.8.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.8.1...@thi.ng/rstream@1.8.2) (2018-07-03)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/rstream
+
+<a name="1.8.1"></a>
+## [1.8.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.8.0...@thi.ng/rstream@1.8.1) (2018-07-03)
+
+
+### Bug Fixes
+
+* **rstream:** unsubscribe on error in transduce() ([8c7d937](https://github.com/thi-ng/umbrella/commit/8c7d937))
+
+
+
+
 <a name="1.8.0"></a>
 # [1.8.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/rstream@1.7.3...@thi.ng/rstream@1.8.0) (2018-06-21)
 

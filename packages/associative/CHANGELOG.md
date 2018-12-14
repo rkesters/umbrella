@@ -3,6 +3,205 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.17](https://github.com/thi-ng/umbrella/compare/@thi.ng/associative@0.6.16...@thi.ng/associative@0.6.17) (2018-12-13)
+
+**Note:** Version bump only for package @thi.ng/associative
+
+
+
+
+
+## [0.6.16](https://github.com/thi-ng/umbrella/compare/@thi.ng/associative@0.6.15...@thi.ng/associative@0.6.16) (2018-12-08)
+
+**Note:** Version bump only for package @thi.ng/associative
+
+
+
+
+
+## [0.6.15](https://github.com/thi-ng/umbrella/compare/@thi.ng/associative@0.6.14...@thi.ng/associative@0.6.15) (2018-12-01)
+
+**Note:** Version bump only for package @thi.ng/associative
+
+
+
+
+
+## [0.6.14](https://github.com/thi-ng/umbrella/compare/@thi.ng/associative@0.6.13...@thi.ng/associative@0.6.14) (2018-11-08)
+
+**Note:** Version bump only for package @thi.ng/associative
+
+
+
+
+
+## [0.6.13](https://github.com/thi-ng/umbrella/compare/@thi.ng/associative@0.6.12...@thi.ng/associative@0.6.13) (2018-10-21)
+
+**Note:** Version bump only for package @thi.ng/associative
+
+
+
+
+
+## [0.6.12](https://github.com/thi-ng/umbrella/compare/@thi.ng/associative@0.6.11...@thi.ng/associative@0.6.12) (2018-10-17)
+
+**Note:** Version bump only for package @thi.ng/associative
+
+
+
+
+
+<a name="0.6.11"></a>
+## [0.6.11](https://github.com/thi-ng/umbrella/compare/@thi.ng/associative@0.6.10...@thi.ng/associative@0.6.11) (2018-09-26)
+
+**Note:** Version bump only for package @thi.ng/associative
+
+
+
+
+
+<a name="0.6.10"></a>
+## [0.6.10](https://github.com/thi-ng/umbrella/compare/@thi.ng/associative@0.6.9...@thi.ng/associative@0.6.10) (2018-09-25)
+
+**Note:** Version bump only for package @thi.ng/associative
+
+
+
+
+
+<a name="0.6.9"></a>
+## [0.6.9](https://github.com/thi-ng/umbrella/compare/@thi.ng/associative@0.6.8...@thi.ng/associative@0.6.9) (2018-09-24)
+
+**Note:** Version bump only for package @thi.ng/associative
+
+
+
+
+
+<a name="0.6.8"></a>
+## [0.6.8](https://github.com/thi-ng/umbrella/compare/@thi.ng/associative@0.6.7...@thi.ng/associative@0.6.8) (2018-09-24)
+
+**Note:** Version bump only for package @thi.ng/associative
+
+
+
+
+
+<a name="0.6.7"></a>
+## [0.6.7](https://github.com/thi-ng/umbrella/compare/@thi.ng/associative@0.6.7-alpha.1...@thi.ng/associative@0.6.7) (2018-09-22)
+
+**Note:** Version bump only for package @thi.ng/associative
+
+
+
+
+
+<a name="0.6.7-alpha.1"></a>
+## [0.6.7-alpha.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/associative@0.6.7-alpha.0...@thi.ng/associative@0.6.7-alpha.1) (2018-09-17)
+
+**Note:** Version bump only for package @thi.ng/associative
+
+
+
+
+
+<a name="0.6.7-alpha.0"></a>
+## [0.6.7-alpha.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/associative@0.6.6...@thi.ng/associative@0.6.7-alpha.0) (2018-09-17)
+
+**Note:** Version bump only for package @thi.ng/associative
+
+
+
+
+
+<a name="0.6.6"></a>
+## [0.6.6](https://github.com/thi-ng/umbrella/compare/@thi.ng/associative@0.6.5...@thi.ng/associative@0.6.6) (2018-09-10)
+
+**Note:** Version bump only for package @thi.ng/associative
+
+
+
+
+
+<a name="0.6.5"></a>
+## [0.6.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/associative@0.6.4...@thi.ng/associative@0.6.5) (2018-09-08)
+
+**Note:** Version bump only for package @thi.ng/associative
+
+
+
+
+
+<a name="0.6.4"></a>
+## [0.6.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/associative@0.6.3...@thi.ng/associative@0.6.4) (2018-09-06)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/associative
+
+<a name="0.6.3"></a>
+## [0.6.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/associative@0.6.2...@thi.ng/associative@0.6.3) (2018-09-03)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/associative
+
+<a name="0.6.2"></a>
+## [0.6.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/associative@0.6.1...@thi.ng/associative@0.6.2) (2018-09-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/associative
+
+<a name="0.6.1"></a>
+## [0.6.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/associative@0.6.0...@thi.ng/associative@0.6.1) (2018-08-24)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/associative
+
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/associative@0.5.11...@thi.ng/associative@0.6.0) (2018-08-24)
+
+
+### Features
+
+* **associative:** add IReducible impls for SortedMap & SortedSet ([f14f7ce](https://github.com/thi-ng/umbrella/commit/f14f7ce))
+
+
+
+
+<a name="0.5.11"></a>
+## [0.5.11](https://github.com/thi-ng/umbrella/compare/@thi.ng/associative@0.5.10...@thi.ng/associative@0.5.11) (2018-08-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/associative
+
+<a name="0.5.10"></a>
+## [0.5.10](https://github.com/thi-ng/umbrella/compare/@thi.ng/associative@0.5.9...@thi.ng/associative@0.5.10) (2018-07-20)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/associative
+
+<a name="0.5.9"></a>
+## [0.5.9](https://github.com/thi-ng/umbrella/compare/@thi.ng/associative@0.5.8...@thi.ng/associative@0.5.9) (2018-07-03)
+
+
+### Bug Fixes
+
+* **associative:** minor SortedSet fixes ([33f0d19](https://github.com/thi-ng/umbrella/commit/33f0d19))
+
+
+
+
 <a name="0.5.8"></a>
 ## [0.5.8](https://github.com/thi-ng/umbrella/compare/@thi.ng/associative@0.5.7...@thi.ng/associative@0.5.8) (2018-06-21)
 

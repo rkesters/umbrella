@@ -3,6 +3,310 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@5.2.2...@thi.ng/hdom@6.0.0) (2018-12-13)
+
+
+### Code Refactoring
+
+* **hdom:** extend & simplify HDOMImplementation, update DEFAULT_IMPL ([6f2e8ee](https://github.com/thi-ng/umbrella/commit/6f2e8ee))
+
+
+### Features
+
+* **hdom:** add initial __skip ctrl attrib handling in diffTree() ([a4e6736](https://github.com/thi-ng/umbrella/commit/a4e6736))
+
+
+### BREAKING CHANGES
+
+* **hdom:** extend & simplify HDOMImplementation
+
+- update args for HDOMImplementation methods
+- add createElement(), createTextElement() & getElementById() methods
+  to HDOMImplementation
+- rename createDOM() => createTree(), make generic
+- rename hydrateDOM() => hydrateTree(), make generic
+- update / fix diffTree() __impl attrib handling:
+  only delegate if __impl != current impl
+- update resolveRoot() to require impl arg & delegate
+
+
+
+
+
+## [5.2.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@5.2.1...@thi.ng/hdom@5.2.2) (2018-12-09)
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+
+
+
+
+## [5.2.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@5.2.0...@thi.ng/hdom@5.2.1) (2018-12-08)
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+
+
+
+
+# [5.2.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@5.1.0...@thi.ng/hdom@5.2.0) (2018-11-07)
+
+
+### Features
+
+* **hdom:** update auto-deref ctx behavior ([3016116](https://github.com/thi-ng/umbrella/commit/3016116))
+
+
+
+
+
+# [5.1.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@5.0.7...@thi.ng/hdom@5.1.0) (2018-11-06)
+
+
+### Features
+
+* **hdom:** add support for dynamic user context vals ([6a3a873](https://github.com/thi-ng/umbrella/commit/6a3a873))
+
+
+
+
+
+## [5.0.7](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@5.0.6...@thi.ng/hdom@5.0.7) (2018-10-21)
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+
+
+
+
+## [5.0.6](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@5.0.5...@thi.ng/hdom@5.0.6) (2018-10-17)
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+
+
+
+
+<a name="5.0.5"></a>
+## [5.0.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@5.0.4...@thi.ng/hdom@5.0.5) (2018-09-28)
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+
+
+
+
+<a name="5.0.4"></a>
+## [5.0.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@5.0.3...@thi.ng/hdom@5.0.4) (2018-09-26)
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+
+
+
+
+<a name="5.0.3"></a>
+## [5.0.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@5.0.2...@thi.ng/hdom@5.0.3) (2018-09-24)
+
+
+### Bug Fixes
+
+* **hdom:** add DEFAULT_IMPL to re-exports ([#47](https://github.com/thi-ng/umbrella/issues/47)) ([50fa649](https://github.com/thi-ng/umbrella/commit/50fa649))
+
+
+
+
+
+<a name="5.0.2"></a>
+## [5.0.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@5.0.1...@thi.ng/hdom@5.0.2) (2018-09-24)
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+
+
+
+
+<a name="5.0.1"></a>
+## [5.0.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@5.0.0...@thi.ng/hdom@5.0.1) (2018-09-23)
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+
+
+
+
+<a name="5.0.0"></a>
+# [5.0.0](https://github.com/thi-ng/umbrella/compare/525d90d5...@thi.ng/hdom@5.0.0) (2018-09-22)
+
+
+### Features
+
+* **hdom:** generalize diffElement() ([#4](https://github.com/thi-ng/umbrella/issues/4)) ([525d90d](https://github.com/thi-ng/umbrella/commit/525d90d))
+* **hdom:** update normalizeTree, add to HDOMImplementation ([59bb19c](https://github.com/thi-ng/umbrella/commit/59bb19c))
+* **hdom:** reorg & extend HDOMImplementation ([1ac245f](https://github.com/thi-ng/umbrella/commit/1ac245f))
+* **hdom:** add `.toHiccup()` interface support ([54ba0ce](https://github.com/thi-ng/umbrella/commit/54ba0ce))
+* **hdom:** add renderOnce() ([5ef9cf0](https://github.com/thi-ng/umbrella/commit/5ef9cf0))
+
+### Bug fixes
+
+* **hdom:** minor fix (hydrateDOM) ([e4f780c](https://github.com/thi-ng/umbrella/commit/e4f780c))
+* **hdom:** exclude hdom control attribs in setAttrib() ([0592063](https://github.com/thi-ng/umbrella/commit/0592063))
+* **hdom:** delegate diffTree() to branch impl ([6c33901](https://github.com/thi-ng/umbrella/commit/6c33901))
+
+### Performance Improvements
+
+* **hdom:** add opt `__release` attrib to disable releaseDeep() ([2e3fb66](https://github.com/thi-ng/umbrella/commit/2e3fb66))
+* **hdom:** update diffTree(), inline node type checks ([382c45c](https://github.com/thi-ng/umbrella/commit/382c45c))
+* **hdom:** minor updates ([de17db8](https://github.com/thi-ng/umbrella/commit/de17db8))
+
+
+### BREAKING CHANGES
+
+* **hdom:** new names & call signatures for:
+
+    - normalizeTree
+    - diffElement => diffTree
+    - createDOM
+    - hydrateDOM
+    - replaceChild
+
+
+<a name="4.0.5"></a>
+## [4.0.5](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@4.0.4...@thi.ng/hdom@4.0.5) (2018-09-10)
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+
+
+
+
+<a name="4.0.4"></a>
+## [4.0.4](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@4.0.3...@thi.ng/hdom@4.0.4) (2018-09-03)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="4.0.3"></a>
+## [4.0.3](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@4.0.2...@thi.ng/hdom@4.0.3) (2018-09-01)
+
+
+### Bug Fixes
+
+* **hdom:** fix local import ([e66a492](https://github.com/thi-ng/umbrella/commit/e66a492))
+
+
+
+
+<a name="4.0.2"></a>
+## [4.0.2](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@4.0.1...@thi.ng/hdom@4.0.2) (2018-09-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="4.0.1"></a>
+## [4.0.1](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@4.0.0...@thi.ng/hdom@4.0.1) (2018-09-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="4.0.0"></a>
+# [4.0.0](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.35...@thi.ng/hdom@4.0.0) (2018-08-31)
+
+
+### Features
+
+* **hdom:** add DOM hydration support (SSR), update start() ([#39](https://github.com/thi-ng/umbrella/issues/39)) ([9f8010d](https://github.com/thi-ng/umbrella/commit/9f8010d))
+* **hdom:** update HDOMOpts & start() ([5e74a9c](https://github.com/thi-ng/umbrella/commit/5e74a9c))
+
+
+### BREAKING CHANGES
+
+* **hdom:** start() args now as options object
+
+
+
+
+<a name="3.0.35"></a>
+## [3.0.35](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.34...@thi.ng/hdom@3.0.35) (2018-08-27)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.34"></a>
+## [3.0.34](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.33...@thi.ng/hdom@3.0.34) (2018-08-24)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.33"></a>
+## [3.0.33](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.32...@thi.ng/hdom@3.0.33) (2018-08-24)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.32"></a>
+## [3.0.32](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.31...@thi.ng/hdom@3.0.32) (2018-08-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.31"></a>
+## [3.0.31](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.30...@thi.ng/hdom@3.0.31) (2018-08-01)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.30"></a>
+## [3.0.30](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.29...@thi.ng/hdom@3.0.30) (2018-07-20)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.29"></a>
+## [3.0.29](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.28...@thi.ng/hdom@3.0.29) (2018-07-11)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
+<a name="3.0.28"></a>
+## [3.0.28](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.27...@thi.ng/hdom@3.0.28) (2018-07-10)
+
+
+### Bug Fixes
+
+* **hdom:** always update "value" attrib last in diffAttributes() ([126103b](https://github.com/thi-ng/umbrella/commit/126103b))
+
+
+
+
+<a name="3.0.27"></a>
+## [3.0.27](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.26...@thi.ng/hdom@3.0.27) (2018-07-04)
+
+
+
+
+**Note:** Version bump only for package @thi.ng/hdom
+
 <a name="3.0.26"></a>
 ## [3.0.26](https://github.com/thi-ng/umbrella/compare/@thi.ng/hdom@3.0.25...@thi.ng/hdom@3.0.26) (2018-06-21)
 

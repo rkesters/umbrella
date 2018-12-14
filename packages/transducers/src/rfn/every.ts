@@ -1,14 +1,37 @@
 import { Predicate } from "@thi.ng/api/api";
 
 import { Reducer } from "../api";
+import { $$reduce, reducer } from "../reduce";
 import { reduced } from "../reduced";
 
-export function every<T>(pred?: Predicate<T>): Reducer<boolean, T> {
-    return [
+/**
+ * Reducer which applies optional `pred` function to each value and
+ * terminates early if the predicate returned a falsy result. If no
+ * predicate is given the values are checked via JS native truthiness
+ * rules (i.e. 0, "", false, null, undefined are all falsy).
+ *
+ * Returns true if *all* values passed test.
+ *
+ * ```
+ * reduce(every((x)=> x > 0), [1,2,-1,3]);
+ * // false
+ * ```
+ *
+ * @param pred
+ */
+export function every<T>(pred?: Predicate<T>): Reducer<boolean, T>;
+export function every<T>(xs: Iterable<T>): boolean;
+export function every<T>(pred: Predicate<T>, xs: Iterable<T>): boolean;
+export function every(...args: any[]): any {
+    const res = $$reduce(every, args);
+    if (res !== undefined) {
+        return res;
+    }
+    const pred = args[0];
+    return reducer(
         () => true,
-        (acc) => acc,
         pred ?
             (acc, x) => (pred(x) ? acc : reduced(false)) :
             (acc, x) => (x ? acc : reduced(false))
-    ];
+    );
 }

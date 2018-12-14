@@ -1,15 +1,15 @@
 # router-basics
 
-[Live demo](http://demo.thi.ng/umbrella/router-basics/)
+[Live demo](https://demo.thi.ng/umbrella/router-basics/)
 
-```
+```bash
 git clone https://github.com/thi-ng/umbrella.git
 cd umbrella/examples/router-basics
 yarn install
 yarn start
 ```
 
-Installs all dependencies, runs `webpack-dev-server` and opens the app in your browser.
+Installs all dependencies, runs `parcel serve` and opens the app in your browser.
 
 ## About
 
@@ -30,11 +30,11 @@ Features covered:
 
 ### Production build
 
-```
+```bash
 yarn build
 ```
 
-Builds a minified version of the app and places it in `/public` directory.
+Builds a minified version of the app and places it in `/out` directory.
 
 ## Authors
 
