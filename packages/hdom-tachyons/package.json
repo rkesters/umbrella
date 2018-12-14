@@ -25,7 +25,7 @@
     "dependencies": {
         "@thi.ng/api": "^4.2.3",
         "@thi.ng/paths": "^1.6.5",
-        "@thi.ng/hdom-components": "^2.3.0",
+        "@thi.ng/hdom-components": "^2.4.0",
         "@thi.ng/resolve-map": "^3.0.15"
     },
     "keywords": [
