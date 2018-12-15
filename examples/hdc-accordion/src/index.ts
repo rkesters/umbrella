@@ -145,7 +145,7 @@ const cancel = start(() =>
                 title: "Finally...",
                 body: [
                     LOREM_IPSUM,
-                    ["p", ["a.link.black", { href: "https://github.com/thi-ng/umbrella/tree/master/examples/hdom-accordion" }, "Source code"]]]
+                    ["p", ["a.link.black", { href: "https://github.com/thi-ng/umbrella/tree/feature/hdc-tachyons/examples/hdom-accordion" }, "Source code"]]]
             },
         ]
     ],
