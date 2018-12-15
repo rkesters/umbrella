@@ -39,7 +39,7 @@ fs.writeFileSync(
                             return ["div.dib.ma2",
                                 ["div.w4.h4.bg-light-gray.dark-gray.flex.items-center.tc",
                                     ["div.w-100",
-                                        icons.withSize(icons[id], "2rem"),
+                                        ["span.dib.w2.h2", icons.withSize(icons[id], "100%")],
                                         ["div.mt3", id]]]
                             ];
                         })
