@@ -1,6 +1,7 @@
 export * from "./button";
 export * from "./button-group";
 export * from "./canvas";
+export * from "./crosshair";
 export * from "./dropdown";
 export * from "./fps-counter";
 export * from "./link";
