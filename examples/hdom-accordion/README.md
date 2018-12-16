@@ -1,10 +1,10 @@
-# hdc-accordion
+# hdom-accordion
 
-[Live demo](http://demo.thi.ng/umbrella/hdc-accordion/)
+[Live demo](http://demo.thi.ng/umbrella/hdom-accordion/)
 
 ```bash
 git clone https://github.com/thi-ng/umbrella.git
-cd umbrella/examples/hdc-accordion
+cd umbrella/examples/hdom-accordion
 yarn install
 yarn start
 ```
